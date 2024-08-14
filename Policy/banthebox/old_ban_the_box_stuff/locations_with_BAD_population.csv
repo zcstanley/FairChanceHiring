@@ -1,0 +1,235 @@
+Location,Private,Vendors,Public,"Background checks only 
+for some 
+positions","Background 
+check only after conditional offer or finalists 
+selected","EEOC 
+criteria","Notice of 
+denial (N); 
+Copy of record (C); Appeal or complaint (A)",State,Population
+ALABAMA,,,,,,,,,5028092.0
+ Birmingham,,,X,,,,A,ALABAMA,200431.0
+ ARIZONA,,,X,,,,,,7172282.0
+ Glendale,,,X,,X,,, ARIZONA,248083.0
+ Maricopa County,,,X,,X,,, ARIZONA,4430871.0
+ Phoenix,,,X,,X,X,"N, C, A", ARIZONA,1609456.0
+ Pima County,,,X,,,,, ARIZONA,1042393.0
+ Tempe,,,X,,X,,, ARIZONA,181005.0
+ Tucson,,,X,X,X,X,A, ARIZONA,8742.0
+ARKANSAS,,,,,,,,,3018669.0
+ Pulaski County,,,X,,X,X,"N, A",ARKANSAS,398322.0
+CALIFORNIA  ,X,,X,,X,X,"N, C, A",,39356104.0
+ Alameda County,,,X,,,,,CALIFORNIA  ,1663823.0
+ Berkeley,,,X,X,,X,,CALIFORNIA  ,121385.0
+ Carson,,,X,,,,,CALIFORNIA  ,94475.0
+ Compton,,X,X,,,X,,CALIFORNIA  ,94822.0
+ East Palo Alto,,,X,,,,,CALIFORNIA  ,29520.0
+ Los Angeles,X,X,X,,X,X,"N, C, A",CALIFORNIA  ,117222.0
+ Oakland,,,X,X,X,X,"N, C, A",CALIFORNIA  ,437825.0
+ Pasadena,,,X,,,,,CALIFORNIA  ,5474.0
+ Richmond,,X,X,X,,,,CALIFORNIA  ,3285.0
+ Sacramento,,X,,,,,,CALIFORNIA  ,25.0
+ San Francisco,X1,X1,X,,X,X,"N, C, A",CALIFORNIA  ,851036.0
+ Santa Clara County,,,X,,,,,CALIFORNIA  ,1916831.0
+COLORADO  ,X,X,X,,,X,A,,5770790.0
+ Denver,,,X,,X,X,,COLORADO  ,710800.0
+ CONNECTICUT ,X,X,X,,,,A,,3611317.0
+ Bridgeport,,,X,,,X,"N, A", CONNECTICUT ,148470.0
+ Hartford,,X,X,X,X,X,"N, A", CONNECTICUT ,50942.0
+ New Haven,,X,X,,X,X,"N, C, A", CONNECTICUT ,135736.0
+ Norwich,,,X,,X,,, CONNECTICUT ,40054.0
+ DELAWARE  ,,,X,,,X,,,993635.0
+ New Castle County,,,X,,,,, DELAWARE  ,570567.0
+ Wilmington,,,X,,X,,, DELAWARE  ,71034.0
+ District of Columbia,X,X,X,,X,X,A, DELAWARE  ,
+FLORIDA,,,,,,,,,21634529.0
+ Broward County,,,X,,X,X,"N, C, A",FLORIDA,1940907.0
+ Clearwater,,,X,,,X,,FLORIDA,116984.0
+ Daytona Beach,,,X,,X,,,FLORIDA,73329.0
+ Gainesville,,,X,,,X,,FLORIDA,142414.0
+ Fort Myers,,,X,,,,,FLORIDA,88699.0
+ Jacksonville,,,X,,X,X,"N, A",FLORIDA,950203.0
+ Miami-Dade County,,,X,,X,X,N,FLORIDA,2688237.0
+ Orlando,,,X,,X,X,"N, C",FLORIDA,307738.0
+ Pompano Beach,,,X,,,,"N, C",FLORIDA,111790.0
+ Sarasota,,,X,,X,X,,FLORIDA,3701.0
+ St Petersburg,,,X,,,,,FLORIDA,
+ Tamarac,,,X,,,,A,FLORIDA,71578.0
+ Tampa,,,X,,X,,N,FLORIDA,388768.0
+ Tallahassee,,,X,,,X,,FLORIDA,198259.0
+ GEORGIA,,,X,,,,,,10722325.0
+ Albany,,,X,,,X,"N, A", GEORGIA,68926.0
+ Atlanta,,,X,,,,"N, C", GEORGIA,494838.0
+ Augusta,,,X,,X,X,, GEORGIA,201615.0
+ Cherokee County,,,X,,,X,A, GEORGIA,268567.0
+ Columbus,,,X,,X,X,"N, A", GEORGIA,204572.0
+ Fulton County,,,X,X,,X,"N, C", GEORGIA,1061944.0
+ Macon-Bibb County,,,X,,,,"N, C", GEORGIA,
+ Savannah,,,X,,,X,, GEORGIA,147583.0
+ South Fulton,,X,X,,,,, GEORGIA,107865.0
+ HAWAII ,X,X,X,,X,X,A,,1450589.0
+ ILLINOIS ,X,X,X,,,X,A,,12757634.0
+ Chicago,X,X,X,,,X,A, ILLINOIS ,2721914.0
+ INDIANA,,,X,,,,,,6784403.0
+ Indianapolis,,X,X,,,X,, INDIANA,882006.0
+IOWA,,,,,,,,,3188836.0
+ Johnson County,,,X,,,X,,IOWA,153360.0
+ Linn County,,,X,,,X,,IOWA,229308.0
+ Waterloo,X,X,X,,X,X,A,IOWA,67256.0
+ KANSAS,,,X,,,,,,2935922.0
+ Johnson County,,,X,,X,,, KANSAS,610742.0
+ Kansas City,,,X,,,X,, KANSAS,11997.0
+ Wichita,,,X,,X,X,"N,C, A", KANSAS,395951.0
+ Topeka,,,X,,X,X,"N, C, A", KANSAS,126431.0
+ KENTUCKY,,,X,,,,,,4502935.0
+ Louisville,,X,X,,,X,, KENTUCKY,629176.0
+ LOUISIANA ,,,X,,,X11,C11,,4640546.0
+ Baton Rouge,,,X,,,,, LOUISIANA ,225500.0
+ New Orleans,,X,X,X,X,X,"N, C", LOUISIANA ,380408.0
+ MAINE ,X,X,X,,,,A,,1366949.0
+ MARYLAND ,X,X,X,,,,A,,6161707.0
+ Baltimore,X,X,X,X,X,X,A, MARYLAND ,584548.0
+ Montgomery County,X,X,X,,,,"N, C, A", MARYLAND ,1056910.0
+ Prince Georges County,X,X,X,,,X,"N, C, A", MARYLAND ,
+ MASSACHUSETTS ,X,X,X,,,,"N, C, A",,6984205.0
+ Boston,,X,X,X,,,"N, A", MASSACHUSETTS ,665945.0
+ Cambridge,,X,X,,,X,"N, C, A", MASSACHUSETTS ,117962.0
+ Worcester,,X,X,X,,X,"N, C, A", MASSACHUSETTS ,204191.0
+ MICHIGAN,,,X,,,,,,10057921.0
+ Ann Arbor,,,X,,X,X,, MICHIGAN,122216.0
+ Detroit,,X,X,,,,, MICHIGAN,636787.0
+ East Lansing,,,X,,,,, MICHIGAN,45403.0
+ Genesee County,,,X,,X,,, MICHIGAN,405280.0
+ Kalamazoo,,X,X,,,,C, MICHIGAN,73342.0
+ Muskegon County,,,X,,,,, MICHIGAN,175947.0
+ MINNESOTA  ,X,X,X,,,X2,"N2, A",,5695292.0
+ Minneapolis,,,X,X,,X,, MINNESOTA  ,426877.0
+ St Paul,,,X,X,,X,, MINNESOTA  ,
+ MISSOURI,,,X,,,,,,6154422.0
+ Columbia,X,X,X,,X,X,A, MISSOURI,126172.0
+ Jackson County,,,X,,,,, MISSOURI,715526.0
+ Kansas City,X,X,X,,X,X,, MISSOURI,505958.0
+ St Louis,X,X,X,,,,, MISSOURI,
+NEBRASKA ,,,X,,,,,,1958939.0
+ NEVADA ,,,X,,,X,"N, A",,3104817.0
+ North Las Vegas,,,X,,,X,, NEVADA ,264022.0
+ NEW HAMPSHIRE ,,,X,,,,,,1379610.0
+ NEW JERSEY ,X,X,X,,,,A,,9249063.0
+ Atlantic City,,X3,X3,,X3,X3,N3, NEW JERSEY ,38487.0
+ Newark,X3,X3,X3,X3,X3,X3,"N3, C3", NEW JERSEY ,2718.0
+ NEW MEXICO ,X,X,X,,,X4,"N4, A5",,2112463.0
+ NEW YORK,,,X,,,,,,19994379.0
+ Albany County,,,X,X,X,,"N, C, A", NEW YORK,315041.0
+ Buffalo,X,X,X,,,X,A, NEW YORK,276688.0
+ Dutchess County,,,X,,,,, NEW YORK,296467.0
+ Ithaca,,,X,,,,, NEW YORK,2135.0
+ Kingston,,,X,,,,, NEW YORK,326.0
+ Westchester County,X,X,X,,,X,A, NEW YORK,997904.0
+ Newburgh,,,X,,,,, NEW YORK,28751.0
+ New York City,X,X,X,,X,X,"N, C, A", NEW YORK,8622467.0
+ Rochester,X,X,X,,,X,A, NEW YORK,6321.0
+ Suffolk County,X,X,X,,,,A, NEW YORK,1524486.0
+ Syracuse,,X,X,,X,X,"N, C, A", NEW YORK,3065.0
+ Tompkins County,,,X,,,,, NEW YORK,102555.0
+ Ulster County,,,X,,,,, NEW YORK,182153.0
+ Woodstock,,,X,,,,, NEW YORK,2873.0
+ Yonkers,,,X,,,,, NEW YORK,209780.0
+NORTH CAROLINA,,,X,,,X,"N, C",,10470214.0
+ Asheville,,,X,,,,,NORTH CAROLINA,93695.0
+ Buncombe County,,,X,,,,,NORTH CAROLINA,269449.0
+ Carrboro,,,X,,,X,,NORTH CAROLINA,21242.0
+ Charlotte,,,X,,,,,NORTH CAROLINA,875045.0
+ Cumberland County,,,X,X,,,,NORTH CAROLINA,335207.0
+ Durham City,,,X,X,,X,,NORTH CAROLINA,284094.0
+ Durham County,,,X,X,,X,"N, C, A",NORTH CAROLINA,325101.0
+ Forsyth County,,,X,,,,,NORTH CAROLINA,383739.0
+ Mecklenburg County,,,X,,,,,NORTH CAROLINA,1115403.0
+ New Bern,,,X,X,X,X,N,NORTH CAROLINA,31373.0
+ New Hanover County,,,X,,X,X,"N, A",NORTH CAROLINA,228134.0
+ Spring Lake,,,X,X,,,N,NORTH CAROLINA,6032.0
+ Wake County,,,X,,X,X,"N, C, A",NORTH CAROLINA,1132103.0
+ Wilmington,,,X,X,X,,"N, A",NORTH CAROLINA,116933.0
+ Winston-Salem,,,X,,,,,NORTH CAROLINA,249571.0
+ NORTH DAKOTA ,,,X,,,,,,776874.0
+ OHIO ,,,X,,,X6,,,11774683.0
+ Alliance,,,X,X,,,"N, C", OHIO ,21603.0
+ Akron,,,X,,,X,A, OHIO ,190273.0
+ Canton,,,X,,X,X,, OHIO ,70589.0
+ Cincinnati,,,X,,,X,"N, C, A", OHIO ,308870.0
+ Cleveland,,,X,,,,, OHIO ,370365.0
+ Cuyahoga County,,,X,,X,X,, OHIO ,1256620.0
+ Dayton,,,X,,,X,N, OHIO ,137305.0
+ Franklin County,,,X,,X,X,N, OHIO ,1318149.0
+ Hamilton County,,,X,,,,, OHIO ,827671.0
+ Lucas County,,,X,,,,, OHIO ,430014.0
+ Massillon,,,X,,,X,, OHIO ,32179.0
+ Newark,,,X,,,,, OHIO ,50062.0
+ Stark County,,,X,,,,, OHIO ,374199.0
+ Summit County,,,X,X,,X,, OHIO ,539361.0
+ Warren,,,X,X,X,,N, OHIO ,39204.0
+ Youngstown,,,X,,X,,, OHIO ,60048.0
+ OKLAHOMA,,,X,,,,,,3970497.0
+ OREGON ,X,X,X,,,,A,,4229374.0
+ Multnomah County,,,X,,,X,, OREGON ,808098.0
+ Portland,X,X,X,,X,X,"N, A", OREGON ,646101.0
+ PENNSYLVANIA ,,,X,,,,,,12989208.0
+ Allegheny County,,,X,X,X,X,, PENNSYLVANIA ,1245310.0
+ Allentown,,,X,,X,,, PENNSYLVANIA ,125292.0
+ Beaver County,,,X,,,,, PENNSYLVANIA ,167629.0
+ Bethlehem,,,X,,X,X,, PENNSYLVANIA ,76555.0
+ Lancaster,,,X,,X,X,, PENNSYLVANIA ,612.0
+ Northampton County,,,X,,,,, PENNSYLVANIA ,314299.0
+ Philadelphia,X,X,X,,X,X,"N, C, A", PENNSYLVANIA ,1052.0
+ Pittsburgh,,X,X,,X,,N, PENNSYLVANIA ,1866.0
+ Reading,,,X,,X,,, PENNSYLVANIA ,94601.0
+ York,,,X,,,,, PENNSYLVANIA ,8853.0
+ RHODE ISLAND ,X,X,X,,,,A,,1094250.0
+ Providence,,,X,,,,, RHODE ISLAND ,47012.0
+SOUTH CAROLINA,,,,,,,,,5142750.0
+ Aiken,,,X,,X,X,"N, C",SOUTH CAROLINA,32014.0
+ Columbia,,,X,X,X,X,"N, C",SOUTH CAROLINA,136754.0
+ Richland County,,,X,,,,,SOUTH CAROLINA,416161.0
+York County,,,X,,X,,,SOUTH CAROLINA,282987.0
+ TENNESSEE ,,,X,,,X,A,,6923772.0
+ Chattanooga,,,X,,,,, TENNESSEE ,181288.0
+ Hamilton County,,,X,,X,,, TENNESSEE ,367193.0
+ Memphis,,,X,,,X,"N, C, A", TENNESSEE ,630027.0
+ Nashville,,,X,,,,, TENNESSEE ,684103.0
+TEXAS,,,,,,,,,29243342.0
+ Austin,X,X,X,X,X,X,"N, A",TEXAS,958202.0
+ Dallas County,,,X,,,X,A,TEXAS,2604053.0
+ DeSoto,X,X,X,,,,A,TEXAS,55882.0
+ San Antonio,,,X,,X,X,,TEXAS,1445662.0
+ Travis County,,,X,X,X,X,,TEXAS,1289054.0
+ UTAH ,,,X,,,,,,3283809.0
+ VERMONT  ,X,X,X,,,,A,,643816.0
+ VIRGINIA  ,,,X,,,X,,,8624511.0
+ Alexandria,,,X,,X,,, VIRGINIA  ,157594.0
+ Arlington County,,,X,,,,, VIRGINIA  ,235845.0
+ Blacksburg,,,X,,X,X,, VIRGINIA  ,45147.0
+ Charlottesville,,,X,,,,, VIRGINIA  ,46289.0
+ Danville,,,X,,X,X,, VIRGINIA  ,42507.0
+ Fairfax County,,,X,,X,,, VIRGINIA  ,1145354.0
+ Fredericksburg,,,X,,X,X,N, VIRGINIA  ,28258.0
+ Harrisonburg,,,X,,X,,"N, A", VIRGINIA  ,51784.0
+ Henry County,,,X,,,,, VIRGINIA  ,50760.0
+ Montgomery County,,,X,,,,, VIRGINIA  ,99373.0
+ Newport News,,,X,,,X,, VIRGINIA  ,185118.0
+ Norfolk,,,X,,,X,, VIRGINIA  ,236973.0
+ Petersburg,,,X,,,,, VIRGINIA  ,33261.0
+ Portsmouth,,,X,,,,, VIRGINIA  ,97384.0
+ Prince William County,,,X,,,,, VIRGINIA  ,481114.0
+ Richmond,,,X,,,,, VIRGINIA  ,227171.0
+ Roanoke,,,X,,,,, VIRGINIA  ,99213.0
+ Staunton,,,X,,,,, VIRGINIA  ,25581.0
+ Virginia Beach,,,X,,X,X,, VIRGINIA  ,457900.0
+ WASHINGTON  ,X,X,X,,,,A,,7688549.0
+ Seattle,X,X,X,,,X,"N, C, A", WASHINGTON  ,734603.0
+ Spokane,X,X,X,,,X7,, WASHINGTON  ,10228.0
+ Spokane County,,,X,,,X,"N, C, A", WASHINGTON  ,538711.0
+ Tacoma,,,X,,X,X,"N, C", WASHINGTON  ,219234.0
+ Pierce County,,,X,,,X,N, WASHINGTON  ,918993.0
+ WISCONSIN ,,,X,,,,,,5882128.0
+ Dane County,,,X,,,,, WISCONSIN ,559891.0
+ Madison,,X8,X8,,X,,"N9, A10", WISCONSIN ,268516.0
+ Milwaukee,,,X,,,,, WISCONSIN ,573299.0
+ Milwaukee County,,,X,,,,, WISCONSIN ,933063.0

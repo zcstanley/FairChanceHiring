@@ -1,0 +1,690 @@
+The unique values in the column "Offense.Type" are:
+['Controlled substances offenses' 'N/A (background check, general relief)'
+ 'Other' 'Any felony'
+ 'Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ 'Recreational license offenses' 'Any felony|Any misdemeanor'
+ 'Any felony|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ 'Any felony|Other'
+ 'Motor vehicle offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ 'N/A (background check, general relief)|Other'
+ 'Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Public corruption offenses'
+ 'Any felony|Any misdemeanor|Other'
+ 'Any felony|Controlled substances offenses'
+ 'Any felony|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ 'Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Sex offenses"
+ 'Any felony|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ 'Any felony|Other|Child Support offenses'
+ 'Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ "Crimes of violence, including 'person offenses'|Sex offenses"
+ "Crimes of violence, including 'person offenses'|N/A (background check, general relief)|Sex offenses"
+ 'Other|Crime of moral turpitude' 'Crime of moral turpitude'
+ 'Controlled substances offenses|N/A (background check, general relief)'
+ 'Sex offenses' 'Motor vehicle offenses'
+ 'Any felony|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ 'Any felony|Any misdemeanor|Controlled substances offenses'
+ 'Any felony|Any misdemeanor|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ 'Any felony|Any misdemeanor|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ nan
+ 'Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ 'Any felony|Crime of moral turpitude'
+ "Any felony|Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ 'Any felony|Controlled substances offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ 'Any felony|Any misdemeanor|Controlled substances offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ "Crimes of violence, including 'person offenses'"
+ 'Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Public corruption offenses'
+ 'Any felony|Child Support offenses'
+ "Any felony|Any misdemeanor|Crimes of violence, including 'person offenses'|Other|Sex offenses"
+ 'Any felony|Controlled substances offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ 'Controlled substances offenses|Motor vehicle offenses'
+ 'Any felony|Controlled substances offenses|Motor vehicle offenses'
+ "Crimes of violence, including 'person offenses'|N/A (background check, general relief)"
+ 'N/A (background check, general relief)|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ 'Other|Recreational license offenses'
+ "Any felony|Crimes of violence, including 'person offenses'"
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ "Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Sex offenses"
+ 'Public corruption offenses'
+ "Any felony|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Sex offenses"
+ "Any felony|Any misdemeanor|Crimes of violence, including 'person offenses'|Sex offenses"
+ 'Any felony|Any misdemeanor|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ 'Controlled substances offenses|Other'
+ "Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ 'Other|Public corruption offenses'
+ "Any felony|Any misdemeanor|Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ 'Any felony|Any misdemeanor|Controlled substances offenses|Motor vehicle offenses'
+ "Any felony|Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Other|Sex offenses"
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ 'Any felony|Any misdemeanor|Controlled substances offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ "Any felony|Crimes of violence, including 'person offenses'|Sex offenses"
+ 'Any felony|Controlled substances offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ "Any felony|Any misdemeanor|Crimes of violence, including 'person offenses'|Motor vehicle offenses"
+ "Any felony|Any misdemeanor|Crime of moral turpitude|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crimes of violence, including 'person offenses'|Other|Sex offenses"
+ 'Any felony|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Public corruption offenses'
+ "Crimes of violence, including 'person offenses'|Public corruption offenses"
+ 'Public corruption offenses|Election-related offenses'
+ "Any felony|Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude"
+ "Any felony|Any misdemeanor|Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering"
+ 'Child Support offenses'
+ 'Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Recreational license offenses'
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Other|Recreational license offenses"
+ 'Controlled substances offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ "Any felony|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Other|Recreational license offenses"
+ "Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crimes of violence, including 'person offenses'"
+ 'Any felony|Controlled substances offenses|Other'
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses"
+ 'Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses'
+ 'Any felony|Any misdemeanor|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Public corruption offenses'
+ "Any felony|Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering"
+ 'Motor vehicle offenses|Other|Recreational license offenses'
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses"
+ 'Any felony|Other|Recreational license offenses'
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ "Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Recreational license offenses"
+ "Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering"
+ "Any felony|Any misdemeanor|Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering"
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Other|Sex offenses"
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Weapons offenses|Other|Child Support offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'"
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering"
+ "Crimes of violence, including 'person offenses'|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ 'Any felony|Any misdemeanor|Controlled substances offenses|Other'
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses|Public corruption offenses"
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ 'Any felony|Any misdemeanor|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses'
+ 'Any felony|Any misdemeanor|Controlled substances offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering"
+ 'Any felony|Any misdemeanor|Election-related offenses'
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'"
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude"
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ 'Any felony|Weapons offenses|Recreational license offenses'
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Weapons offenses|Child Support offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses|Public corruption offenses"
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ 'Crime of moral turpitude|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'"
+ 'Any felony|Crime of moral turpitude|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ 'Any felony|Motor vehicle offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ 'Any felony|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Motor vehicle offenses'
+ "Any felony|Crimes of violence, including 'person offenses'|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering"
+ 'Any misdemeanor'
+ 'Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Other'
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Sex offenses"
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude"
+ 'Any felony|Any misdemeanor|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Public corruption offenses|Election-related offenses'
+ "Controlled substances offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crimes of violence, including 'person offenses'|Other|Sex offenses|Weapons offenses"
+ 'Any felony|N/A (background check, general relief)|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ 'Crime of moral turpitude|Public corruption offenses'
+ "Any felony|Controlled substances offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crimes of violence, including 'person offenses'|Other|Sex offenses|Weapons offenses"
+ "Any felony|Any misdemeanor|Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses|Public corruption offenses"
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ 'Election-related offenses'
+ 'Crime of moral turpitude|Sex offenses|Public corruption offenses'
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Other"
+ 'Any felony|Controlled substances offenses|Crime of moral turpitude|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ 'Any felony|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses'
+ "Any felony|Any misdemeanor|Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude"
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ "Any felony|Crimes of violence, including 'person offenses'|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering"
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Sex offenses"
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Sex offenses"
+ 'Any felony|Motor vehicle offenses'
+ 'Controlled substances offenses|Weapons offenses'
+ 'Any felony|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses'
+ "Any felony|Crimes of violence, including 'person offenses'|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ "Controlled substances offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crimes of violence, including 'person offenses'|Sex offenses|Weapons offenses"
+ 'N/A (background check, general relief)|Crime of moral turpitude|Sex offenses|Public corruption offenses'
+ 'Any felony|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ "Any felony|Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses|Public corruption offenses"
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ 'Any felony|N/A (background check, general relief)|Other'
+ "Any felony|Any misdemeanor|Crimes of violence, including 'person offenses'|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering"
+ 'Any felony|Any misdemeanor|Child Support offenses'
+ "Crimes of violence, including 'person offenses'|Other|Sex offenses"
+ 'Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Public corruption offenses'
+ 'Controlled substances offenses|Motor vehicle offenses|Child Support offenses'
+ 'Any felony|Other|Child Support offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ "Any felony|Any misdemeanor|Crimes of violence, including 'person offenses'"
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ "Any felony|Any misdemeanor|Crimes of violence, including 'person offenses'|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude"
+ 'Any felony|Sex offenses'
+ 'Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Election-related offenses'
+ "Crimes of violence, including 'person offenses'|Weapons offenses"
+ 'Controlled substances offenses|Motor vehicle offenses|Other'
+ 'Motor vehicle offenses|Other' 'Any felony|Any misdemeanor|Sex offenses'
+ 'Controlled substances offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ 'Controlled substances offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ "Crimes of violence, including 'person offenses'|Other"
+ 'Any felony|Public corruption offenses'
+ 'Any felony|Any misdemeanor|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ "Controlled substances offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crimes of violence, including 'person offenses'|Other|Sex offenses"
+ "Crimes of violence, including 'person offenses'|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Public corruption offenses"
+ 'Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Public corruption offenses|Election-related offenses'
+ 'Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Election-related offenses'
+ 'Any felony|Controlled substances offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Public corruption offenses'
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude"
+ 'Any felony|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Public corruption offenses'
+ 'Any felony|Any misdemeanor|Controlled substances offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ 'Controlled substances offenses|Other|Sex offenses'
+ "Crimes of violence, including 'person offenses'|Child Support offenses"
+ 'Any felony|Controlled substances offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Public corruption offenses'
+ 'Weapons offenses|Other'
+ 'Any felony|Any misdemeanor|Controlled substances offenses|Other|Sex offenses'
+ "Crimes of violence, including 'person offenses'|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering"
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering"
+ 'Weapons offenses' 'Other|Sex offenses' 'Any felony|Weapons offenses'
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ 'Any felony|Any misdemeanor|N/A (background check, general relief)|Other'
+ 'Any felony|N/A (background check, general relief)'
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Sex offenses"
+ "Crimes of violence, including 'person offenses'|Motor vehicle offenses"
+ "Any felony|Crimes of violence, including 'person offenses'|Other"
+ 'Any felony|Controlled substances offenses|Child Support offenses'
+ "Any felony|Any misdemeanor|Crimes of violence, including 'person offenses'|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Public corruption offenses"
+ "Any felony|Crimes of violence, including 'person offenses'|Weapons offenses|Other|Sex offenses"
+ 'Any felony|Any misdemeanor|Controlled substances offenses|N/A (background check, general relief)|Other|Sex offenses'
+ 'Weapons offenses|Recreational license offenses'
+ 'Any felony|Any misdemeanor|Motor vehicle offenses'
+ "Crimes of violence, including 'person offenses'|Weapons offenses|Sex offenses"
+ 'Motor vehicle offenses|N/A (background check, general relief)|Other'
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering"
+ 'Controlled substances offenses|Sex offenses'
+ 'Child Support offenses|Sex offenses'
+ "Any felony|Any misdemeanor|Crimes of violence, including 'person offenses'|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering"
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses|Public corruption offenses"
+ 'Any felony|Any misdemeanor|Public corruption offenses'
+ 'N/A (background check, general relief)|Recreational license offenses'
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude"
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|N/A (background check, general relief)|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Other|Sex offenses"
+ "Crimes of violence, including 'person offenses'|Other|Public corruption offenses"
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ 'Any felony|Controlled substances offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses'
+ 'Any felony|Controlled substances offenses|N/A (background check, general relief)|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Sex offenses"
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ 'Any felony|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses'
+ "Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Sex offenses"
+ 'Child Support offenses|N/A (background check, general relief)'
+ 'Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses'
+ 'N/A (background check, general relief)|Crime of moral turpitude|Sex offenses'
+ 'Any felony|Other|Sex offenses'
+ 'Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses|Public corruption offenses'
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses|Public corruption offenses"
+ 'Any felony|Controlled substances offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ 'Any felony|Controlled substances offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses'
+ 'Any felony|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses|Public corruption offenses'
+ 'Any felony|Other|Child Support offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses'
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude"
+ 'Any felony|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Public corruption offenses'
+ "Crimes of violence, including 'person offenses'|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses|Public corruption offenses"
+ 'Any felony|Controlled substances offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses'
+ 'Any felony|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Election-related offenses'
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude"
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Other"
+ 'Controlled substances offenses|Motor vehicle offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ "Crimes of violence, including 'person offenses'|Weapons offenses|Other"
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses"
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering"
+ 'Any felony|Any misdemeanor|Crime of moral turpitude'
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses|Public corruption offenses"
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Weapons offenses|Sex offenses"
+ 'Controlled substances offenses|Motor vehicle offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses'
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses|Public corruption offenses"
+ 'Any felony|Any misdemeanor|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Public corruption offenses'
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Sex offenses|Public corruption offenses"
+ 'Controlled substances offenses|Motor vehicle offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Sex offenses|Public corruption offenses"
+ "Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses|Public corruption offenses"
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Sex offenses"
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Sex offenses|Public corruption offenses"
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Sex offenses"
+ 'Any felony|Election-related offenses'
+ 'Any felony|Any misdemeanor|Controlled substances offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Public corruption offenses'
+ "Any felony|Crimes of violence, including 'person offenses'|Sex offenses|Public corruption offenses"
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Other|Sex offenses"
+ 'N/A (background check, general relief)|Crime of moral turpitude'
+ 'N/A (background check, general relief)|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ 'Controlled substances offenses|Motor vehicle offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ "Crimes of violence, including 'person offenses'|Motor vehicle offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering"
+ 'Any felony|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Recreational license offenses'
+ 'Controlled substances offenses|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses'
+ 'Any felony|Any misdemeanor|N/A (background check, general relief)'
+ "Any felony|Crimes of violence, including 'person offenses'|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ 'Controlled substances offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses'
+ 'Any felony|Any misdemeanor|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses'
+ "Any felony|Any misdemeanor|Crimes of violence, including 'person offenses'|Weapons offenses|Sex offenses"
+ "Any felony|Any misdemeanor|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Sex offenses"
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Public corruption offenses"
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|N/A (background check, general relief)|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ 'Controlled substances offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude"
+ "Any felony|Any misdemeanor|Crimes of violence, including 'person offenses'|Other"
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses|Public corruption offenses"
+ 'Any felony|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Public corruption offenses'
+ 'Any felony|Controlled substances offenses|Other|Sex offenses'
+ 'Controlled substances offenses|Recreational license offenses'
+ 'Any felony|Controlled substances offenses|Other|Crime of moral turpitude'
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude"
+ "Crimes of violence, including 'person offenses'|Motor vehicle offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude"
+ 'Any felony|Controlled substances offenses|Motor vehicle offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Other|Sex offenses"
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Child Support offenses|Sex offenses"
+ "Any felony|Crimes of violence, including 'person offenses'|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ 'Any felony|Any misdemeanor|Controlled substances offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses'
+ 'Controlled substances offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses'
+ 'Any felony|Controlled substances offenses|Sex offenses'
+ "Crimes of violence, including 'person offenses'|Motor vehicle offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering"
+ 'Any felony|Any misdemeanor|Motor vehicle offenses|Sex offenses'
+ 'Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses'
+ 'Any felony|Any misdemeanor|Controlled substances offenses|Motor vehicle offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering"
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses|Public corruption offenses"
+ 'Any felony|Other|Crime of moral turpitude' 'Any misdemeanor|Other'
+ 'Any felony|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ 'Child Support offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ 'Any felony|Other|Child Support offenses|Crime of moral turpitude'
+ 'Any felony|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ 'Any felony|Controlled substances offenses|Motor vehicle offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ "Crimes of violence, including 'person offenses'|Weapons offenses|Other|Sex offenses"
+ "Crimes of violence, including 'person offenses'|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses|Public corruption offenses"
+ 'N/A (background check, general relief)|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses'
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering"
+ 'Any felony|Crime of moral turpitude|Sex offenses'
+ 'Any misdemeanor|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Other|Sex offenses"
+ 'Any felony|Motor vehicle offenses|Other'
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering"
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering"
+ "Any felony|Crimes of violence, including 'person offenses'|Other|Sex offenses"
+ "Crimes of violence, including 'person offenses'|Motor vehicle offenses|Sex offenses"
+ 'Any felony|Controlled substances offenses|Other|Child Support offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses'
+ "Any felony|Crimes of violence, including 'person offenses'|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Public corruption offenses"
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering"
+ "Any felony|Any misdemeanor|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Crime of moral turpitude|Sex offenses"
+ "Any felony|Crimes of violence, including 'person offenses'|Weapons offenses|Sex offenses"
+ "Any felony|Any misdemeanor|Crimes of violence, including 'person offenses'|Crime of moral turpitude"
+ 'N/A (background check, general relief)|Any felony'
+ "Any felony|Any misdemeanor|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ 'Any felony|Controlled substances offenses|Motor vehicle offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Other"
+ "Any felony|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude"
+ 'Other|Child Support offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering"
+ 'Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Public corruption offenses'
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ "Any felony|Crimes of violence, including 'person offenses'|N/A (background check, general relief)|Sex offenses"
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude"
+ 'Any felony|Child Support offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ "Crimes of violence, including 'person offenses'|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Public corruption offenses"
+ "Any felony|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering"
+ "Any felony|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ 'Any felony|Any misdemeanor|Controlled substances offenses|Motor vehicle offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses'
+ "Crimes of violence, including 'person offenses'|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering"
+ 'Any felony|Other|Child Support offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Weapons offenses|Sex offenses"
+ 'Any felony|Any misdemeanor|Controlled substances offenses|Sex offenses'
+ "Any felony|Any misdemeanor|Crimes of violence, including 'person offenses'|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering"
+ "Crimes of violence, including 'person offenses'|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude"
+ 'Any felony|Controlled substances offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Public corruption offenses'
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Child Support offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Weapons offenses|Other|Sex offenses"
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses"
+ "Crimes of violence, including 'person offenses'|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ "Any felony|Crimes of violence, including 'person offenses'|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses|Public corruption offenses"
+ "Any felony|Crimes of violence, including 'person offenses'|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering"
+ "Any felony|Crimes of violence, including 'person offenses'|Weapons offenses|Child Support offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering"
+ 'Any felony|Any misdemeanor|Other|Crime of moral turpitude'
+ 'Crime of moral turpitude|Sex offenses'
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Weapons offenses|Other|Sex offenses"
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Weapons offenses|Sex offenses"
+ 'Controlled substances offenses|Weapons offenses|Other'
+ 'Any felony|Any misdemeanor|Controlled substances offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses'
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|N/A (background check, general relief)|Sex offenses"
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses|Recreational license offenses"
+ 'Any felony|Any misdemeanor|Controlled substances offenses|N/A (background check, general relief)|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Crime of moral turpitude"
+ 'Any felony|Child Support offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ 'Any felony|Any misdemeanor|Recreational license offenses'
+ "Any felony|Any misdemeanor|Crimes of violence, including 'person offenses'|Child Support offenses|Sex offenses"
+ 'Any misdemeanor|Controlled substances offenses|Motor vehicle offenses'
+ "Any felony|Any misdemeanor|Crimes of violence, including 'person offenses'|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude"
+ 'Any felony|Controlled substances offenses|Public corruption offenses'
+ 'Any felony|Any misdemeanor|Other|Sex offenses'
+ "Crimes of violence, including 'person offenses'|Motor vehicle offenses|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ 'Any misdemeanor|Controlled substances offenses|Other'
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Other"
+ "Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude"
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Child Support offenses|Sex offenses"
+ "Crimes of violence, including 'person offenses'|Other|Child Support offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering"
+ "Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ 'Motor vehicle offenses|Public corruption offenses'
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Child Support offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ "Crimes of violence, including 'person offenses'|Child Support offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ "Crimes of violence, including 'person offenses'|Child Support offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Child Support offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses|Public corruption offenses"
+ 'Controlled substances offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Public corruption offenses'
+ 'Any felony|Any misdemeanor|Child Support offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ 'Controlled substances offenses|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ 'Any felony|Any misdemeanor|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses'
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Public corruption offenses"
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Public corruption offenses"
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses|Public corruption offenses"
+ "Any felony|Crimes of violence, including 'person offenses'|N/A (background check, general relief)"
+ 'Any misdemeanor|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ 'Controlled substances offenses|Public corruption offenses'
+ 'Any felony|Other|Public corruption offenses'
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ "Crimes of violence, including 'person offenses'|Motor vehicle offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ 'Any felony|Child Support offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Public corruption offenses'
+ 'Any felony|Other|Child Support offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Public corruption offenses'
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Public corruption offenses"
+ 'Any felony|Controlled substances offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses|Public corruption offenses'
+ 'Any felony|Any misdemeanor|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Public corruption offenses|Election-related offenses'
+ "Any felony|Any misdemeanor|Crimes of violence, including 'person offenses'|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses|Public corruption offenses"
+ 'Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Public corruption offenses|Election-related offenses'
+ "Any felony|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Weapons offenses|Sex offenses"
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses|Public corruption offenses"
+ 'Any felony|Any misdemeanor|Motor vehicle offenses|Other'
+ 'Any felony|Any misdemeanor|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering"
+ "Any felony|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Other|Sex offenses"
+ 'N/A (background check, general relief)|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses'
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses|Public corruption offenses"
+ "Any felony|Any misdemeanor|Crimes of violence, including 'person offenses'|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ "Crimes of violence, including 'person offenses'|N/A (background check, general relief)|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ "Any felony|Crimes of violence, including 'person offenses'|N/A (background check, general relief)|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ "Any felony|Any misdemeanor|Crimes of violence, including 'person offenses'|Motor vehicle offenses|N/A (background check, general relief)|Sex offenses"
+ 'Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses'
+ 'Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Recreational license offenses'
+ 'Any felony|N/A (background check, general relief)|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ 'Controlled substances offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses'
+ 'Controlled substances offenses|Motor vehicle offenses|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ 'Controlled substances offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses'
+ 'Any felony|Any misdemeanor|Crime of moral turpitude|Public corruption offenses'
+ 'Controlled substances offenses|N/A (background check, general relief)|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering"
+ "Any felony|Any misdemeanor|Crimes of violence, including 'person offenses'|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ 'Any felony|Controlled substances offenses|Motor vehicle offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses'
+ 'Any felony|Public corruption offenses|Election-related offenses'
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Sex offenses|Election-related offenses"
+ "Any felony|Crimes of violence, including 'person offenses'|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ 'Any felony|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Public corruption offenses|Election-related offenses'
+ 'Any felony|Any misdemeanor|Controlled substances offenses|N/A (background check, general relief)|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ 'Any felony|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Public corruption offenses|Election-related offenses'
+ 'Any felony|Any misdemeanor|Other|Public corruption offenses'
+ 'Controlled substances offenses|Motor vehicle offenses|Sex offenses'
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses"
+ "Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses|Public corruption offenses"
+ "Any felony|Crimes of violence, including 'person offenses'|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude"
+ 'Any felony|Any misdemeanor|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Election-related offenses'
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses|Public corruption offenses"
+ 'Any felony|Any misdemeanor|Controlled substances offenses|Motor vehicle offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Public corruption offenses'
+ 'Motor vehicle offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ 'Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering"
+ "Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses|Public corruption offenses"
+ 'Any felony|Controlled substances offenses|Recreational license offenses'
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ 'Any felony|Any misdemeanor|Controlled substances offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Public corruption offenses'
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering"
+ "Crimes of violence, including 'person offenses'|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses|Public corruption offenses"
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|N/A (background check, general relief)|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude"
+ 'Any felony|Any misdemeanor|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Public corruption offenses'
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses|Public corruption offenses"
+ 'Other|Child Support offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ 'Any felony|Any misdemeanor|Other|Child Support offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ 'Any felony|Any misdemeanor|Other|Child Support offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Child Support offenses"
+ 'Any felony|Any misdemeanor|Controlled substances offenses|Other|Child Support offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ 'Any misdemeanor|Controlled substances offenses|Motor vehicle offenses|Recreational license offenses'
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude"
+ "Crimes of violence, including 'person offenses'|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ 'Any felony|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Public corruption offenses|Election-related offenses'
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Public corruption offenses"
+ 'Any felony|Any misdemeanor|Controlled substances offenses|Motor vehicle offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ 'Any misdemeanor|Controlled substances offenses'
+ "Any felony|Any misdemeanor|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude"
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude"
+ 'Controlled substances offenses|Motor vehicle offenses|Public corruption offenses'
+ 'Any felony|Any misdemeanor|Other|Child Support offenses'
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering"
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses"
+ 'Any felony|Any misdemeanor|Controlled substances offenses|Motor vehicle offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses'
+ 'Any felony|Recreational license offenses'
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses|Public corruption offenses"
+ 'Any felony|Controlled substances offenses|Child Support offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Public corruption offenses"
+ "Any felony|Crimes of violence, including 'person offenses'|Weapons offenses|Other"
+ "Any felony|Crimes of violence, including 'person offenses'|Weapons offenses"
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering"
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ 'Any felony|Any misdemeanor|Child Support offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Other|Child Support offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Other|Sex offenses"
+ "Any felony|Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Public corruption offenses"
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Other|Child Support offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses|Public corruption offenses"
+ 'Other|Crime of moral turpitude|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Other|Child Support offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses|Public corruption offenses"
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|N/A (background check, general relief)|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ 'Controlled substances offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Public corruption offenses'
+ 'Any felony|Controlled substances offenses|Motor vehicle offenses|Sex offenses'
+ 'Controlled substances offenses|Child Support offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ 'Any felony|Controlled substances offenses|Motor vehicle offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses'
+ 'Any felony|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Recreational license offenses'
+ 'Any felony|Any misdemeanor|Motor vehicle offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses'
+ "Any felony|Any misdemeanor|Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Public corruption offenses"
+ 'Any felony|Any misdemeanor|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Recreational license offenses'
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ 'Any felony|Controlled substances offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Public corruption offenses'
+ "Any felony|Any misdemeanor|Crimes of violence, including 'person offenses'|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Public corruption offenses"
+ "Any felony|Any misdemeanor|Crimes of violence, including 'person offenses'|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ 'Any felony|Controlled substances offenses|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ 'Controlled substances offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses|Public corruption offenses'
+ 'Any felony|Any misdemeanor|Controlled substances offenses|Recreational license offenses'
+ 'Other|Sex offenses|Recreational license offenses'
+ 'Motor vehicle offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ "Any felony|Crimes of violence, including 'person offenses'|Motor vehicle offenses"
+ 'Any felony|Any misdemeanor|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Public corruption offenses|Election-related offenses'
+ "Crimes of violence, including 'person offenses'|Motor vehicle offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ 'Any felony|Any misdemeanor|Controlled substances offenses|Motor vehicle offenses|Other'
+ "Any felony|Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Public corruption offenses|Election-related offenses"
+ "Any felony|Crimes of violence, including 'person offenses'|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ "Any felony|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses|Public corruption offenses"
+ 'Any felony|Other|Public corruption offenses|Election-related offenses'
+ 'Controlled substances offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Public corruption offenses'
+ "Any misdemeanor|Crimes of violence, including 'person offenses'|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering"
+ "Any felony|Any misdemeanor|Crimes of violence, including 'person offenses'|Other|Election-related offenses"
+ "Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Public corruption offenses"
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Public corruption offenses"
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses|Public corruption offenses"
+ 'Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Public corruption offenses|Election-related offenses'
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses|Public corruption offenses"
+ "Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering"
+ 'Any felony|Any misdemeanor|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Election-related offenses'
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses|Public corruption offenses"
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Other|Child Support offenses|Sex offenses"
+ 'Any felony|Any misdemeanor|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses|Public corruption offenses'
+ 'Any felony|Any misdemeanor|Controlled substances offenses|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses|Public corruption offenses"
+ 'Controlled substances offenses|Motor vehicle offenses|Child Support offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ 'Any felony|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ 'N/A (background check, general relief)|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Public corruption offenses'
+ 'Any felony|Controlled substances offenses|Other|Child Support offenses'
+ 'Controlled substances offenses|Motor vehicle offenses|Crime of moral turpitude'
+ 'Motor vehicle offenses|Child Support offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ 'Any misdemeanor|Crime of moral turpitude'
+ 'N/A (background check, general relief)|Sex offenses'
+ 'Controlled substances offenses|Motor vehicle offenses|Child Support offenses|Crime of moral turpitude'
+ 'Any misdemeanor|Controlled substances offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ 'Any felony|Controlled substances offenses|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ 'Any felony|Controlled substances offenses|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ 'Any felony|Motor vehicle offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering"
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses|Public corruption offenses"
+ 'Controlled substances offenses|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ 'Any felony|Controlled substances offenses|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude"
+ "Crimes of violence, including 'person offenses'|Motor vehicle offenses|Weapons offenses|Sex offenses"
+ 'Motor vehicle offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude"
+ 'Any felony|Any misdemeanor|Motor vehicle offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ 'Controlled substances offenses|Motor vehicle offenses|Other|Public corruption offenses'
+ 'Any felony|Any misdemeanor|Controlled substances offenses|Child Support offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ 'Motor vehicle offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses|Public corruption offenses'
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses|Public corruption offenses"
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses|Public corruption offenses"
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Weapons offenses|Child Support offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ 'Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ "Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses|Public corruption offenses"
+ 'Any felony|Motor vehicle offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Weapons offenses|Child Support offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ 'Any felony|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses'
+ "Any felony|Any misdemeanor|Crimes of violence, including 'person offenses'|Weapons offenses|Other"
+ "Any felony|Any misdemeanor|Crimes of violence, including 'person offenses'|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ 'Any felony|Any misdemeanor|Motor vehicle offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Public corruption offenses'
+ "Crimes of violence, including 'person offenses'|Recreational license offenses"
+ 'Controlled substances offenses|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ 'Any felony|Any misdemeanor|Controlled substances offenses|N/A (background check, general relief)'
+ 'Controlled substances offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Public corruption offenses'
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Public corruption offenses"
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Weapons offenses"
+ 'Any felony|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Public corruption offenses'
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Other|Child Support offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses|Public corruption offenses"
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|N/A (background check, general relief)|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses|Public corruption offenses"
+ 'Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Public corruption offenses'
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses|Recreational license offenses"
+ 'N/A (background check, general relief)|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses'
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude"
+ 'Any felony|Controlled substances offenses|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses'
+ "Crimes of violence, including 'person offenses'|Motor vehicle offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Other|Recreational license offenses"
+ "Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ "Crimes of violence, including 'person offenses'|Motor vehicle offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses|Public corruption offenses"
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ 'Any felony|Any misdemeanor|Controlled substances offenses|Motor vehicle offenses|Weapons offenses|Other'
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses|Public corruption offenses"
+ "Any felony|Crimes of violence, including 'person offenses'|N/A (background check, general relief)|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ "Any felony|Crimes of violence, including 'person offenses'|Crime of moral turpitude|Recreational license offenses"
+ 'Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude"
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Public corruption offenses"
+ 'Any misdemeanor|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Public corruption offenses'
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Other|Sex offenses"
+ 'Controlled substances offenses|Motor vehicle offenses|Weapons offenses'
+ 'Any misdemeanor|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude'
+ 'Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Election-related offenses'
+ 'Any felony|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Election-related offenses'
+ 'N/A (background check, general relief)|Controlled substances offenses'
+ "Crimes of violence, including 'person offenses'|Motor vehicle offenses|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Public corruption offenses"
+ 'Crime of moral turpitude|Election-related offenses'
+ 'Any felony|Controlled substances offenses|Motor vehicle offenses|Other'
+ 'Any felony|Controlled substances offenses|N/A (background check, general relief)'
+ 'Any felony|Controlled substances offenses|Motor vehicle offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Public corruption offenses'
+ 'Any felony|Any misdemeanor|Controlled substances offenses|Public corruption offenses'
+ 'N/A (background check, general relief)|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ 'Any felony|Any misdemeanor|Public corruption offenses|Election-related offenses'
+ "Any felony|Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses|Public corruption offenses"
+ 'Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses'
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Public corruption offenses"
+ "Any felony|Crimes of violence, including 'person offenses'|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses|Public corruption offenses"
+ 'Any felony|Child Support offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Public corruption offenses'
+ "Any misdemeanor|Crimes of violence, including 'person offenses'|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ "Any felony|Any misdemeanor|Crimes of violence, including 'person offenses'|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses|Public corruption offenses"
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses|Public corruption offenses"
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Child Support offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Public corruption offenses"
+ "Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Public corruption offenses"
+ 'Controlled substances offenses|Motor vehicle offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses'
+ "Any misdemeanor|Crimes of violence, including 'person offenses'|Sex offenses"
+ "Any felony|Crimes of violence, including 'person offenses'|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude"
+ 'Any felony|Crime of moral turpitude|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Other'
+ "Any felony|Crimes of violence, including 'person offenses'|Weapons offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Public corruption offenses"
+ "Any felony|Crimes of violence, including 'person offenses'|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude"
+ 'Any felony|Controlled substances offenses|Motor vehicle offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses|Public corruption offenses'
+ "Any felony|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Weapons offenses|Other|Sex offenses"
+ 'Any felony|Other|Election-related offenses'
+ 'Any felony|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Other'
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Child Support offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ 'Any felony|Any misdemeanor|Other|Recreational license offenses'
+ 'Motor vehicle offenses|Sex offenses'
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Public corruption offenses"
+ 'Any felony|N/A (background check, general relief)|Other|Child Support offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Public corruption offenses"
+ "Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Weapons offenses|Sex offenses"
+ 'Any felony|Any misdemeanor|Controlled substances offenses|Motor vehicle offenses|Sex offenses'
+ 'Child Support offenses|Recreational license offenses'
+ 'Crime of moral turpitude|Other'
+ "Crimes of violence, including 'person offenses'|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Public corruption offenses|Recreational license offenses"
+ 'Any misdemeanor|Controlled substances offenses|Motor vehicle offenses|Sex offenses'
+ "Crimes of violence, including 'person offenses'|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ 'Any felony|Any misdemeanor|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Public corruption offenses'
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Motor vehicle offenses|Weapons offenses|N/A (background check, general relief)|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses"
+ 'Any felony|Any misdemeanor|Weapons offenses'
+ 'Any felony|Motor vehicle offenses|N/A (background check, general relief)|Sex offenses'
+ 'Other|Public corruption offenses|Election-related offenses'
+ 'Any felony|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Election-related offenses'
+ "Crimes of violence, including 'person offenses'|Child Support offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Sex offenses|Public corruption offenses"
+ 'Any misdemeanor|Other|Crimes involving fraud, dishonesty, misrepresentation or money-laundering'
+ "Crimes of violence, including 'person offenses'|Motor vehicle offenses|Weapons offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering"
+ "Any felony|Any misdemeanor|Controlled substances offenses|Crimes of violence, including 'person offenses'|Other"
+ "Controlled substances offenses|Crimes of violence, including 'person offenses'|Weapons offenses|Other|Child Support offenses|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Crime of moral turpitude|Sex offenses"
+ 'Any felony|Controlled substances offenses|Motor vehicle offenses|Weapons offenses|Other|Sex offenses'
+ 'Any felony|Crimes involving fraud, dishonesty, misrepresentation or money-laundering|Recreational license offenses']
+The unique values in the column "Discretion" are:
+['Discretionary' 'Background Check' 'Mandatory/Automatic' 'Varies'
+ 'Discretionary (waiver)' 'Mandatory/Automatic|Discretionary'
+ 'Background Check|Discretionary' 'Mandatory/Automatic|Background Check'
+ 'Background Check|Discretionary (waiver)' 'Background Check|Varies'
+ 'N/A - General Relief' nan 'Mandatory/Automatic|Discretionary (waiver)'
+ 'Background Check|N/A - General Relief' 'Mandatory/Automatic|Varies'
+ 'Discretionary|Varies']
+The unique values in the column "Duration" are:
+['Indefinite' 'N/A (background check, general relief)' 'Time-limited'
+ 'Varies' nan 'Conditional'
+ 'Indefinite|N/A (background check, general relief)'
+ 'N/A (background check, general relief)|N/A (background check, general relief)'
+ 'Indefinite|Time-limited'
+ 'N/A (background check, general relief)|Time-limited'
+ 'Time-limited|Conditional' 'Conditional|Indefinite'
+ 'N/A (background check, general relief)|Indefinite'
+ 'Varies|N/A (background check, general relief)' 'Indefinite|Varies'
+ 'Varies|Time-limited'
+ 'N/A (background check, general relief)|Conditional']

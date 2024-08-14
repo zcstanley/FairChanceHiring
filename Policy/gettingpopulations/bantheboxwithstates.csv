@@ -1,0 +1,235 @@
+Location,Private,Vendors,Public,"Background checks only 
+for some 
+positions","Background 
+check only after conditional offer or finalists 
+selected","EEOC 
+criteria","Notice of 
+denial (N); 
+Copy of record (C); Appeal or complaint (A)",State
+ALABAMA,,,,,,,,
+ Birmingham,,,X,,,,A,ALABAMA
+ ARIZONA,,,X,,,,,
+ Glendale,,,X,,X,,, ARIZONA
+ Maricopa County,,,X,,X,,, ARIZONA
+ Phoenix,,,X,,X,X,"N, C, A", ARIZONA
+ Pima County,,,X,,,,, ARIZONA
+ Tempe,,,X,,X,,, ARIZONA
+ Tucson,,,X,X,X,X,A, ARIZONA
+ARKANSAS,,,,,,,,
+ Pulaski County,,,X,,X,X,"N, A",ARKANSAS
+CALIFORNIA  ,X,,X,,X,X,"N, C, A",
+ Alameda County,,,X,,,,,CALIFORNIA  
+ Berkeley,,,X,X,,X,,CALIFORNIA  
+ Carson,,,X,,,,,CALIFORNIA  
+ Compton,,X,X,,,X,,CALIFORNIA  
+ East Palo Alto,,,X,,,,,CALIFORNIA  
+ Los Angeles,X,X,X,,X,X,"N, C, A",CALIFORNIA  
+ Oakland,,,X,X,X,X,"N, C, A",CALIFORNIA  
+ Pasadena,,,X,,,,,CALIFORNIA  
+ Richmond,,X,X,X,,,,CALIFORNIA  
+ Sacramento,,X,,,,,,CALIFORNIA  
+ San Francisco,X1,X1,X,,X,X,"N, C, A",CALIFORNIA  
+ Santa Clara County,,,X,,,,,CALIFORNIA  
+COLORADO  ,X,X,X,,,X,A,
+ Denver,,,X,,X,X,,COLORADO  
+ CONNECTICUT ,X,X,X,,,,A,
+ Bridgeport,,,X,,,X,"N, A", CONNECTICUT 
+ Hartford,,X,X,X,X,X,"N, A", CONNECTICUT 
+ New Haven,,X,X,,X,X,"N, C, A", CONNECTICUT 
+ Norwich,,,X,,X,,, CONNECTICUT 
+ DELAWARE  ,,,X,,,X,,
+ New Castle County,,,X,,,,, DELAWARE  
+ Wilmington,,,X,,X,,, DELAWARE  
+ District of Columbia,X,X,X,,X,X,A, DELAWARE  
+FLORIDA,,,,,,,,
+ Broward County,,,X,,X,X,"N, C, A",FLORIDA
+ Clearwater,,,X,,,X,,FLORIDA
+ Daytona Beach,,,X,,X,,,FLORIDA
+ Gainesville,,,X,,,X,,FLORIDA
+ Fort Myers,,,X,,,,,FLORIDA
+ Jacksonville,,,X,,X,X,"N, A",FLORIDA
+ Miami-Dade County,,,X,,X,X,N,FLORIDA
+ Orlando,,,X,,X,X,"N, C",FLORIDA
+ Pompano Beach,,,X,,,,"N, C",FLORIDA
+ Sarasota,,,X,,X,X,,FLORIDA
+ St Petersburg,,,X,,,,,FLORIDA
+ Tamarac,,,X,,,,A,FLORIDA
+ Tampa,,,X,,X,,N,FLORIDA
+ Tallahassee,,,X,,,X,,FLORIDA
+ GEORGIA,,,X,,,,,
+ Albany,,,X,,,X,"N, A", GEORGIA
+ Atlanta,,,X,,,,"N, C", GEORGIA
+ Augusta,,,X,,X,X,, GEORGIA
+ Cherokee County,,,X,,,X,A, GEORGIA
+ Columbus,,,X,,X,X,"N, A", GEORGIA
+ Fulton County,,,X,X,,X,"N, C", GEORGIA
+ Macon-Bibb County,,,X,,,,"N, C", GEORGIA
+ Savannah,,,X,,,X,, GEORGIA
+ South Fulton,,X,X,,,,, GEORGIA
+ HAWAII ,X,X,X,,X,X,A,
+ ILLINOIS ,X,X,X,,,X,A,
+ Chicago,X,X,X,,,X,A, ILLINOIS 
+ INDIANA,,,X,,,,,
+ Indianapolis,,X,X,,,X,, INDIANA
+IOWA,,,,,,,,
+ Johnson County,,,X,,,X,,IOWA
+ Linn County,,,X,,,X,,IOWA
+ Waterloo,X,X,X,,X,X,A,IOWA
+ KANSAS,,,X,,,,,
+ Johnson County,,,X,,X,,, KANSAS
+ Kansas City,,,X,,,X,, KANSAS
+ Wichita,,,X,,X,X,"N,C, A", KANSAS
+ Topeka,,,X,,X,X,"N, C, A", KANSAS
+ KENTUCKY,,,X,,,,,
+ Louisville,,X,X,,,X,, KENTUCKY
+ LOUISIANA ,,,X,,,X11,C11,
+ Baton Rouge,,,X,,,,, LOUISIANA 
+ New Orleans,,X,X,X,X,X,"N, C", LOUISIANA 
+ MAINE ,X,X,X,,,,A,
+ MARYLAND ,X,X,X,,,,A,
+ Baltimore,X,X,X,X,X,X,A, MARYLAND 
+ Montgomery County,X,X,X,,,,"N, C, A", MARYLAND 
+ Prince Georges County,X,X,X,,,X,"N, C, A", MARYLAND 
+ MASSACHUSETTS ,X,X,X,,,,"N, C, A",
+ Boston,,X,X,X,,,"N, A", MASSACHUSETTS 
+ Cambridge,,X,X,,,X,"N, C, A", MASSACHUSETTS 
+ Worcester,,X,X,X,,X,"N, C, A", MASSACHUSETTS 
+ MICHIGAN,,,X,,,,,
+ Ann Arbor,,,X,,X,X,, MICHIGAN
+ Detroit,,X,X,,,,, MICHIGAN
+ East Lansing,,,X,,,,, MICHIGAN
+ Genesee County,,,X,,X,,, MICHIGAN
+ Kalamazoo,,X,X,,,,C, MICHIGAN
+ Muskegon County,,,X,,,,, MICHIGAN
+ MINNESOTA  ,X,X,X,,,X2,"N2, A",
+ Minneapolis,,,X,X,,X,, MINNESOTA  
+ St Paul,,,X,X,,X,, MINNESOTA  
+ MISSOURI,,,X,,,,,
+ Columbia,X,X,X,,X,X,A, MISSOURI
+ Jackson County,,,X,,,,, MISSOURI
+ Kansas City,X,X,X,,X,X,, MISSOURI
+ St Louis,X,X,X,,,,, MISSOURI
+NEBRASKA ,,,X,,,,,
+ NEVADA ,,,X,,,X,"N, A",
+ North Las Vegas,,,X,,,X,, NEVADA 
+ NEW HAMPSHIRE ,,,X,,,,,
+ NEW JERSEY ,X,X,X,,,,A,
+ Atlantic City,,X3,X3,,X3,X3,N3, NEW JERSEY 
+ Newark,X3,X3,X3,X3,X3,X3,"N3, C3", NEW JERSEY 
+ NEW MEXICO ,X,X,X,,,X4,"N4, A5",
+ NEW YORK,,,X,,,,,
+ Albany County,,,X,X,X,,"N, C, A", NEW YORK
+ Buffalo,X,X,X,,,X,A, NEW YORK
+ Dutchess County,,,X,,,,, NEW YORK
+ Ithaca,,,X,,,,, NEW YORK
+ Kingston,,,X,,,,, NEW YORK
+ Westchester County,X,X,X,,,X,A, NEW YORK
+ Newburgh,,,X,,,,, NEW YORK
+ New York City,X,X,X,,X,X,"N, C, A", NEW YORK
+ Rochester,X,X,X,,,X,A, NEW YORK
+ Suffolk County,X,X,X,,,,A, NEW YORK
+ Syracuse,,X,X,,X,X,"N, C, A", NEW YORK
+ Tompkins County,,,X,,,,, NEW YORK
+ Ulster County,,,X,,,,, NEW YORK
+ Woodstock,,,X,,,,, NEW YORK
+ Yonkers,,,X,,,,, NEW YORK
+NORTH CAROLINA,,,X,,,X,"N, C",
+ Asheville,,,X,,,,,NORTH CAROLINA
+ Buncombe County,,,X,,,,,NORTH CAROLINA
+ Carrboro,,,X,,,X,,NORTH CAROLINA
+ Charlotte,,,X,,,,,NORTH CAROLINA
+ Cumberland County,,,X,X,,,,NORTH CAROLINA
+ Durham City,,,X,X,,X,,NORTH CAROLINA
+ Durham County,,,X,X,,X,"N, C, A",NORTH CAROLINA
+ Forsyth County,,,X,,,,,NORTH CAROLINA
+ Mecklenburg County,,,X,,,,,NORTH CAROLINA
+ New Bern,,,X,X,X,X,N,NORTH CAROLINA
+ New Hanover County,,,X,,X,X,"N, A",NORTH CAROLINA
+ Spring Lake,,,X,X,,,N,NORTH CAROLINA
+ Wake County,,,X,,X,X,"N, C, A",NORTH CAROLINA
+ Wilmington,,,X,X,X,,"N, A",NORTH CAROLINA
+ Winston-Salem,,,X,,,,,NORTH CAROLINA
+ NORTH DAKOTA ,,,X,,,,,
+ OHIO ,,,X,,,X6,,
+ Alliance,,,X,X,,,"N, C", OHIO 
+ Akron,,,X,,,X,A, OHIO 
+ Canton,,,X,,X,X,, OHIO 
+ Cincinnati,,,X,,,X,"N, C, A", OHIO 
+ Cleveland,,,X,,,,, OHIO 
+ Cuyahoga County,,,X,,X,X,, OHIO 
+ Dayton,,,X,,,X,N, OHIO 
+ Franklin County,,,X,,X,X,N, OHIO 
+ Hamilton County,,,X,,,,, OHIO 
+ Lucas County,,,X,,,,, OHIO 
+ Massillon,,,X,,,X,, OHIO 
+ Newark,,,X,,,,, OHIO 
+ Stark County,,,X,,,,, OHIO 
+ Summit County,,,X,X,,X,, OHIO 
+ Warren,,,X,X,X,,N, OHIO 
+ Youngstown,,,X,,X,,, OHIO 
+ OKLAHOMA,,,X,,,,,
+ OREGON ,X,X,X,,,,A,
+ Multnomah County,,,X,,,X,, OREGON 
+ Portland,X,X,X,,X,X,"N, A", OREGON 
+ PENNSYLVANIA ,,,X,,,,,
+ Allegheny County,,,X,X,X,X,, PENNSYLVANIA 
+ Allentown,,,X,,X,,, PENNSYLVANIA 
+ Beaver County,,,X,,,,, PENNSYLVANIA 
+ Bethlehem,,,X,,X,X,, PENNSYLVANIA 
+ Lancaster,,,X,,X,X,, PENNSYLVANIA 
+ Northampton County,,,X,,,,, PENNSYLVANIA 
+ Philadelphia,X,X,X,,X,X,"N, C, A", PENNSYLVANIA 
+ Pittsburgh,,X,X,,X,,N, PENNSYLVANIA 
+ Reading,,,X,,X,,, PENNSYLVANIA 
+ York,,,X,,,,, PENNSYLVANIA 
+ RHODE ISLAND ,X,X,X,,,,A,
+ Providence,,,X,,,,, RHODE ISLAND 
+SOUTH CAROLINA,,,,,,,,
+ Aiken,,,X,,X,X,"N, C",SOUTH CAROLINA
+ Columbia,,,X,X,X,X,"N, C",SOUTH CAROLINA
+ Richland County,,,X,,,,,SOUTH CAROLINA
+York County,,,X,,X,,,SOUTH CAROLINA
+ TENNESSEE ,,,X,,,X,A,
+ Chattanooga,,,X,,,,, TENNESSEE 
+ Hamilton County,,,X,,X,,, TENNESSEE 
+ Memphis,,,X,,,X,"N, C, A", TENNESSEE 
+ Nashville,,,X,,,,, TENNESSEE 
+TEXAS,,,,,,,,
+ Austin,X,X,X,X,X,X,"N, A",TEXAS
+ Dallas County,,,X,,,X,A,TEXAS
+ DeSoto,X,X,X,,,,A,TEXAS
+ San Antonio,,,X,,X,X,,TEXAS
+ Travis County,,,X,X,X,X,,TEXAS
+ UTAH ,,,X,,,,,
+ VERMONT  ,X,X,X,,,,A,
+ VIRGINIA  ,,,X,,,X,,
+ Alexandria,,,X,,X,,, VIRGINIA  
+ Arlington County,,,X,,,,, VIRGINIA  
+ Blacksburg,,,X,,X,X,, VIRGINIA  
+ Charlottesville,,,X,,,,, VIRGINIA  
+ Danville,,,X,,X,X,, VIRGINIA  
+ Fairfax County,,,X,,X,,, VIRGINIA  
+ Fredericksburg,,,X,,X,X,N, VIRGINIA  
+ Harrisonburg,,,X,,X,,"N, A", VIRGINIA  
+ Henry County,,,X,,,,, VIRGINIA  
+ Montgomery County,,,X,,,,, VIRGINIA  
+ Newport News,,,X,,,X,, VIRGINIA  
+ Norfolk,,,X,,,X,, VIRGINIA  
+ Petersburg,,,X,,,,, VIRGINIA  
+ Portsmouth,,,X,,,,, VIRGINIA  
+ Prince William County,,,X,,,,, VIRGINIA  
+ Richmond,,,X,,,,, VIRGINIA  
+ Roanoke,,,X,,,,, VIRGINIA  
+ Staunton,,,X,,,,, VIRGINIA  
+ Virginia Beach,,,X,,X,X,, VIRGINIA  
+ WASHINGTON  ,X,X,X,,,,A,
+ Seattle,X,X,X,,,X,"N, C, A", WASHINGTON  
+ Spokane,X,X,X,,,X7,, WASHINGTON  
+ Spokane County,,,X,,,X,"N, C, A", WASHINGTON  
+ Tacoma,,,X,,X,X,"N, C", WASHINGTON  
+ Pierce County,,,X,,,X,N, WASHINGTON  
+ WISCONSIN ,,,X,,,,,
+ Dane County,,,X,,,,, WISCONSIN 
+ Madison,,X8,X8,,X,,"N9, A10", WISCONSIN 
+ Milwaukee,,,X,,,,, WISCONSIN 
+ Milwaukee County,,,X,,,,, WISCONSIN 
