@@ -1,0 +1,92 @@
+---
+title: "NLSY97 Data"
+author: "Alayna Johnson"
+date: "2024-08-09"
+output: html_document
+---
+
+```{r, warning=FALSE, message= FALSE}
+library(tidyverse)
+```
+
+
+
+
+```{r, warning= FALSE, message=FALSE}
+NLSY97 <- read_csv("no-industry-fairChance/no-industry-fairChance.csv")
+```
+
+
+```{r}
+# My original code to aggregate monthly incarceration data before changing to function
+
+# NLSY97_clean <- NLSY97 %>%
+#   mutate(incarc_status_2008 = (E8022801 + E8022802 + E8022803 + E8022804 + E8022805 + E8022806 + E8022807 + E8022808 + E8022809 + E8022810 + E8022811 + E8022812 )) %>%
+#   select(!contains("E80228"))
+# 
+# 
+# incarc <- c('E80228', 'E80229', 'E80230', 'E80231', 'E80232', 'E80233', 'E80234', 'E80235', 'E80236', 'E80237', 'E80238', 'E80239', 'E80240', 'E80241', 'E80242')
+# 
+# ending <- c(01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12)
+# 
+# years <- c(2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022)
+
+```
+
+
+add pos values then total number of instances of negative values
+
+```{r}
+# Lists of variable prefixes (start values), month suffixes, and the relevant years
+incarc <- c('E80228', 'E80229', 'E80230', 'E80231', 'E80232', 'E80233', 'E80234', 'E80235', 'E80236', 'E80237', 'E80238', 'E80239', 'E80240', 'E80241')
+ending <- c("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12")
+years <- c(2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020,2021)
+
+# Function to create the aggregated incarceration status variable for each year
+incarc_years <- function(NLSY97, beginning, ending, years) {
+  for (i in seq_along(beginning)) {
+    # Concatenate the variable names for all months of the current year
+    monthly_vars <- paste0(beginning[i], ending)
+    
+    # Sum the values across all months for the current year
+    NLSY97 <- NLSY97 %>%
+      mutate(!!paste0("incarc_status_", years[i]) := rowSums(select(., all_of(monthly_vars)), na.rm = TRUE)) %>%
+      select(-all_of(monthly_vars)) # Remove the original monthly variables
+  }
+  return(NLSY97)
+}
+
+# Apply the function to the dataset
+NLSY97_clean <- incarc_years(NLSY97, incarc, ending, years)
+
+
+```
+
+
+
+```{r}
+NLSY97_clean <- NLSY97_clean %>%
+  # Renaming to more descriptive variables
+  rename(pub_id = R0000100, key_sex = R0536300, cv_sample_type = R1235800, key_race = R1482600, census_region2008 = T2012100, felony_2008 = T2791000, est_wages2007 = T3003100, census_region2009 = T3602100, est_wages2008 = T4406100, felony_2009 = T4502600, census_region2010 = T5202300, est_wages2009 = T6055600, felony_2010 = T6151500, census_region2011 = T6652100, est_wages2010 = T7545700, felony_2011 = T7646000, census_region2013 = T8123700, est_wages2012 = T8976800, felony_2013 = T9045900, census_region2015 = U0001900, est_wages2014 = U0957000, felony_2015 = U1037200, census_region2017 = U1838600, est_wages2016 = U2857300, felony_2017 = U2924600, census_region2019 = U3438000, est_wages2018 = U4282400, census_region2021 = U4943100, est_wages2020 = U5753600, felony_2021 = U5825500, applied_job = U5867700, backg_check = U5867800) %>%
+  # Combining variables for birth date into one then removing the original separated vars
+  mutate(birth_date = paste(R0536401, R0536402, sep = "-")) %>%
+  select(!contains("R05364")) %>%
+  # Removing variable that represents incarceration in 2022 as it is missing 11 and 12 month (incomplete data)
+  select(!contains("E80242"))
+
+
+```
+
+
+Find diff measure of employment other than wages --> too sparse
+
+
+
+
+
+
+
+
+
+
+

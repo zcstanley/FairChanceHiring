@@ -1,0 +1,102 @@
+---
+title: "Control Variables"
+author: "Alayna Johnson"
+date: "2024-08-24"
+output: html_document
+---
+
+```{r Loading Dependencies, warning=FALSE, message= FALSE}
+library(tidyverse)
+library(tidycensus)
+
+census_api_key("aed26ba789b026d117ea12fd2b34317f2a05c64e")
+```
+
+
+```{r}
+# Load the tidycensus package
+library(tidycensus)
+
+# Load the variables for the 2022 ACS 1-year data, S0201 table
+variables_S0201 <- load_variables(2022, "acs1/subject", cache = TRUE)
+
+# View the variables in RStudio's data viewer
+View(variables_S0201)
+
+
+# Filter to find variables related to foreign-born population
+foreign_born_vars <- variables_S0201 %>% 
+  filter(str_detect(label, "Foreign-born"))
+
+print(foreign_born_vars)
+
+
+```
+
+
+```{r}
+# Define the variables you're interested in
+median_age_var <- "S0101_C01_032E"  # Median age (5-year ACS)
+foreign_born_var <- "S0502_C01_001"    # Total foreign-born population (1-year ACS)
+
+# Get the list of states, excluding territories and any non-state codes
+states <- unique(fips_codes$state[!fips_codes$state %in% c("DC", "PR", "AS", "GU", "MP", "VI", "UM")])
+
+# Create an empty data frame to store the results
+combined_data <- data.frame()
+
+# Loop over each state to pull data
+for (state in states) {
+  # Pull data for the median age variable from 5-year ACS
+  state_data_1 <- get_acs(
+    geography = "state",
+    variables = median_age_var,
+    state = state,
+    year = 2022,
+    survey = "acs5"
+  ) %>%
+    select(fips = GEOID, state = NAME, median_age = estimate)
+  
+  # Pull data for the total foreign-born population variable from 1-year ACS
+  state_data_2 <- get_acs(
+    geography = "state",
+    variables = foreign_born_var,
+    state = state,
+    year = 2022,
+    survey = "acs1"
+  ) %>%
+    select(fips = GEOID, state = NAME, foreign_born = estimate)
+  
+  # Merge the datasets on fips and state
+  merged_data <- left_join(state_data_1, state_data_2, by = c("fips", "state"))
+  
+  # Append the merged data to the results data frame
+  combined_data <- bind_rows(combined_data, merged_data)
+}
+
+# View the combined results
+print(combined_data)
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

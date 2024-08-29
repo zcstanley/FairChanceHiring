@@ -1,0 +1,251 @@
+"State","Industry","TotalJobs"
+"Alabama","retail",700
+"Alabama","food service",1000
+"Alabama","construction",1000
+"Alabama","waste management",7
+"Alabama","home health",300
+"Alaska","retail",200
+"Alaska","food service",400
+"Alaska","construction",500
+"Alaska","waste management",9
+"Alaska","home health",75
+"Arizona","retail",1000
+"Arizona","food service",2000
+"Arizona","construction",3000
+"Arizona","waste management",15
+"Arizona","home health",600
+"Arkansas","retail",600
+"Arkansas","food service",700
+"Arkansas","construction",800
+"Arkansas","waste management",5
+"Arkansas","home health",100
+"California","retail",5000
+"California","food service",9000
+"California","construction",NA
+"California","waste management",50
+"California","home health",9000
+"Colorado","retail",2000
+"Colorado","food service",5000
+"Colorado","construction",4000
+"Colorado","waste management",25
+"Colorado","home health",1000
+"Connecticut","retail",1000
+"Connecticut","food service",2000
+"Connecticut","construction",1000
+"Connecticut","waste management",4
+"Connecticut","home health",1000
+"Delaware","retail",300
+"Delaware","food service",600
+"Delaware","construction",300
+"Delaware","waste management",9
+"Delaware","home health",200
+"Florida","retail",5000
+"Florida","food service",9000
+"Florida","construction",11000
+"Florida","waste management",25
+"Florida","home health",5000
+"Georgia","retail",2000
+"Georgia","food service",4000
+"Georgia","construction",4000
+"Georgia","waste management",18
+"Georgia","home health",900
+"Hawaii","retail",1000
+"Hawaii","food service",2000
+"Hawaii","construction",600
+"Hawaii","waste management",9
+"Hawaii","home health",400
+"Idaho","retail",600
+"Idaho","food service",1000
+"Idaho","construction",1000
+"Idaho","waste management",12
+"Idaho","home health",400
+"Illinois","retail",3000
+"Illinois","food service",7000
+"Illinois","construction",3000
+"Illinois","waste management",25
+"Illinois","home health",2000
+"Indiana","retail",2000
+"Indiana","food service",4000
+"Indiana","construction",3000
+"Indiana","waste management",50
+"Indiana","home health",1000
+"Iowa","retail",1000
+"Iowa","food service",1000
+"Iowa","construction",1000
+"Iowa","waste management",6
+"Iowa","home health",500
+"Kansas","retail",500
+"Kansas","food service",1000
+"Kansas","construction",NA
+"Kansas","waste management",13
+"Kansas","home health",200
+"Kentucky","retail",500
+"Kentucky","food service",1000
+"Kentucky","construction",1000
+"Kentucky","waste management",8
+"Kentucky","home health",200
+"Louisiana","retail",500
+"Louisiana","food service",1000
+"Louisiana","construction",1000
+"Louisiana","waste management",13
+"Louisiana","home health",100
+"Maine","retail",400
+"Maine","food service",900
+"Maine","construction",500
+"Maine","waste management",6
+"Maine","home health",100
+"Maryland","retail",900
+"Maryland","food service",2000
+"Maryland","construction",2000
+"Maryland","waste management",25
+"Maryland","home health",500
+"Massachusetts","retail",3000
+"Massachusetts","food service",6000
+"Massachusetts","construction",3000
+"Massachusetts","waste management",18
+"Massachusetts","home health",3000
+"Michigan","retail",3000
+"Michigan","food service",9000
+"Michigan","construction",3000
+"Michigan","waste management",23
+"Michigan","home health",2000
+"Minnesota","retail",2000
+"Minnesota","food service",4000
+"Minnesota","construction",2000
+"Minnesota","waste management",25
+"Minnesota","home health",2000
+"Mississippi","retail",300
+"Mississippi","food service",1000
+"Mississippi","construction",700
+"Mississippi","waste management",2
+"Mississippi","home health",300
+"Missouri","retail",2000
+"Missouri","food service",4000
+"Missouri","construction",3000
+"Missouri","waste management",200
+"Missouri","home health",500
+"Montana","retail",500
+"Montana","food service",1000
+"Montana","construction",600
+"Montana","waste management",6
+"Montana","home health",100
+"Nebraska","retail",500
+"Nebraska","food service",1000
+"Nebraska","construction",1000
+"Nebraska","waste management",11
+"Nebraska","home health",300
+"Nevada","retail",500
+"Nevada","food service",1000
+"Nevada","construction",1000
+"Nevada","waste management",10
+"Nevada","home health",200
+"New Hampshire","retail",600
+"New Hampshire","food service",1000
+"New Hampshire","construction",700
+"New Hampshire","waste management",18
+"New Hampshire","home health",200
+"New Jersey","retail",1000
+"New Jersey","food service",NA
+"New Jersey","construction",1000
+"New Jersey","waste management",19
+"New Jersey","home health",1000
+"New Mexico","retail",300
+"New Mexico","food service",700
+"New Mexico","construction",800
+"New Mexico","waste management",12
+"New Mexico","home health",200
+"New York","retail",3000
+"New York","food service",6000
+"New York","construction",4000
+"New York","waste management",25
+"New York","home health",2000
+"North Carolina","retail",2000
+"North Carolina","food service",5000
+"North Carolina","construction",4000
+"North Carolina","waste management",50
+"North Carolina","home health",800
+"North Dakota","retail",300
+"North Dakota","food service",600
+"North Dakota","construction",800
+"North Dakota","waste management",4
+"North Dakota","home health",100
+"Ohio","retail",2000
+"Ohio","food service",5000
+"Ohio","construction",6000
+"Ohio","waste management",21
+"Ohio","home health",3000
+"Oklahoma","retail",800
+"Oklahoma","food service",2000
+"Oklahoma","construction",1000
+"Oklahoma","waste management",NA
+"Oklahoma","home health",900
+"Oregon","retail",1000
+"Oregon","food service",2000
+"Oregon","construction",2000
+"Oregon","waste management",19
+"Oregon","home health",1000
+"Pennsylvania","retail",5000
+"Pennsylvania","food service",10000
+"Pennsylvania","construction",6000
+"Pennsylvania","waste management",25
+"Pennsylvania","home health",8000
+"Rhode Island","retail",300
+"Rhode Island","food service",1000
+"Rhode Island","construction",400
+"Rhode Island","waste management",6
+"Rhode Island","home health",200
+"South Carolina","retail",1000
+"South Carolina","food service",2000
+"South Carolina","construction",2000
+"South Carolina","waste management",17
+"South Carolina","home health",500
+"South Dakota","retail",300
+"South Dakota","food service",700
+"South Dakota","construction",800
+"South Dakota","waste management",1
+"South Dakota","home health",75
+"Tennessee","retail",1000
+"Tennessee","food service",3000
+"Tennessee","construction",2000
+"Tennessee","waste management",25
+"Tennessee","home health",500
+"Texas","retail",4000
+"Texas","food service",9000
+"Texas","construction",11000
+"Texas","waste management",50
+"Texas","home health",2000
+"Utah","retail",500
+"Utah","food service",1000
+"Utah","construction",1000
+"Utah","waste management",13
+"Utah","home health",200
+"Vermont","retail",300
+"Vermont","food service",600
+"Vermont","construction",300
+"Vermont","waste management",1
+"Vermont","home health",100
+"Virginia","retail",1000
+"Virginia","food service",4000
+"Virginia","construction",4000
+"Virginia","waste management",NA
+"Virginia","home health",1000
+"Washington","retail",1000
+"Washington","food service",2000
+"Washington","construction",2000
+"Washington","waste management",25
+"Washington","home health",600
+"West Virginia","retail",200
+"West Virginia","food service",700
+"West Virginia","construction",400
+"West Virginia","waste management",8
+"West Virginia","home health",100
+"Wisconsin","retail",1000
+"Wisconsin","food service",3000
+"Wisconsin","construction",2000
+"Wisconsin","waste management",25
+"Wisconsin","home health",500
+"Wyoming","retail",100
+"Wyoming","food service",400
+"Wyoming","construction",400
+"Wyoming","waste management",NA
+"Wyoming","home health",50

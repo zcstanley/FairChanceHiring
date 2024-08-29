@@ -1,0 +1,151 @@
+state,rank,employer,employees,pledge
+Alabama,1,Redstone Arsenal,40000,No
+Alabama,2,University of Alabama at Birmingham,23000,No
+Alabama,3,Honda Manufacturing of Alabama,15000,No
+Alaska,1,Providence Health & Services,5000,No
+Alaska,2,University of Alaska,10000,No
+Alaska,3,Walmart,12000,Yes
+Arizona,1,Walmart,34000,Yes
+Arizona,2,Banner Health,29000,No
+Arizona,3,Wells Fargo,22000,No
+Arkansas,1,Walmart,53000,Yes
+Arkansas,2,Tyson Foods,24000,Yes
+Arkansas,3,University of Arkansas for Medical Sciences,11000,No
+California,1,University of California System,198300,Yes
+California,2,State of California,144000,No
+California,3,Federal Government,144000,No
+Colorado,1,University of Colorado System,37000,No
+Colorado,2,Centura Health,20000,No
+Colorado,3,HealthONE,12000,No
+Connecticut,1,Yale New Haven Health System,26700,No
+Connecticut,2,Yale University,14000,No
+Connecticut,3,General Dynamics Electric Boat,12400,No
+Delaware,1,ChristianaCare,11800,No
+Delaware,2,DuPont,6800,No
+Delaware,3,University of Delaware,4500,No
+Florida,1,Walt Disney World Resort,75000,No
+Florida,2,Miami-Dade County Public Schools,36000,No
+Florida,3,Publix Super Markets,35000,No
+Georgia,1,Delta Air Lines,33000,No
+Georgia,2,Emory University & Emory Healthcare,31000,No
+Georgia,3,The Home Depot,30000,No
+Hawaii,1,State of Hawaii,54000,No
+Hawaii,2,University of Hawaii System,10000,No
+Hawaii,3,Hawaii Health Systems Corporation,7400,No
+Idaho,1,St. Luke's Health System,14000,No
+Idaho,2,Micron Technology,8400,No
+Idaho,3,Albertsons,6000,No
+Illinois,1,Walmart,53000,Yes
+Illinois,2,University of Illinois System,30000,No
+Illinois,3,Advocate Health Care,29000,No
+Indiana,1,Indiana University Health,36000,No
+Indiana,2,Purdue University,18000,No
+Indiana,3,Walmart,17000,Yes
+Iowa,1,Hy-Vee,48000,No
+Iowa,2,University of Iowa,24000,No
+Iowa,3,University of Iowa Hospitals & Clinics,16500,No
+Kansas,1,Walmart,22000,Yes
+Kansas,2,Spirit AeroSystems,12000,No
+Kansas,3,University of Kansas,10000,No
+Kentucky,1,Walmart,31000,Yes
+Kentucky,2,Catholic Health Initiatives,27000,No
+Kentucky,3,University of Kentucky,24000,No
+Louisiana,1,Walmart,36992,Yes
+Louisiana,2,Ochsner Health System,36000,No
+Louisiana,3,Acadia Healthcare,22500,No
+Maine,1,Maine Medical Center,9600,No
+Maine,2,Hannaford Bros. Co.,8500,No
+Maine,3,Walmart,7700,Yes
+Maryland,1,Giant Food,27000,No
+Maryland,2,Johns Hopkins Medicine,22000,Yes
+Maryland,3,MedStar Health,22000,No
+Massachusetts,1,Mass General Brigham,70000,No
+Massachusetts,2,University of Massachusetts,23000,No
+Massachusetts,3,Boston University,22630,Yes
+Michigan,1,General Motors,52000,No
+Michigan,2,University of Michigan,48000,No
+Michigan,3,Ford Motor Company,46000,No
+Minnesota,1,Mayo Clinic,48000,No
+Minnesota,2,Allina Health System,40000,No
+Minnesota,3,Fairview Health Services,31000,No
+Mississippi,1,Walmart,25200,Yes
+Mississippi,2,Sanderson Farms,17000,No
+Mississippi,3,University of Mississippi Medical Center,10000,No
+Missouri,1,Walmart,43200,Yes
+Missouri,2,BJC HealthCare,29500,No
+Missouri,3,Washington University in St. Louis,19000,No
+Montana,1,Talen Montana,12000,No
+Montana,2,Fringe Benefit Resources,12000,No
+Montana,3,Walmart,5000,Yes
+Nebraska,1,University of Nebraska,16000,No
+Nebraska,2,Walmart,13000,Yes
+Nebraska,3,Berkshire Hathaway,7900,No
+Nevada,1,Walmart,15700,Yes
+Nevada,2,Wynn Las Vegas,10000,No
+Nevada,3,Bellagio Hotel and Casino,8000,No
+New Hampshire,1,Walmart,8000,Yes
+New Hampshire,2,Dartmouth-Hitchcock,6000,No
+New Hampshire,3,University System of New Hampshire,5500,No
+New Jersey,1,Amazon,49000,No
+New Jersey,2,AT&T,48000,No
+New Jersey,3,Walmart,25000,Yes
+New Mexico,1,University of New Mexico,20000,No
+New Mexico,2,Los Alamos National Laboratory,14000,No
+New Mexico,3,Sandia National Laboratories,12400,No
+New York,1,New York Presbyterian Hospital,48000,No
+New York,2,Montefiore Health System,43000,No
+New York,3,NYU Langone Health,36000,No
+North Carolina,1,Walmart,52000,Yes
+North Carolina,2,University of North Carolina at Chapel Hill,30000,No
+North Carolina,3,Duke University & Health System,28000,No
+North Dakota,1,Sanford Health,12000,No
+North Dakota,2,North Dakota State University,8000,No
+North Dakota,3,University of North Dakota,7000,No
+Ohio,1,Cleveland Clinic,51000,No
+Ohio,2,Ohio State University,45000,No
+Ohio,3,Kroger,43000,Yes
+Oklahoma,1,Walmart,33000,Yes
+Oklahoma,2,Integris Health,19000,No
+Oklahoma,3,Chickasaw Nation,17000,No
+Oregon,1,Intel,20000,Yes
+Oregon,2,Providence Health & Services,17000,No
+Oregon,3,Oregon Health & Science University,16000,No
+Pennsylvania,1,University of Pittsburgh Medical Center,90000,No
+Pennsylvania,2,Penn State University,46000,No
+Pennsylvania,3,Penn Medicine,35000,No
+Rhode Island,1,Lifespan,14000,No
+Rhode Island,2,CVS Health,10000,Yes
+Rhode Island,3,Brown University,7500,No
+South Carolina,1,Walmart,31000,Yes
+South Carolina,2,Boeing,21000,No
+South Carolina,3,University of South Carolina,19000,No
+South Dakota,1,Avera Health,17000,No
+South Dakota,2,Sanford Health,16000,No
+South Dakota,3,Black Hills Corporation,7000,No
+Tennessee,1,Vanderbilt University Medical Center,24000,No
+Tennessee,2,FedEx,20000,No
+Tennessee,3,Tennessee State Government,18000,No
+Texas,1,H-E-B,42000,No
+Texas,2,Texas Health Resources,30000,No
+Texas,3,The University of Texas at Austin,25000,No
+Utah,1,Intermountain Healthcare,41000,No
+Utah,2,University of Utah,30000,No
+Utah,3,State of Utah,25000,No
+Vermont,1,University of Vermont Medical Center,8000,No
+Vermont,2,University of Vermont,4000,No
+Vermont,3,GlobalFoundries,3000,No
+Virginia,1,Inova Health System,18000,No
+Virginia,2,Northrop Grumman,16000,No
+Virginia,3,Capital One,15000,No
+Washington,1,Amazon,50000,No
+Washington,2,Microsoft,48000,Yes
+Washington,3,Boeing,42000,No
+West Virginia,1,Walmart,12000,Yes
+West Virginia,2,West Virginia University,10000,No
+West Virginia,3,Charleston Area Medical Center,9000,No
+Wisconsin,1,University of Wisconsin System,38000,No
+Wisconsin,2,Menards,20000,No
+Wisconsin,3,Kohl's,18000,No
+Wyoming,1,Walmart,8000,Yes
+Wyoming,2,University of Wyoming,7000,No
+Wyoming,3,Wyoming Medical Center,4000,No
