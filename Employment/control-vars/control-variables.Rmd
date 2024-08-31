@@ -13,9 +13,7 @@ census_api_key("aed26ba789b026d117ea12fd2b34317f2a05c64e")
 ```
 
 
-```{r}
-# Load the tidycensus package
-library(tidycensus)
+```{r, eval=FALSE}
 
 # Load the variables for the 2022 ACS 1-year data, S0201 table
 variables_S0201 <- load_variables(2022, "acs1/subject", cache = TRUE)
@@ -34,21 +32,74 @@ print(foreign_born_vars)
 ```
 
 
+```{r, eval=FALSE}
+
+# Load the variables for the 2022 ACS 5-year data, S1903 table
+variables_s1903 <- load_variables(2022, "acs5/subject", cache = TRUE)
+
+# View the variables in RStudio's data viewer
+View(variables_s1903)
+
+# Filter for the median household income variable
+median_income_vars <- variables_s1903 %>%
+  filter(str_detect(label, "Median income") & str_detect(label, "households"))
+
+print(median_income_vars)
+
+
+```
+
+```{r}
+variables_s1702 <- load_variables(2022, "acs5/subject", cache = TRUE)
+
+poverty_vars <- variables_s1702 %>%
+  filter(str_detect(label, "poverty") & str_detect(label, "families"))
+
+```
+
+```{r}
+variables_p9 <- load_variables(2020, "pl", cache = TRUE)
+
+# View the variables in RStudio's data viewer
+View(variables_p9)
+
+```
+
+
+```{r}
+variables_s1501 <- load_variables(2022, "acs5/subject", cache = TRUE)
+
+education_vars <- variables_s1501 %>%
+  filter(str_detect(label, "degree"))
+```
+
+
+```{r}
+# Load variables from the DP03 table (part of the ACS 5-year data profile tables)
+variables_dp03 <- load_variables(2022, "acs5/profile", cache = TRUE)
+
+employment_vars <- variables_dp03 %>%
+  filter(str_detect(label, "labor"))
+
+```
+
+
 ```{r}
 # Define the variables you're interested in
 median_age_var <- "S0101_C01_032E"  # Median age (5-year ACS)
 foreign_born_var <- "S0502_C01_001"    # Total foreign-born population (1-year ACS)
+median_income_var <- "S1901_C04_012" # Household median income (5-year ACS)
 
 # Get the list of states, excluding territories and any non-state codes
 states <- unique(fips_codes$state[!fips_codes$state %in% c("DC", "PR", "AS", "GU", "MP", "VI", "UM")])
 
 # Create an empty data frame to store the results
-combined_data <- data.frame()
+joined_data <- data.frame()
 
 # Loop over each state to pull data
 for (state in states) {
   # Pull data for the median age variable from 5-year ACS
-  state_data_1 <- get_acs(
+  median_age_data <- get_acs(
     geography = "state",
     variables = median_age_var,
     state = state,
@@ -57,8 +108,18 @@ for (state in states) {
   ) %>%
     select(fips = GEOID, state = NAME, median_age = estimate)
   
+  # Pull data for the median income variable from 5-year ACS
+  median_income_data <- get_acs(
+    geography = "state",
+    variables = median_income_var,
+    state = state,
+    year = 2022,
+    survey = "acs5"
+  ) %>%
+    select(fips = GEOID, state = NAME, median_income = estimate)
+  
   # Pull data for the total foreign-born population variable from 1-year ACS
-  state_data_2 <- get_acs(
+  foreign_born_data <- get_acs(
     geography = "state",
     variables = foreign_born_var,
     state = state,
@@ -68,27 +129,392 @@ for (state in states) {
     select(fips = GEOID, state = NAME, foreign_born = estimate)
   
   # Merge the datasets on fips and state
-  merged_data <- left_join(state_data_1, state_data_2, by = c("fips", "state"))
+  merged_data <- left_join(median_age_data, median_income_data, by = c("fips", "state"))
+  merged_data <- left_join(merged_data, foreign_born_data, by = c("fips", "state"))
   
+  # Append the merged data to the results data frame
+  joined_data <- bind_rows(joined_data, merged_data)
+}
+
+head(joined_data)
+```
+
+
+```{r}
+# Define the variables you're interested in
+poverty_var <- "S1702_C02_001"
+white_poverty_var <- "S1702_C02_006"
+blkAA_poverty_var <- "S1702_C02_007"
+AIAN_poverty_var <- "S1702_C02_008"
+asian_poverty_var <- "S1702_C02_009"
+PI_poverty_var <- "S1702_C02_010"
+other_poverty_var <- "S1702_C02_011"
+twomore_poverty_var <- "S1702_C02_012"
+hisp_poverty_var <- "S1702_C02_013"
+whitenon_poverty_var <- "S1702_C02_014"
+
+# Get the list of states, excluding territories and any non-state codes
+states <- unique(fips_codes$state[!fips_codes$state %in% c("DC", "PR", "AS", "GU", "MP", "VI", "UM")])
+
+# Create an empty data frame to store the results
+combined_data <- data.frame()
+
+# Loop over each state to pull data
+for (state in states) {
+  
+  # Pull data for each variable
+  poverty_data <- get_acs(
+    geography = "state",
+    variables = poverty_var,
+    state = state,
+    year = 2022,
+    survey = "acs5"
+  ) %>% select(fips = GEOID, state = NAME, poverty_perc = estimate)
+  
+  white_poverty_data <- get_acs(
+    geography = "state",
+    variables = white_poverty_var,
+    state = state,
+    year = 2022,
+    survey = "acs5"
+  ) %>% select(fips = GEOID, state = NAME, white_poverty_perc = estimate)
+  
+  blkAA_poverty_data <- get_acs(
+    geography = "state",
+    variables = blkAA_poverty_var,
+    state = state,
+    year = 2022,
+    survey = "acs5"
+  ) %>% select(fips = GEOID, state = NAME, blkAA_poverty_perc = estimate)
+  
+  AIAN_poverty_data <- get_acs(
+    geography = "state",
+    variables = AIAN_poverty_var,
+    state = state,
+    year = 2022,
+    survey = "acs5"
+  ) %>% select(fips = GEOID, state = NAME, AIAN_poverty_perc = estimate)
+  
+  asian_poverty_data <- get_acs(
+    geography = "state",
+    variables = asian_poverty_var,
+    state = state,
+    year = 2022,
+    survey = "acs5"
+  ) %>% select(fips = GEOID, state = NAME, asian_poverty_perc = estimate)
+  
+  PI_poverty_data <- get_acs(
+    geography = "state",
+    variables = PI_poverty_var,
+    state = state,
+    year = 2022,
+    survey = "acs5"
+  ) %>% select(fips = GEOID, state = NAME, PI_poverty_perc = estimate)
+  
+  other_poverty_data <- get_acs(
+    geography = "state",
+    variables = other_poverty_var,
+    state = state,
+    year = 2022,
+    survey = "acs5"
+  ) %>% select(fips = GEOID, state = NAME, other_poverty_perc = estimate)
+  
+  twomore_poverty_data <- get_acs(
+    geography = "state",
+    variables = twomore_poverty_var,
+    state = state,
+    year = 2022,
+    survey = "acs5"
+  ) %>% select(fips = GEOID, state = NAME, twomore_poverty_perc = estimate)
+  
+  hisp_poverty_data <- get_acs(
+    geography = "state",
+    variables = hisp_poverty_var,
+    state = state,
+    year = 2022,
+    survey = "acs5"
+  ) %>% select(fips = GEOID, state = NAME, hisp_poverty_perc = estimate)
+  
+  whitenon_poverty_data <- get_acs(
+    geography = "state",
+    variables = whitenon_poverty_var,
+    state = state,
+    year = 2022,
+    survey = "acs5"
+  ) %>% select(fips = GEOID, state = NAME, whitenon_poverty_perc = estimate)
+  
+  # Merge all datasets together by 'fips' and 'state'
+  merged_data <- left_join(poverty_data, white_poverty_data, by = c("fips", "state"))
+  merged_data <- left_join(merged_data, blkAA_poverty_data, by = c("fips", "state"))
+  merged_data <- left_join(merged_data, AIAN_poverty_data, by = c("fips", "state"))
+  merged_data <- left_join(merged_data, asian_poverty_data, by = c("fips", "state"))
+  merged_data <- left_join(merged_data, PI_poverty_data, by = c("fips", "state"))
+  merged_data <- left_join(merged_data, other_poverty_data, by = c("fips", "state"))
+  merged_data <- left_join(merged_data, twomore_poverty_data, by = c("fips", "state"))
+  merged_data <- left_join(merged_data, hisp_poverty_data, by = c("fips", "state"))
+  merged_data <- left_join(merged_data, whitenon_poverty_data, by = c("fips", "state"))
+
   # Append the merged data to the results data frame
   combined_data <- bind_rows(combined_data, merged_data)
 }
 
-# View the combined results
-print(combined_data)
+head(combined_data)
+
+
+```
+
+
+```{r}
+
+# Define the variables you're interested in
+total_pop_var <- "P1_001N"
+white_total_var <- "P1_003N"
+blkAA_total_var <- "P1_004N"
+AIAN_total_var <- "P1_005N"
+asian_total_var <- "P1_006N"
+PI_total_var <- "P1_007N"
+other_total_var <- "P1_008N"
+twomore_total_var <- "P1_009N"
+
+# Get the list of states, excluding territories and any non-state codes
+states <- unique(fips_codes$state[!fips_codes$state %in% c("DC", "PR", "AS", "GU", "MP", "VI", "UM")])
+
+# Create an empty data frame to store the results
+race_data <- data.frame()
+
+# Loop over each state to pull data
+for (state in states) {
+  
+  # Pull data for each variable
+  total_pop_data <- get_decennial(
+    geography = "state",
+    variables = total_pop_var,
+    state = state,
+    year = 2020
+  ) %>% select(fips = GEOID, state = NAME, total_population = value)
+  
+  white_total_data <- get_decennial(
+    geography = "state",
+    variables = white_total_var,
+    state = state,
+    year = 2020
+  ) %>% select(fips = GEOID, state = NAME, white_total = value)
+  
+  blkAA_total_data <- get_decennial(
+    geography = "state",
+    variables = blkAA_total_var,
+    state = state,
+    year = 2020
+  ) %>% select(fips = GEOID, state = NAME, blkAA_total = value)
+  
+  AIAN_total_data <- get_decennial(
+    geography = "state",
+    variables = AIAN_total_var,
+    state = state,
+    year = 2020
+  ) %>% select(fips = GEOID, state = NAME, AIAN_total = value)
+  
+  asian_total_data <- get_decennial(
+    geography = "state",
+    variables = asian_total_var,
+    state = state,
+    year = 2020
+  ) %>% select(fips = GEOID, state = NAME, asian_total = value)
+  
+  PI_total_data <- get_decennial(
+    geography = "state",
+    variables = PI_total_var,
+    state = state,
+    year = 2020
+  ) %>% select(fips = GEOID, state = NAME, PI_total = value)
+  
+  other_total_data <- get_decennial(
+    geography = "state",
+    variables = other_total_var,
+    state = state,
+    year = 2020
+  ) %>% select(fips = GEOID, state = NAME, other_total = value)
+  
+  twomore_total_data <- get_decennial(
+    geography = "state",
+    variables = twomore_total_var,
+    state = state,
+    year = 2020
+  ) %>% select(fips = GEOID, state = NAME, twomore_total = value)
+  
+  # Merge all datasets together by 'fips' and 'state'
+  merged_data <- left_join(total_pop_data, white_total_data, by = c("fips", "state"))
+  merged_data <- left_join(merged_data, blkAA_total_data, by = c("fips", "state"))
+  merged_data <- left_join(merged_data, AIAN_total_data, by = c("fips", "state"))
+  merged_data <- left_join(merged_data, asian_total_data, by = c("fips", "state"))
+  merged_data <- left_join(merged_data, PI_total_data, by = c("fips", "state"))
+  merged_data <- left_join(merged_data, other_total_data, by = c("fips", "state"))
+  merged_data <- left_join(merged_data, twomore_total_data, by = c("fips", "state"))
+  
+  # Append the merged data to the results data frame
+  race_data <- bind_rows(race_data, merged_data)
+}
+
+head(race_data)
 
 ```
 
 
 
+```{r}
+white_edu_var <- "S1501_C02_030"
+whitenon_edu_var <- "S1501_C02_033"
+blkAA_edu_var <- "S1501_C02_036"
+AIAN_edu_var <- "S1501_C02_039"
+asian_edu_var <- "S1501_C02_042"
+PI_edu_var <- "S1501_C02_045"
+other_edu_var <- "S1501_C02_048"
+twomore_edu_var <- "S1501_C02_051"
+hisp_edu_var <- "S1501_C02_054"
+
+# Get the list of states, excluding territories and any non-state codes
+states <- unique(fips_codes$state[!fips_codes$state %in% c("DC", "PR", "AS", "GU", "MP", "VI", "UM")])
+
+# Create an empty data frame to store the results
+edu_data <- data.frame()
+
+# Loop over each state to pull data
+for (state in states) {
+  
+  # Pull data for each variable
+  whitenon_edu_data <- get_acs(
+    geography = "state",
+    variables = whitenon_edu_var,
+    state = state,
+    year = 2022,
+    survey = "acs5"
+  ) %>% select(fips = GEOID, state = NAME, whitenon_edu_perc = estimate)
+  
+  white_edu_data <- get_acs(
+    geography = "state",
+    variables = white_edu_var,
+    state = state,
+    year = 2022,
+    survey = "acs5"
+  ) %>% select(fips = GEOID, state = NAME, white_edu_perc = estimate)
+  
+  blkAA_edu_data <- get_acs(
+    geography = "state",
+    variables = blkAA_edu_var,
+    state = state,
+    year = 2022,
+    survey = "acs5"
+  ) %>% select(fips = GEOID, state = NAME, blkAA_edu_perc = estimate)
+  
+  AIAN_edu_data <- get_acs(
+    geography = "state",
+    variables = AIAN_edu_var,
+    state = state,
+    year = 2022,
+    survey = "acs5"
+  ) %>% select(fips = GEOID, state = NAME, AIAN_edu_perc = estimate)
+  
+  asian_edu_data <- get_acs(
+    geography = "state",
+    variables = asian_edu_var,
+    state = state,
+    year = 2022,
+    survey = "acs5"
+  ) %>% select(fips = GEOID, state = NAME, asian_edu_perc = estimate)
+  
+  PI_edu_data <- get_acs(
+    geography = "state",
+    variables = PI_edu_var,
+    state = state,
+    year = 2022,
+    survey = "acs5"
+  ) %>% select(fips = GEOID, state = NAME, PI_edu_perc = estimate)
+  
+  other_edu_data <- get_acs(
+    geography = "state",
+    variables = other_edu_var,
+    state = state,
+    year = 2022,
+    survey = "acs5"
+  ) %>% select(fips = GEOID, state = NAME, other_edu_perc = estimate)
+  
+  twomore_edu_data <- get_acs(
+    geography = "state",
+    variables = twomore_edu_var,
+    state = state,
+    year = 2022,
+    survey = "acs5"
+  ) %>% select(fips = GEOID, state = NAME, twomore_edu_perc = estimate)
+  
+  hisp_edu_data <- get_acs(
+    geography = "state",
+    variables = hisp_edu_var,
+    state = state,
+    year = 2022,
+    survey = "acs5"
+  ) %>% select(fips = GEOID, state = NAME, hisp_edu_perc = estimate)
+
+  
+  # Merge all datasets together by 'fips' and 'state'
+  merged_data <- left_join(whitenon_edu_data, white_edu_data, by = c("fips", "state"))
+  merged_data <- left_join(merged_data, blkAA_edu_data, by = c("fips", "state"))
+  merged_data <- left_join(merged_data, AIAN_edu_data, by = c("fips", "state"))
+  merged_data <- left_join(merged_data, asian_edu_data, by = c("fips", "state"))
+  merged_data <- left_join(merged_data, PI_edu_data, by = c("fips", "state"))
+  merged_data <- left_join(merged_data, other_edu_data, by = c("fips", "state"))
+  merged_data <- left_join(merged_data, twomore_edu_data, by = c("fips", "state"))
+  merged_data <- left_join(merged_data, hisp_edu_data, by = c("fips", "state"))
+
+  # Append the merged data to the results data frame
+  edu_data <- bind_rows(edu_data, merged_data)
+}
+
+head(edu_data)
 
 
+```
 
 
+```{r}
+employment_var <- "DP03_0008P"
+unemployment_var <- "DP03_0009P"
 
+# Get the list of states, excluding territories and any non-state codes
+states <- unique(fips_codes$state[!fips_codes$state %in% c("DC", "PR", "AS", "GU", "MP", "VI", "UM")])
 
+# Create an empty data frame to store the results
+employ_data <- data.frame()
 
+# Loop over each state to pull data
+for (state in states) {
+  
+  # Pull data for each variable
+  employment_data <- get_acs(
+  geography = "state",
+  variables = employment_var,
+  state = state,
+  year = 2022,
+  survey = "acs5"
+) %>% select(fips = GEOID, state = NAME, employment_perc = estimate)
 
+unemployment_data <- get_acs(
+  geography = "state",
+  variables = unemployment_var,
+  state = state,
+  year = 2022,
+  survey = "acs5"
+) %>% select(fips = GEOID, state = NAME, unemployment_perc = estimate)
+
+  
+  # Merge all datasets together by 'fips' and 'state'
+  merged_data <- left_join(employment_data, unemployment_data, by = c("fips", "state"))
+  
+  # Append the merged data to the results data frame
+  employ_data <- bind_rows(employ_data, merged_data)
+}
+
+head(employ_data)
+```
 
 
 
