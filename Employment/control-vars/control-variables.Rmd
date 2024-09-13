@@ -70,7 +70,7 @@ View(variables_p9)
 variables_s1501 <- load_variables(2022, "acs5/subject", cache = TRUE)
 
 education_vars <- variables_s1501 %>%
-  filter(str_detect(label, "degree"))
+  filter(str_detect(label, "high")& str_detect(name, "0501"))
 ```
 
 
@@ -371,6 +371,7 @@ PI_edu_var <- "S1501_C02_045"
 other_edu_var <- "S1501_C02_048"
 twomore_edu_var <- "S1501_C02_051"
 hisp_edu_var <- "S1501_C02_054"
+no_highschool_var <- "S0501_C01_039"
 
 # Get the list of states, excluding territories and any non-state codes
 states <- unique(fips_codes$state[!fips_codes$state %in% c("DC", "PR", "AS", "GU", "MP", "VI", "UM")])
@@ -453,6 +454,14 @@ for (state in states) {
     year = 2022,
     survey = "acs5"
   ) %>% select(fips = GEOID, state = NAME, hisp_edu_perc = estimate)
+  
+   no_highschool_data <- get_acs(
+    geography = "state",
+    variables = no_highschool_var,
+    state = state,
+    year = 2022,
+    survey = "acs5"
+  ) %>% select(fips = GEOID, state = NAME, no_highschool = estimate)
 
   
   # Merge all datasets together by 'fips' and 'state'
@@ -464,6 +473,8 @@ for (state in states) {
   merged_data <- left_join(merged_data, other_edu_data, by = c("fips", "state"))
   merged_data <- left_join(merged_data, twomore_edu_data, by = c("fips", "state"))
   merged_data <- left_join(merged_data, hisp_edu_data, by = c("fips", "state"))
+  merged_data <- left_join(merged_data, no_highschool_data, by = c("fips", "state"))
+
 
   # Append the merged data to the results data frame
   edu_data <- bind_rows(edu_data, merged_data)
@@ -476,8 +487,8 @@ head(edu_data)
 
 
 ```{r}
-employment_var <- "DP03_0008P"
-unemployment_var <- "DP03_0009P"
+employment_var <- "DP03_0004P"
+unemployment_var <- "DP03_0005P"
 
 # Get the list of states, excluding territories and any non-state codes
 states <- unique(fips_codes$state[!fips_codes$state %in% c("DC", "PR", "AS", "GU", "MP", "VI", "UM")])
@@ -518,6 +529,18 @@ head(employ_data)
 
 
 
+```{r}
+# Combining each data set with common keys 'fips' and 'state'
+final_data <- joined_data %>%
+  left_join(combined_data, by = c("fips", "state")) %>%
+  left_join(race_data, by = c("fips", "state")) %>%
+  left_join(edu_data, by = c("fips", "state")) %>%
+  left_join(employ_data, by = c("fips", "state"))
+
+# Write the final combined data set to a CSV file
+write.csv(final_data, "control_vars.csv", row.names = FALSE)
+
+```
 
 
 
