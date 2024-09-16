@@ -543,8 +543,28 @@ write.csv(final_data, "control_vars.csv", row.names = FALSE)
 ```
 
 
+```{r}
+library(tidyverse)
+ctrl_vars <- read_csv("control_vars_clean.csv")
+```
 
 
+```{r}
+
+ctrl_vars <- ctrctrl_vars <- ctrl_vars %>%
+  mutate_if(is.character, ~ na_if(., "N/A"))
+
+clean_vars <- ctrl_vars %>%
+  mutate(
+    leg_ctrl = as.factor(leg_ctrl),
+    gov_party = as.factor(gov_party),
+    state_ctrl = as.factor(state_ctrl),
+    det_sentencing = as.factor(det_sentencing),
+    prob_complete_rate = as.numeric(prob_complete_rate),
+    parole_complete_rate = as.numeric(parole_complete_rate),
+    rev_rate = as.numeric(rev_rate)
+  )
+```
 
 
 
