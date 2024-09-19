@@ -12,40 +12,11 @@ library(tidycensus)
 census_api_key("aed26ba789b026d117ea12fd2b34317f2a05c64e")
 ```
 
+```{r}
+population <- load_variables(2022, "acs1/subject", cache = FALSE)
 
-```{r, eval=FALSE}
-
-# Load the variables for the 2022 ACS 1-year data, S0201 table
-variables_S0201 <- load_variables(2022, "acs1/subject", cache = TRUE)
-
-# View the variables in RStudio's data viewer
-View(variables_S0201)
-
-
-# Filter to find variables related to foreign-born population
-foreign_born_vars <- variables_S0201 %>% 
-  filter(str_detect(label, "Foreign-born"))
-
-print(foreign_born_vars)
-
-
-```
-
-
-```{r, eval=FALSE}
-
-# Load the variables for the 2022 ACS 5-year data, S1903 table
-variables_s1903 <- load_variables(2022, "acs5/subject", cache = TRUE)
-
-# View the variables in RStudio's data viewer
-View(variables_s1903)
-
-# Filter for the median household income variable
-median_income_vars <- variables_s1903 %>%
-  filter(str_detect(label, "Median income") & str_detect(label, "households"))
-
-print(median_income_vars)
-
+population_vars <- population %>%
+  filter(str_detect(name, "S0101"))
 
 ```
 
@@ -62,24 +33,6 @@ variables_p9 <- load_variables(2020, "pl", cache = TRUE)
 
 # View the variables in RStudio's data viewer
 View(variables_p9)
-
-```
-
-
-```{r}
-variables_s1501 <- load_variables(2022, "acs5/subject", cache = TRUE)
-
-education_vars <- variables_s1501 %>%
-  filter(str_detect(label, "high")& str_detect(name, "0501"))
-```
-
-
-```{r}
-# Load variables from the DP03 table (part of the ACS 5-year data profile tables)
-variables_dp03 <- load_variables(2022, "acs5/profile", cache = TRUE)
-
-employment_vars <- variables_dp03 %>%
-  filter(str_detect(label, "labor"))
 
 ```
 
@@ -128,10 +81,19 @@ for (state in states) {
   ) %>%
     select(fips = GEOID, state = NAME, foreign_born = estimate)
   
+  population_2022 <- get_acs(
+  geography = "state",
+  variables = "B01003_001E",  # Total population estimate
+  year = 2022,
+  survey = "acs1"
+)  %>%
+    select(fips = GEOID, state = NAME, foreign_born = estimate)
+  
   # Merge the datasets on fips and state
   merged_data <- left_join(median_age_data, median_income_data, by = c("fips", "state"))
   merged_data <- left_join(merged_data, foreign_born_data, by = c("fips", "state"))
-  
+  merged_data <- left_join(merged_data, population_2022, by = c("fips", "state"))
+
   # Append the merged data to the results data frame
   joined_data <- bind_rows(joined_data, merged_data)
 }
@@ -484,9 +446,13 @@ head(edu_data)
 
 
 ```
-
-
 ```{r}
+ag_employ_var <- "S2405_C03_002"
+
+```
+
+
+```{r Employment}
 employment_var <- "DP03_0004P"
 unemployment_var <- "DP03_0005P"
 
@@ -529,6 +495,7 @@ head(employ_data)
 
 
 
+
 ```{r}
 # Combining each data set with common keys 'fips' and 'state'
 final_data <- joined_data %>%
@@ -545,27 +512,42 @@ write.csv(final_data, "control_vars.csv", row.names = FALSE)
 
 ```{r}
 library(tidyverse)
-ctrl_vars <- read_csv("control_vars_clean.csv")
+ctrl_vars <- read_csv("ctrl_vars.csv")
 ```
 
 
 ```{r}
+ctrl_vars <- ctrl_vars %>%
+  mutate(white_perc = (white_total/total_population)) %>%
+  mutate(blkAA_perc = (blkAA_total/total_population)) %>%
+  mutate(AIAN_perc = (AIAN_total/total_population)) %>%
+  mutate(asian_perc = (asian_total/total_population)) %>%
+  mutate(PI_perc = (PI_total/total_population)) %>%
+  mutate(other_perc = (other_total/total_population)) %>%
+  mutate(twomore_perc = (twomore_total/total_population)) %>%
+  mutate(foreign_perc = (foreign_born/population_2022)) %>%
+  select(-white_total, -blkAA_total,-AIAN_total, -asian_total, -PI_total, -other_total, -twomore_total, -total_population, -foreign_born)
 
-ctrl_vars <- ctrctrl_vars <- ctrl_vars %>%
-  mutate_if(is.character, ~ na_if(., "N/A"))
+
+
+```
+
+
+```{r}
+# 
+# ctrl_vars <- ctrl_vars %>%
+#   mutate_if(is.character, ~ na_if(., "N/A"))
 
 clean_vars <- ctrl_vars %>%
   mutate(
     leg_ctrl = as.factor(leg_ctrl),
     gov_party = as.factor(gov_party),
     state_ctrl = as.factor(state_ctrl),
-    det_sentencing = as.factor(det_sentencing),
-    prob_complete_rate = as.numeric(prob_complete_rate),
-    parole_complete_rate = as.numeric(parole_complete_rate),
-    rev_rate = as.numeric(rev_rate)
+    det_sentencing = as.factor(det_sentencing)
   )
 ```
 
 
+Next step: filling in missing values
 
 
