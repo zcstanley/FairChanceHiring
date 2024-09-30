@@ -510,44 +510,4 @@ write.csv(final_data, "control_vars.csv", row.names = FALSE)
 ```
 
 
-```{r}
-library(tidyverse)
-ctrl_vars <- read_csv("ctrl_vars.csv")
-```
-
-
-```{r}
-ctrl_vars <- ctrl_vars %>%
-  mutate(white_perc = (white_total/total_population)) %>%
-  mutate(blkAA_perc = (blkAA_total/total_population)) %>%
-  mutate(AIAN_perc = (AIAN_total/total_population)) %>%
-  mutate(asian_perc = (asian_total/total_population)) %>%
-  mutate(PI_perc = (PI_total/total_population)) %>%
-  mutate(other_perc = (other_total/total_population)) %>%
-  mutate(twomore_perc = (twomore_total/total_population)) %>%
-  mutate(foreign_perc = (foreign_born/population_2022)) %>%
-  select(-white_total, -blkAA_total,-AIAN_total, -asian_total, -PI_total, -other_total, -twomore_total, -total_population, -foreign_born)
-
-
-
-```
-
-
-```{r}
-# 
-# ctrl_vars <- ctrl_vars %>%
-#   mutate_if(is.character, ~ na_if(., "N/A"))
-
-clean_vars <- ctrl_vars %>%
-  mutate(
-    leg_ctrl = as.factor(leg_ctrl),
-    gov_party = as.factor(gov_party),
-    state_ctrl = as.factor(state_ctrl),
-    det_sentencing = as.factor(det_sentencing)
-  )
-```
-
-
-Next step: filling in missing values
-
 
