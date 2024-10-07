@@ -511,3 +511,98 @@ write.csv(final_data, "control_vars.csv", row.names = FALSE)
 
 
 
+```{r}
+library(tidyverse)
+library(FactoMineR)
+
+ctrl_vars <- read_csv("ctrl_vars.csv")
+```
+
+```{r}
+ctrl_vars <- ctrl_vars %>%
+  mutate(white_perc = (white_total/total_population)) %>%
+  mutate(blkAA_perc = (blkAA_total/total_population)) %>%
+  mutate(AIAN_perc = (AIAN_total/total_population)) %>%
+  mutate(asian_perc = (asian_total/total_population)) %>%
+  mutate(PI_perc = (PI_total/total_population)) %>%
+  mutate(other_perc = (other_total/total_population)) %>%
+  mutate(twomore_perc = (twomore_total/total_population)) %>%
+  mutate(foreign_perc = (foreign_born/population_2022)) %>%
+  mutate(able_to_work = (population_2022/total_population)) %>%
+  select(-white_total, -blkAA_total,-AIAN_total, -asian_total, -PI_total, -other_total, -twomore_total, -total_population, -foreign_born, -population_2022)
+
+
+
+```
+
+
+```{r}
+
+clean_vars <- ctrl_vars %>%
+  mutate(
+    leg_ctrl = as.factor(leg_ctrl),
+    gov_party = as.factor(gov_party),
+    state_ctrl = as.factor(state_ctrl),
+    det_sentencing = as.factor(det_sentencing)
+  )
+```
+
+
+
+
+```{r}
+small_data <- clean_vars %>%
+  select(foreign_perc, poverty_perc, no_highschool, unemployment_perc, state_ctrl, bills_enacted, reincarceration)
+
+
+# set.seed(4343)
+small_analysis <- FAMD(small_data, ncp = 3)
+
+summary(small_analysis)
+```
+
+```{r}
+factors <- small_analysis$ind$coord
+
+```
+
+
+```{r}
+pc_data <- as.data.frame(factors)
+
+regression <- read.csv("regression.csv")
+
+final_df <- cbind(pc_data, regression)
+
+final_df <- final_df %>%
+  select(-state) %>%
+  mutate(scaled_fair_chance = fair_chance/1000) %>%
+  select(-fair_chance)
+```
+
+
+```{r}
+library(betareg)
+
+model <- betareg(scaled_fair_chance ~., data = final_df)
+summary(model)
+
+```
+
+```{r}
+# model_neg <- betareg(scaled_fair_chance ~neg_combo_index, data = final_df)
+# summary(model_neg)
+# 
+# model_pos <- betareg(scaled_fair_chance ~tot_pos_index, data = final_df)
+# summary(model_pos)
+
+```
+
+```{r}
+model_less <- betareg(scaled_fair_chance ~tot_pos_index+neg_combo_index+Dim.1+Dim.2+Dim.3,data = final_df)
+summary(model_less)
+```
+
+
+
+

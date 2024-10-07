@@ -49,6 +49,9 @@ clean_vars <- ctrl_vars %>%
 small_data <- clean_vars %>%
   select(foreign_perc, poverty_perc, no_highschool, unemployment_perc, state_ctrl, bills_enacted, reincarceration)
 
+
+# write.csv(small_data, "small_control.csv", row.names = FALSE)
+
 small_analysis <- FAMD(small_data, ncp = 3)
 
 summary(small_analysis)
@@ -65,11 +68,11 @@ pc_data <- as.data.frame(factors)
 
 regression <- read.csv("regression.csv")
 
-final_df <- cbind(pc_data, regression)
+final_df_orig <- cbind(pc_data, regression)
 
-final_df <- final_df %>%
+final_df <- final_df_orig %>%
   select(-state) %>%
-  mutate(scaled_fair_chance = fair_chance/1000) %>%
+  mutate(scaled_fair_chance = fair_chance/100) %>%
   select(-fair_chance)
 ```
 
@@ -77,10 +80,87 @@ final_df <- final_df %>%
 ```{r}
 library(betareg)
 
-model <- betareg(scaled_fair_chance ~., data = final_df)
+model <- lm(scaled_fair_chance ~., data = final_df)
 summary(model)
 
 ```
+
+phi: The precision coefficient is highly significant (p = 6.82e-07) and very large, meaning that there is low dispersion (i.e., the dependent variable is tightly clustered around the mean).
+
+```{r}
+final_df %>%
+  lm(fair_chance ~ ) %>%
+  summary()
+
+```
+
+
+```{r}
+library(ggplot2)
+library(broom)
+
+# Extract the coefficients and confidence intervals
+coef_data <- tidy(model, conf.int = TRUE)
+
+# Plot the coefficients
+ggplot(coef_data, aes(x = term, y = estimate, ymin = conf.low, ymax = conf.high)) +
+  geom_pointrange() +
+  coord_flip() +  # Flip coordinates for better readability
+  labs(title = "Beta Regression Coefficients", 
+       x = "Predictor", 
+       y = "Estimate") +
+  theme_minimal()
+
+```
+
+```{r}
+# Predict the fitted values
+final_df$fitted_values <- predict(model, type = "response")
+
+# Plot actual vs fitted values
+ggplot(final_df, aes(x = fitted_values, y = scaled_fair_chance)) +
+  geom_point(alpha = 0.6) +
+  geom_abline(intercept = 0, slope = 1, linetype = "dashed", color = "firebrick") + 
+  labs(title = "Fitted vs Actual Values",
+       x = "Fitted Values",
+       y = "Actual Values") +
+  theme_minimal()
+
+```
+
+Suggests that the model is performing well at predicting scaled_fair_chance because the points stay close to the line (perfect predictions)
+
+```{r}
+# Extract residuals
+final_df$residuals <- residuals(model, type = "quantile")
+
+# Plot residuals
+ggplot(final_df, aes(x = fitted_values, y = residuals)) +
+  geom_point(alpha = 0.6) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
+  labs(title = "Residuals vs Fitted Values",
+       x = "Fitted Values",
+       y = "Residuals") +
+  theme_minimal()
+
+```
+
+```{r}
+# Calculate the precision (phi)
+phi_value <- 1 / predict(model, type = "precision")
+
+# Plot the precision parameter against fitted values
+ggplot(final_df, aes(x = fitted_values, y = phi_value)) +
+  geom_point(alpha = 0.6) +
+  labs(title = "Precision vs Fitted Values",
+       x = "Fitted Values",
+       y = "Precision (Phi)") +
+  theme_minimal()
+
+```
+
+
+Are there any transformations or interactions that might better capture the relationship between the predictors and the response??
 
 ```{r}
 model_neg <- betareg(scaled_fair_chance ~neg_combo_index, data = final_df)
@@ -89,5 +169,49 @@ summary(model_neg)
 model_pos <- betareg(scaled_fair_chance ~tot_pos_index, data = final_df)
 summary(model_pos)
 
+```
+
+```{r}
+model_less <- betareg(scaled_fair_chance ~tot_pos_index+neg_combo_index+Dim.1+Dim.2+Dim.3,data = final_df)
+summary(model_less)
+```
+**Removing California**
+
+```{r}
+no_cali_data <- clean_vars %>%
+  filter(state !="California") %>%
+  select(foreign_perc, poverty_perc, no_highschool, unemployment_perc, state_ctrl, bills_enacted, reincarceration)
+
+
+no_cali_analysis <- FAMD(no_cali_data, ncp = 3)
+
+```
+
+```{r}
+factors2 <- no_cali_analysis$ind$coord
+```
+
+
+```{r}
+pc_data2 <- as.data.frame(factors2)
+
+regression <- read.csv("regression.csv")
+
+regression <- regression %>%
+  filter(state != "California")
+
+no_cali_df <- cbind(pc_data2, regression)
+
+final_df <- no_cali_df %>%
+  select(-state) %>%
+  mutate(scaled_fair_chance = fair_chance/1000) %>%
+  select(-fair_chance)
+```
+
+
+
+```{r}
+model <- betareg(scaled_fair_chance ~., data = final_df)
+summary(model)
 ```
 

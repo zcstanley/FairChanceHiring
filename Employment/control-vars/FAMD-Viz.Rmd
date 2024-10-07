@@ -1,0 +1,54 @@
+---
+title: "FAMD Visuals"
+author: "Alayna Johnson"
+date: "2024-10-03"
+output: html_document
+---
+
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+```
+
+```{r}
+FAMD_data <- read.csv("FAMD_vars.csv")
+control_data <- read.csv("small_control.csv")
+```
+
+```{r}
+data <- control_data %>%
+  left_join(FAMD_data)
+```
+
+foreign_perc, poverty_perc, no_highschool, unemployment_perc
+state_ctrl, bills_enacted, reincarceration
+
+```{r}
+data %>%
+  ggplot(aes(x = foreign_perc, y = fair_chance))+
+  geom_point()+
+  geom_smooth(method = "lm", se = FALSE)
+
+data %>%
+  ggplot(aes(x = poverty_perc, y = fair_chance))+
+  geom_point()+
+  geom_smooth(method = "lm", se = FALSE)
+
+data %>%
+  ggplot(aes(x = no_highschool, y = fair_chance))+
+  geom_point()+
+  geom_smooth(method = "lm", se = FALSE)
+
+data %>%
+  ggplot(aes(x = unemployment_perc, y = fair_chance))+
+  geom_point()+
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+```{r}
+data %>%
+  ggplot(aes(x = state, y = fair_chance)) +
+  geom_col()
+```
+
