@@ -40,6 +40,8 @@ clean_vars <- ctrl_vars %>%
     state_ctrl = as.factor(state_ctrl),
     det_sentencing = as.factor(det_sentencing)
   )
+
+# write.csv(clean_vars, "clean_vars.csv", row.names = FALSE)
 ```
 
 

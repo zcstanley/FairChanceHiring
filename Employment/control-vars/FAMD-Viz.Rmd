@@ -49,6 +49,7 @@ data %>%
 ```{r}
 data %>%
   ggplot(aes(x = state, y = fair_chance)) +
-  geom_col()
+  geom_col()+
+  theme(axis.text.x = element_text(angle=90, hjust=1))
 ```
 
