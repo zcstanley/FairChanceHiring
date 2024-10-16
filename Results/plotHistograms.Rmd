@@ -1,0 +1,120 @@
+---
+title: "Exploratory Data Analysis - Policy and Employment"
+author: "Zofia C. Stanley"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=TRUE}
+# Load required libraries
+library(ggplot2)
+library(sf)
+library(dplyr)
+
+# Set parameter to overwrite plots
+overwrite_plots = FALSE
+
+# Read in the data
+regression_data <- read.csv("../Controls/regression.csv")
+employment_data <- read.csv("../Employment/Indeed/indeed-retail-foodservice-fairchance.csv")
+control_data <- read.csv("../Controls/control_indices.csv")
+```
+
+# Histogram of Fair Chance Job Posting Rates
+```{r histogram-fairchance, echo=TRUE}
+ggplot(employment_data, aes(x = fair_chance_rate)) +
+  geom_histogram(binwidth = 5, fill = "skyblue", color = "black") +
+  geom_vline(aes(xintercept = median(fair_chance_rate)), color = "red", linetype = "dashed", linewidth = 1) +
+  labs(
+    title = "Histogram of Fair Chance Job Posting Rates",
+    x = "Fair Chance Job Posting Rate",
+    y = "Frequency"
+  ) +
+  theme_minimal()
+```
+
+# Histogram of Positive Policy Index
+```{r histogram-tot-pos-index, echo=TRUE}
+ggplot(regression_data, aes(x = tot_pos_index)) +
+  geom_histogram(binwidth = 0.05, fill = "lightgreen", color = "black") +
+  geom_vline(aes(xintercept = median(tot_pos_index)), color = "red", linetype = "dashed", size = 1) +
+  labs(
+    title = "Histogram of Positive Policy Index",
+    x = "Positive Policy Index",
+    y = "Frequency"
+  ) +
+  theme_minimal()
+```
+
+# Histogram of Collateral Consequences Index
+```{r histogram-neg-combo-index, echo=TRUE}
+ggplot(regression_data, aes(x = neg_combo_index)) +
+  geom_histogram(binwidth = 50, fill = "orange", color = "black") +
+  geom_vline(aes(xintercept = median(neg_combo_index)), color = "red", linetype = "dashed", size = 1) +
+  labs(
+    title = "Histogram of Collateral Consequences Index",
+    x = "Collateral Consequences Index",
+    y = "Frequency"
+  ) +
+  theme_minimal()
+```
+
+
+# Map of the US with Fair Chance Job Posting Rates, Positive Policy Index, and Collateral Consequences Index
+
+```{r us-map-fairchance, echo=TRUE, warning=FALSE, message=FALSE}
+# Load US map shapefile
+us_states <- st_as_sf(maps::map("state", plot = FALSE, fill = TRUE))
+
+# Merge data with map for Fair Chance Job Posting Rates
+us_data <- data.frame(state.name = tolower(state.name), fair_chance_rate = employment_data$fair_chance_rate)
+us_map_fair_chance <- merge(us_states, us_data, by.x = "ID", by.y = "state.name")
+
+# Plot Fair Chance Job Posting Rates by State and save to PDF
+pdf("us_map_fair_chance_rate.pdf")
+ggplot(data = us_map_fair_chance) +
+  geom_sf(aes(fill = fair_chance_rate)) +
+  scale_fill_viridis_c() +
+  labs(
+    title = "Fair Chance Job Posting Rates by State",
+    fill = "Fair Chance Rate"
+  ) +
+  theme_minimal()
+dev.off()
+```
+
+```{r us-map-positive-policy, echo=TRUE, warning=FALSE, message=FALSE}
+# Merge data with map for Positive Policy Index
+us_data_pos <- data.frame(state.name = tolower(state.name), tot_pos_index = regression_data$tot_pos_index)
+us_map_pos <- merge(us_states, us_data_pos, by.x = "ID", by.y = "state.name")
+
+# Plot Positive Policy Index by State and save to PDF
+pdf("us_map_positive_policy_index.pdf")
+ggplot(data = us_map_pos) +
+  geom_sf(aes(fill = tot_pos_index)) +
+  scale_fill_viridis_c() +
+  labs(
+    title = "Positive Policy Index by State",
+    fill = "Positive Policy Index"
+  ) +
+  theme_minimal()
+dev.off()
+```
+
+```{r us-map-collateral-consequences, echo=TRUE, warning=FALSE, message=FALSE}
+# Merge data with map for Collateral Consequences Index
+us_data_neg <- data.frame(state.name = tolower(state.name), neg_combo_index = regression_data$neg_combo_index)
+us_map_neg <- merge(us_states, us_data_neg, by.x = "ID", by.y = "state.name")
+
+# Plot Collateral Consequences Index by State and save to PDF
+pdf("us_map_collateral_consequences_index.pdf")
+ggplot(data = us_map_neg) +
+  geom_sf(aes(fill = neg_combo_index)) +
+  scale_fill_viridis_c() +
+  labs(
+    title = "Weighted Collateral Consequences Index by State",
+    fill = "Weighted Collateral Consequences Index"
+  ) +
+  theme_minimal()
+dev.off()
+```

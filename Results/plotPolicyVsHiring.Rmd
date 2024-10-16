@@ -1,0 +1,232 @@
+---
+title: "Association between policy and fair chance job posting rates"
+author: "Zofia C. Stanley"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=TRUE}
+library(ggplot2)
+
+# Set parameter to overwrite plots
+overwrite_plots = FALSE
+
+# Read in the data
+regression_data <- read.csv("../Controls/regression.csv")
+employment_data <- read.csv("../Employment/Indeed/indeed-retail-foodservice-fairchance.csv")
+control_data <- read.csv("../Controls/control_indices.csv")
+```
+
+# Introduction
+This analysis aims to explore the relationship between positive policies, collateral consequences, and fair chance hiring outcomes in retail and food service industries. We use scatter plots, linear regression models, and chi-square tests to understand these relationships.
+
+# Scatter Plot: Positive Policies vs Collateral Consequences
+We begin by visualizing the relationship between positive policies and collateral consequences.
+
+```{r scatter-pos-neg, echo=TRUE}
+# Create a scatter plot of positive policy vs negative policy
+plot_pos_vs_neg <- ggplot(regression_data, aes(x = neg_combo_index, y = tot_pos_index)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(
+    title = "Scatter Plot of Positive Policies vs Collateral Consequences",
+    x = "Weighted Number of Collateral Consequences",
+    y = "Positive Policy Index"
+  ) +
+  xlim(0, 900) +
+  ylim(0, 1) +
+  theme_minimal()
+
+if (overwrite_plots) {
+  pdf("scatter_pos_neg.pdf")
+  print(plot_pos_vs_neg)
+  dev.off()
+}
+
+print(plot_pos_vs_neg)
+```
+
+**Interpretation**: The scatter plot shows the relationship between the weighted number of collateral consequences and the positive policy index. Visually, we see a strong positive association between the weighted number of collateral consequences and positive policy index. 
+
+# Scatter Plots: Fair Chance Job Posting Rate vs Policy Indices
+We next look at how fair chance job posting rates relate to both positive and negative policy indices.
+
+```{r scatter-pos-fairchance, echo=TRUE}
+# Create a scatter plot of positive policy index vs fair chance job posting rate (retail + food service)
+plot_pos_vs_fairchance_rate <- ggplot(mapping=aes(y = employment_data$fair_chance_rate, x = regression_data$tot_pos_index)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(
+    title = "Scatter Plot of Fair Chance Job Posting Rate vs Positive Policies",
+    x = "Positive Policy Index",
+    y = "Fair Chance Job Posting Rate in Retail + Food Service"
+  ) +
+  theme_minimal()
+
+if (overwrite_plots) {
+  pdf("scatter_pos_fairchance_industry.pdf")
+  print(plot_pos_vs_fairchance_rate)
+  dev.off()
+}
+print(plot_pos_vs_fairchance_rate)
+```
+
+```{r scatter-neg-fairchance, echo=TRUE}
+# Create a scatter plot of negative policy index vs fair chance job posting rate in retail and food service
+plot_neg_vs_fairchance_rate <- ggplot(mapping = aes(y = employment_data$fair_chance_rate, x = regression_data$neg_combo_index)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(
+    title = "Scatter Plot of Fair Chance Job Posting Rate vs Collateral Consequences",
+    x = "Weighted Number of Collateral Consequences",
+    y = "Fair Chance Job Posting Rate in Retail + Food Service"
+  ) +
+  theme_minimal()
+
+if (overwrite_plots) {
+  pdf("scatter_neg_fairchance_industry.pdf")
+  print(plot_neg_vs_fairchance_rate)
+  dev.off()
+}
+print(plot_neg_vs_fairchance_rate)
+```
+
+# Linear Models and Residual Analysis
+To control for macroeconomic, socioeconomic, and political factors, we ran several linear models and used residuals to further explore relationships.
+
+```{r linear-models, echo=TRUE}
+# Run a linear model for fair_chance_rate vs the three columns of control_data
+lm_fairchance_controls <- lm(employment_data$fair_chance_rate ~ control_data$macroeconomy + control_data$socioeconomics + control_data$politics)
+
+# Save the residuals of the model to employment_data$fair_chance_rate_residuals
+employment_data$fair_chance_rate_residuals <- residuals(lm_fairchance_controls)
+
+# Print the summary of the linear model
+summary(lm_fairchance_controls)
+
+# Run a linear model for tot_pos_index vs the three columns of control_data
+lm_model_tot_pos <- lm(regression_data$tot_pos_index ~ control_data$macroeconomy + control_data$socioeconomics + control_data$politics)
+
+# Save the residuals of the model to regression_data$tot_pos_index_residuals
+regression_data$tot_pos_index_residuals <- residuals(lm_model_tot_pos)
+
+# Print the summary of the linear model
+summary(lm_model_tot_pos)
+
+# Run a linear model for neg_combo_index vs the three columns of control_data
+lm_model_neg_combo <- lm(regression_data$neg_combo_index ~ control_data$macroeconomy + control_data$socioeconomics + control_data$politics)
+
+# Save the residuals of the model to regression_data$neg_combo_index_residuals
+regression_data$neg_combo_index_residuals <- residuals(lm_model_neg_combo)
+
+# Print the summary of the linear model
+summary(lm_model_neg_combo)
+```
+
+# Residualized Analysis
+We used residualized values to examine relationships after controlling for external factors.
+
+```{r scatter-residual-pos-fairchance, echo=TRUE}
+# Scatter plot of residualized positive policy vs. residualized fair chance job posting rate
+plot_residual_pos_vs_fairchance <- ggplot(data = data.frame(y = employment_data$fair_chance_rate_residuals, x = regression_data$tot_pos_index_residuals)) +
+  geom_point(aes(x = x, y = y)) +
+  geom_smooth(aes(x = x, y = y), method="lm", se=FALSE)+
+  labs(
+    title = "Scatter Plot of Residualized Positive Policy vs. Residualized Fair Chance Job Posting Rate",
+    y = "Residualized Fair Chance Job Posting Rate, Retail + Food Service",
+    x = "Residualized Positive Policy Index"
+  ) +
+  theme_minimal()
+if (overwrite_plots) {
+  pdf("scatter_residual_pos_fairchance.pdf")
+  print(plot_residual_pos_vs_fairchance)
+  dev.off()
+}
+print(plot_residual_pos_vs_fairchance)
+```
+
+```{r scatter-residual-neg-fairchance, echo=TRUE}
+# Scatter plot of residualized negative policy vs. residualized fair chance job posting rate
+plot_residual_neg_vs_fairchance <- ggplot(data = data.frame(y = employment_data$fair_chance_rate_residuals, x = regression_data$neg_combo_index_residuals)) +
+  geom_point(aes(x = x, y = y)) +
+  geom_smooth(aes(x = x, y = y), method="lm", se=FALSE)+
+  labs(
+    title = "Scatter Plot of Residualized Collateral Consequences vs. Residualized Fair Chance Job Posting Rate",
+    y = "Residualized Fair Chance Job Posting Rate, Retail + Food Service",
+    x = "Residualized Weighted Number of Collateral Consequences"
+  ) +
+  theme_minimal()
+if (overwrite_plots) {
+  pdf("scatter_residual_neg_fairchance.pdf")
+  print(plot_residual_neg_vs_fairchance)
+  dev.off()
+}
+print(plot_residual_neg_vs_fairchance)
+```
+
+
+```{r additional-linear-models, echo=TRUE}
+# Run a linear model for fair_chance_rate vs tot_pos_index, neg_combo_index, and control_data
+lm_fair_chance_rate_vs_all_factors <- lm(employment_data$fair_chance_rate ~ regression_data$tot_pos_index + regression_data$neg_combo_index + control_data$macroeconomy + control_data$socioeconomics + control_data$politics)
+
+# Print the summary of the linear model
+summary(lm_fair_chance_rate_vs_all_factors)
+
+# Run a linear model for residualized fair_chance_rate vs residualized tot_pos_index and neg_combo_index
+lm_residual_fair_chance_rate_vs_residual_policies <- lm(employment_data$fair_chance_rate_residuals ~ regression_data$tot_pos_index_residuals + regression_data$neg_combo_index_residuals)
+
+# Print the summary of the linear model
+summary(lm_residual_fair_chance_rate_vs_residual_policies)
+
+# Run a linear model for residualized tot_pos_index vs residualized neg_combo_index
+lm_residual_positive_policy_vs_residual_negative_combo <- lm(regression_data$tot_pos_index_residuals ~ regression_data$neg_combo_index_residuals)
+
+# Print the summary of the linear model
+summary(lm_residual_positive_policy_vs_residual_negative_combo)
+```
+
+
+# Chi-Square Test of Independence
+Finally, we perform chi-square tests to understand if having an above-average policy index is associated with above-average employment outcomes.
+
+```{r chi-square-test-pos, echo=TRUE}
+# Create binary variables for "above or below average" for each measure (Positive Policy Index)
+policy_above_avg_pos <- ifelse(regression_data$tot_pos_index_residuals > 0, "Above Avg", "Below Avg")
+employment_above_avg <- ifelse(employment_data$fair_chance_rate_residuals > 0, "Above Avg", "Below Avg")
+
+# Create a contingency table based on the two categorical variables (Positive Policy Index)
+contingency_table_pos <- table(policy_above_avg_pos, employment_above_avg)
+
+# Print the contingency table (Positive Policy Index)
+print(contingency_table_pos)
+
+# Run the chi-square test of independence (Positive Policy Index)
+chi_squared_result_pos <- chisq.test(contingency_table_pos)
+
+# Print the test result (Positive Policy Index)
+print(chi_squared_result_pos)
+```
+**Interpretation:** The chi-square test of independence for the positive policy index resulted in a p-value of 0.6693, which is much greater than the conventional significance level of 0.05. This means that we fail to reject the null hypothesis, suggesting that there is no statistically significant association between having a positive policy index above average and having a better-than-average employment outcome. In other words, there is no evidence to indicate that states with an above-average positive policy index are more likely to have above-average fair chance job posting rates.
+
+```{r chi-square-test-neg, echo=TRUE}
+# Create binary variables for "above or below average" for each measure (Positive Policy Index)
+policy_above_avg_neg <- ifelse(regression_data$neg_combo_index_residuals > 0, "Above Avg", "Below Avg")
+employment_above_avg <- ifelse(employment_data$fair_chance_rate_residuals > 0, "Above Avg", "Below Avg")
+
+# Create a contingency table based on the two categorical variables (Positive Policy Index)
+contingency_table_neg <- table(policy_above_avg_neg, employment_above_avg)
+
+# Print the contingency table (Positive Policy Index)
+print(contingency_table_neg)
+
+# Run the chi-square test of independence (Positive Policy Index)
+chi_squared_result_neg <- chisq.test(contingency_table_neg)
+
+# Print the test result (Positive Policy Index)
+print(chi_squared_result_neg)
+```
+
+**Interpretation:** The chi-square test of independence for the negative combo index yielded a p-value of 0.03086, which is less than the significance level of 0.05. Therefore, we reject the null hypothesis, indicating that there is a statistically significant association between the negative combo policy index being above average and the employment outcome. Specifically, there seems to be an association that suggests states with an above-average negative combo index are more likely to have a below-average employment outcome.
+
+# Conclusion
+This report provides an exploratory analysis of the relationship between fair chance hiring policies and employment outcomes. We used visualizations, linear regression models, and chi-square tests to assess these relationships, which can provide valuable insights for policy evaluation and improvement.
