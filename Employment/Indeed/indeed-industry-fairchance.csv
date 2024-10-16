@@ -1,0 +1,251 @@
+state,industry,totalIndustry,fairChance,propIndustry
+Alabama,retail,700,20,2.86
+Alabama,food service,1000,50,5
+Alabama,construction,1000,NA,#VALUE!
+Alabama,waste management,7,6,85.71
+Alabama,home health,300,NA,#VALUE!
+Alaska,retail,200,6,3
+Alaska,food service,400,25,6.25
+Alaska,construction,500,NA,#VALUE!
+Alaska,waste management,9,8,88.89
+Alaska,home health,75,NA,#VALUE!
+Arizona,retail,1000,25,2.5
+Arizona,food service,2000,50,2.5
+Arizona,construction,3000,NA,#VALUE!
+Arizona,waste management,24,0,0
+Arizona,home health,600,NA,#VALUE!
+Arkansas,retail,600,25,4.17
+Arkansas,food service,700,25,3.57
+Arkansas,construction,800,NA,#VALUE!
+Arkansas,waste management,5,NA,#VALUE!
+Arkansas,home health,100,NA,#VALUE!
+California,retail,5000,200,4
+California,food service,9000,300,3.33
+California,construction,9000,NA,#VALUE!
+California,waste management,50,1,2
+California,home health,9000,NA,#VALUE!
+Colorado,retail,2000,50,2.5
+Colorado,food service,5000,75,1.5
+Colorado,construction,4000,NA,#VALUE!
+Colorado,waste management,25,22,88
+Colorado,home health,1000,NA,#VALUE!
+Connecticut,retail,1000,20,2
+Connecticut,food service,2000,50,2.5
+Connecticut,construction,1000,NA,#VALUE!
+Connecticut,waste management,4,1,25
+Connecticut,home health,1000,NA,#VALUE!
+Delaware,retail,300,12,4
+Delaware,food service,600,13,2.17
+Delaware,construction,300,NA,#VALUE!
+Delaware,waste management,9,NA,#VALUE!
+Delaware,home health,200,NA,#VALUE!
+Florida,retail,5000,75,1.5
+Florida,food service,8000,100,1.25
+Florida,construction,11000,NA,#VALUE!
+Florida,waste management,25,NA,#VALUE!
+Florida,home health,5000,NA,#VALUE!
+Georgia,retail,2000,50,2.5
+Georgia,food service,4000,100,2.5
+Georgia,construction,4000,NA,#VALUE!
+Georgia,waste management,18,1,5.56
+Georgia,home health,900,NA,#VALUE!
+Hawaii,retail,1000,23,2.3
+Hawaii,food service,2000,50,2.5
+Hawaii,construction,600,NA,#VALUE!
+Hawaii,waste management,9,10,111.11
+Hawaii,home health,400,NA,#VALUE!
+Idaho,retail,600,25,4.17
+Idaho,food service,1000,50,5
+Idaho,construction,1000,NA,#VALUE!
+Idaho,waste management,12,1,8.33
+Idaho,home health,400,NA,#VALUE!
+Illinois,retail,3000,50,1.67
+Illinois,food service,7000,100,1.43
+Illinois,construction,3000,NA,#VALUE!
+Illinois,waste management,25,1,4
+Illinois,home health,2000,NA,#VALUE!
+Indiana,retail,2000,25,1.25
+Indiana,food service,4000,50,1.25
+Indiana,construction,3000,NA,#VALUE!
+Indiana,waste management,50,1,2
+Indiana,home health,1000,NA,#VALUE!
+Iowa,retail,1000,25,2.5
+Iowa,food service,1000,50,5
+Iowa,construction,1000,NA,#VALUE!
+Iowa,waste management,6,1,16.67
+Iowa,home health,500,NA,#VALUE!
+Kansas,retail,500,16,3.2
+Kansas,food service,1000,50,5
+Kansas,construction,1000,NA,#VALUE!
+Kansas,waste management,13,18,138.46
+Kansas,home health,200,NA,#VALUE!
+Kentucky,retail,500,25,5
+Kentucky,food service,1000,50,5
+Kentucky,construction,1000,NA,#VALUE!
+Kentucky,waste management,8,1,12.5
+Kentucky,home health,200,NA,#VALUE!
+Louisiana,retail,500,8,1.6
+Louisiana,food service,1000,25,2.5
+Louisiana,construction,1000,NA,#VALUE!
+Louisiana,waste management,13,1,7.69
+Louisiana,home health,100,NA,#VALUE!
+Maine,retail,400,25,6.25
+Maine,food service,900,50,5.56
+Maine,construction,500,NA,#VALUE!
+Maine,waste management,6,1,16.67
+Maine,home health,100,NA,#VALUE!
+Maryland,retail,900,25,2.78
+Maryland,food service,2000,25,1.25
+Maryland,construction,2000,NA,#VALUE!
+Maryland,waste management,25,25,100
+Maryland,home health,500,NA,#VALUE!
+Massachusetts,retail,3000,50,1.67
+Massachusetts,food service,6000,75,1.25
+Massachusetts,construction,3000,NA,#VALUE!
+Massachusetts,waste management,18,NA,#VALUE!
+Massachusetts,home health,3000,NA,#VALUE!
+Michigan,retail,3000,50,1.67
+Michigan,food service,9000,100,1.11
+Michigan,construction,3000,NA,#VALUE!
+Michigan,waste management,23,2,8.7
+Michigan,home health,2000,NA,#VALUE!
+Minnesota,retail,2000,50,2.5
+Minnesota,food service,4000,75,1.88
+Minnesota,construction,2000,NA,#VALUE!
+Minnesota,waste management,25,16,64
+Minnesota,home health,2000,NA,#VALUE!
+Mississippi,retail,300,7,2.33
+Mississippi,food service,1000,18,1.8
+Mississippi,construction,700,NA,#VALUE!
+Mississippi,waste management,2,NA,#VALUE!
+Mississippi,home health,300,NA,#VALUE!
+Missouri,retail,2000,25,1.25
+Missouri,food service,4000,75,1.88
+Missouri,construction,3000,NA,#VALUE!
+Missouri,waste management,200,12,6
+Missouri,home health,500,NA,#VALUE!
+Montana,retail,500,25,5
+Montana,food service,1000,50,5
+Montana,construction,600,NA,#VALUE!
+Montana,waste management,6,NA,#VALUE!
+Montana,home health,100,NA,#VALUE!
+Nebraska,retail,500,25,5
+Nebraska,food service,1000,25,2.5
+Nebraska,construction,1000,NA,#VALUE!
+Nebraska,waste management,11,7,63.64
+Nebraska,home health,300,NA,#VALUE!
+Nevada,retail,500,16,3.2
+Nevada,food service,1000,25,2.5
+Nevada,construction,1000,NA,#VALUE!
+Nevada,waste management,10,NA,#VALUE!
+Nevada,home health,200,NA,#VALUE!
+New Hampshire,retail,600,20,3.33
+New Hampshire,food service,1000,25,2.5
+New Hampshire,construction,700,NA,#VALUE!
+New Hampshire,waste management,18,1,5.56
+New Hampshire,home health,200,NA,#VALUE!
+New Jersey,retail,1000,25,2.5
+New Jersey,food service,3000,50,1.67
+New Jersey,construction,1000,NA,#VALUE!
+New Jersey,waste management,19,1,5.26
+New Jersey,home health,1000,NA,#VALUE!
+New Mexico,retail,300,13,4.33
+New Mexico,food service,700,19,2.71
+New Mexico,construction,800,NA,#VALUE!
+New Mexico,waste management,12,2,16.67
+New Mexico,home health,200,NA,#VALUE!
+New York,retail,3000,75,2.5
+New York,food service,6000,200,3.33
+New York,construction,4000,NA,#VALUE!
+New York,waste management,25,1,4
+New York,home health,2000,NA,#VALUE!
+North Carolina,retail,2000,25,1.25
+North Carolina,food service,5000,100,2
+North Carolina,construction,4000,NA,#VALUE!
+North Carolina,waste management,50,25,50
+North Carolina,home health,800,NA,#VALUE!
+North Dakota,retail,300,18,6
+North Dakota,food service,600,25,4.17
+North Dakota,construction,800,NA,#VALUE!
+North Dakota,waste management,4,NA,#VALUE!
+North Dakota,home health,100,NA,#VALUE!
+Ohio,retail,2000,50,2.5
+Ohio,food service,5000,200,4
+Ohio,construction,6000,NA,#VALUE!
+Ohio,waste management,21,NA,#VALUE!
+Ohio,home health,3000,NA,#VALUE!
+Oklahoma,retail,800,21,2.63
+Oklahoma,food service,2000,25,1.25
+Oklahoma,construction,1000,NA,#VALUE!
+Oklahoma,waste management,8,NA,#VALUE!
+Oklahoma,home health,900,NA,#VALUE!
+Oregon,retail,1000,25,2.5
+Oregon,food service,2000,50,2.5
+Oregon,construction,2000,NA,#VALUE!
+Oregon,waste management,19,17,89.47
+Oregon,home health,1000,NA,#VALUE!
+Pennsylvania,retail,5000,75,1.5
+Pennsylvania,food service,10000,200,2
+Pennsylvania,construction,6000,NA,#VALUE!
+Pennsylvania,waste management,25,1,4
+Pennsylvania,home health,8000,NA,#VALUE!
+Rhode Island,retail,300,9,3
+Rhode Island,food service,1000,24,2.4
+Rhode Island,construction,400,NA,#VALUE!
+Rhode Island,waste management,6,6,100
+Rhode Island,home health,200,NA,#VALUE!
+South Carolina,retail,1000,25,2.5
+South Carolina,food service,2000,50,2.5
+South Carolina,construction,2000,NA,#VALUE!
+South Carolina,waste management,17,16,94.12
+South Carolina,home health,500,NA,#VALUE!
+South Dakota,retail,300,18,6
+South Dakota,food service,700,17,2.43
+South Dakota,construction,800,NA,#VALUE!
+South Dakota,waste management,1,2,200
+South Dakota,home health,75,NA,#VALUE!
+Tennessee,retail,1000,25,2.5
+Tennessee,food service,3000,100,3.33
+Tennessee,construction,2000,NA,#VALUE!
+Tennessee,waste management,25,25,100
+Tennessee,home health,500,NA,#VALUE!
+Texas,retail,4000,75,1.88
+Texas,food service,9000,200,2.22
+Texas,construction,11000,NA,#VALUE!
+Texas,waste management,50,6,12
+Texas,home health,2000,NA,#VALUE!
+Utah,retail,500,12,2.4
+Utah,food service,1000,23,2.3
+Utah,construction,1000,NA,#VALUE!
+Utah,waste management,13,8,61.54
+Utah,home health,200,NA,#VALUE!
+Vermont,retail,300,23,7.67
+Vermont,food service,600,25,4.17
+Vermont,construction,300,NA,#VALUE!
+Vermont,waste management,1,NA,#VALUE!
+Vermont,home health,100,NA,#VALUE!
+Virginia,retail,1000,50,5
+Virginia,food service,4000,100,2.5
+Virginia,construction,4000,NA,#VALUE!
+Virginia,waste management,25,1,4
+Virginia,home health,1000,NA,#VALUE!
+Washington,retail,1000,50,5
+Washington,food service,2000,75,3.75
+Washington,construction,2000,NA,#VALUE!
+Washington,waste management,25,14,56
+Washington,home health,600,NA,#VALUE!
+West Virginia,retail,200,15,7.5
+West Virginia,food service,700,25,3.57
+West Virginia,construction,400,NA,#VALUE!
+West Virginia,waste management,8,2,25
+West Virginia,home health,100,NA,#VALUE!
+Wisconsin,retail,1000,75,7.5
+Wisconsin,food service,3000,100,3.33
+Wisconsin,construction,2000,NA,#VALUE!
+Wisconsin,waste management,25,1,4
+Wisconsin,home health,500,NA,#VALUE!
+Wyoming,retail,100,9,9
+Wyoming,food service,400,17,4.25
+Wyoming,construction,400,NA,#VALUE!
+Wyoming,waste management,0,NA,#VALUE!
+Wyoming,home health,50,NA,#VALUE!
