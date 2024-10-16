@@ -21,35 +21,89 @@ data <- control_data %>%
   left_join(FAMD_data)
 ```
 
+
+```{r}
+data %>%
+  ggplot(aes(x = state, y = fair_chance)) +
+  geom_col(fill = "gray")+
+  theme_minimal()+
+  theme(axis.text.x = element_text(angle=90, hjust=1))+
+  geom_text(aes(label = fair_chance, y = fair_chance + 0.05), position = position_dodge(0.9), vjust = 0, size = 2.2)+
+  labs(x = "State", y = "Fair Chance Jobs per 1,000 Job Postings", title = "Fair Chance Job Posting Rate in Each State")
+
+data %>%
+  ggplot(aes(x = fair_chance)) +
+  geom_histogram(fill = "gray")+
+  theme_minimal()
+```
+
+
 foreign_perc, poverty_perc, no_highschool, unemployment_perc
 state_ctrl, bills_enacted, reincarceration
+
+
+```{r, message=FALSE}
+data %>%
+  ggplot(aes(x = foreign_perc)) +
+  geom_histogram(fill = "gray")+
+  theme_minimal()
+
+data %>%
+  ggplot(aes(x = poverty_perc)) +
+  geom_histogram(fill = "gray")+
+  theme_minimal()
+
+data %>%
+  ggplot(aes(x = no_highschool)) +
+  geom_histogram(fill = "gray")+
+  theme_minimal()
+
+data %>%
+  ggplot(aes(x = unemployment_perc)) +
+  geom_histogram(fill = "gray")+
+  theme_minimal()
+
+data %>%
+  ggplot(aes(x = state_ctrl)) +
+  geom_histogram(fill = "gray")+
+  theme_minimal()
+
+data %>%
+  ggplot(aes(x = bills_enacted)) +
+  geom_histogram(fill = "gray")+
+  theme_minimal()
+
+data %>%
+  ggplot(aes(x = reincarceration)) +
+  geom_histogram(fill = "gray")+
+  theme_minimal()
+```
+
 
 ```{r}
 data %>%
   ggplot(aes(x = foreign_perc, y = fair_chance))+
   geom_point()+
-  geom_smooth(method = "lm", se = FALSE)
+  geom_smooth(method = "lm", se = FALSE)+
+  theme_minimal()
 
 data %>%
   ggplot(aes(x = poverty_perc, y = fair_chance))+
   geom_point()+
-  geom_smooth(method = "lm", se = FALSE)
+  geom_smooth(method = "lm", se = FALSE)+
+  theme_minimal()
 
 data %>%
   ggplot(aes(x = no_highschool, y = fair_chance))+
   geom_point()+
-  geom_smooth(method = "lm", se = FALSE)
+  geom_smooth(method = "lm", se = FALSE)+
+  theme_minimal()
 
 data %>%
   ggplot(aes(x = unemployment_perc, y = fair_chance))+
   geom_point()+
-  geom_smooth(method = "lm", se = FALSE)
+  geom_smooth(method = "lm", se = FALSE)+
+  theme_minimal()
 ```
 
-```{r}
-data %>%
-  ggplot(aes(x = state, y = fair_chance)) +
-  geom_col()+
-  theme(axis.text.x = element_text(angle=90, hjust=1))
-```
 
