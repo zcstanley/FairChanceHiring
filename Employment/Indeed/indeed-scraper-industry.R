@@ -4,19 +4,21 @@ library(RSelenium)
 library(rvest)
 
 # Define List of States
-states <- c("Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado",
-            "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho",
-            "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana",
-            "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota",
-            "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada",
-            "New Hampshire", "New Jersey", "New Mexico", "New York",
-            "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon",
-            "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota",
-            "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington",
-            "West Virginia", "Wisconsin", "Wyoming")
+# states <- c("Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado",
+#             "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho",
+#             "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana",
+#             "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota",
+#             "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada",
+#             "New Hampshire", "New Jersey", "New Mexico", "New York",
+#             "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon",
+#             "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota",
+#             "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington",
+#             "West Virginia", "Wisconsin", "Wyoming")
+
+states <- c("Alamaba", "Alaska", "Arizona")
 
 # Define List of Industries
-industries <- c("retail", "food service", "construction", "waste management", "home health")
+industries <- c("retail", "food service", "construction", "waste management", "home health", "manufacturing", "hospitality")
 
 # Define multiple user agent strings, good to avoid scraping detection
 user_agents <- c(
@@ -32,56 +34,55 @@ remDr <- rD[["client"]]
 # Initialize data frame
 job_data <- data.frame(State = character(), Industry = character(), TotalJobs = numeric(), stringsAsFactors = FALSE)
 
-# Scrape Data for Each State and Industry
+# Scrape Data for Each State and Industry (with and without Fair Chance filter)
 for (state in states) {
   for (industry in industries) {
     # Rotate user agent
     user_agent <- sample(user_agents, 1)
     remDr$executeScript("Object.defineProperty(navigator, 'userAgent', {get: function () { return arguments[0]; }});", list(user_agent))
     
-    # Define the base URL
-    url <- paste0("https://www.indeed.com/jobs?q=", industry, "&l=", gsub(" ", "+", state))
+    # Define the base URL (without the Fair Chance filter)
+    url_base <- paste0("https://www.indeed.com/jobs?q=", industry, "&l=", gsub(" ", "+", state))
     
-    # Navigate to the URL
-    remDr$navigate(url)
+    # Define the URL with the Fair Chance filter
+    url_fair_chance <- paste0(url_base, "&sc=0kf%3Aattr%28Q5R8A%29%3B&vjk=")
     
-    Sys.sleep(sample(20:30, 1))  # Increase the random delay to avoid detection
-    
-    # Log current state and industry
-    print(paste("Scraping data for", industry, "in", state))
-    
-    # Scrape the total number of job postings
-    totalJobs <- tryCatch({
-      page_source <- remDr$getPageSource() %>% .[[1]] %>% read_html()
+    # Define a function to scrape data from a URL
+    scrape_jobs <- function(url) {
+      remDr$navigate(url)
+      Sys.sleep(sample(20:30, 1))  # Random delay to avoid detection
       
-      # Log if page source is retrieved successfully
-      if (!is.null(page_source)) {
-        print(paste("Page source retrieved for", industry, "in", state))
-      }
-      
-      total_jobs_text <- page_source %>%
-        html_elements(".jobsearch-JobCountAndSortPane-jobCount span") %>%
-        html_text()
-      
-      # Log if the selector found any elements
-      if (length(total_jobs_text) > 0) {
-        print(paste("Job count element found for", industry, "in", state))
-        total_jobs_text %>%
-          {.[1]} %>%
-          str_extract("[0-9,]+") %>%
-          str_replace_all(",", "") %>%
-          as.numeric()
-      } else {
-        print(paste("No job count element found for", industry, "in", state))
-        NA
-      }
-    }, error = function(e) {
-      print(paste("Error occurred for", industry, "in", state, ":", e$message))
-      NA  # Return NA if there's an error
-    })
+      totalJobs <- tryCatch({
+        page_source <- remDr$getPageSource() %>% .[[1]] %>% read_html()
+        total_jobs_text <- page_source %>%
+          html_elements(".jobsearch-JobCountAndSortPane-jobCount span") %>%
+          html_text()
+        if (length(total_jobs_text) > 0) {
+          total_jobs_text %>%
+            {.[1]} %>%
+            str_extract("[0-9,]+") %>%
+            str_replace_all(",", "") %>%
+            as.numeric()
+        } else {
+          NA
+        }
+      }, error = function(e) {
+        NA  # Return NA if there's an error
+      })
+      return(totalJobs)
+    }
+    
+    # Scrape data without the Fair Chance filter
+    totalJobs_no_filter <- scrape_jobs(url_base)
+    
+    # Scrape data with the Fair Chance filter
+    totalJobs_fair_chance <- scrape_jobs(url_fair_chance)
     
     # Append to the data frame
-    job_data <- rbind(job_data, data.frame(State = state, Industry = industry, TotalJobs = totalJobs, stringsAsFactors = FALSE))
+    job_data <- rbind(job_data, data.frame(State = state, Industry = industry, 
+                                           TotalJobs_NoFilter = totalJobs_no_filter, 
+                                           TotalJobs_FairChance = totalJobs_fair_chance, 
+                                           stringsAsFactors = FALSE))
     
     # Optionally restart Selenium session after every few states to avoid detection
     if (which(states == state) %% 5 == 0) {
@@ -93,6 +94,7 @@ for (state in states) {
     }
   }
 }
+
 
 # Closing session after finishing the scrape
 tryCatch({ 
