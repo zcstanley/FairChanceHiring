@@ -16,6 +16,7 @@ for (i in cols_w_employment) {
   employment_z_scores[[paste0(names(controls)[i], "_z")]] <- scale(controls[[i]], center = TRUE, scale = TRUE)
 }
 
+# Create employment z-scores csv
 write.csv(employment_z_scores, "employment_z_scores.csv", row.names = FALSE)
 
 # Calculate z-scores for employment_perc and unemployment_perc
