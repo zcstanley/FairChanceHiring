@@ -1,0 +1,19 @@
+"State","Industry","TotalJobs_NoFilter","TotalJobs_FairChance"
+"West Virginia","retail",200,11
+"West Virginia","food service",1000,25
+"West Virginia","construction",400,25
+"West Virginia","home health",100,NA
+"West Virginia","manufacturing",300,16
+"West Virginia","hospitality",400,18
+"Wisconsin","retail",2000,50
+"Wisconsin","food service",4000,100
+"Wisconsin","construction",3000,75
+"Wisconsin","home health",900,17
+"Wisconsin","manufacturing",6000,100
+"Wisconsin","hospitality",2000,50
+"Wyoming","retail",100,8
+"Wyoming","food service",300,14
+"Wyoming","construction",400,25
+"Wyoming","home health",50,1
+"Wyoming","manufacturing",200,16
+"Wyoming","hospitality",200,9
