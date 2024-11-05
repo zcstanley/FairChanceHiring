@@ -3,7 +3,6 @@
 controls <- read.csv("clean_vars.csv")
 regression <- read.csv("regression.csv")
 education <- read.csv("education.csv")
-industry <- read.csv("wide_complete_industry.csv")
 regression$licensing_burden <- as.numeric(gsub(",", "", regression$licensing_burden))
 
 # Calculate z-scores for employment types
@@ -34,14 +33,6 @@ controls$college_deg_z <- scale(education$BSDegreeOrHigher)
 controls$bills_introduced_z <- scale(controls$bills_introduced)
 controls$bills_enacted_z <- scale(controls$bills_enacted)
 regression$avg_license_cost_z <- scale(regression$licensing_burden)
-
-# Calculate z-scores for each industries average fair chance jobs per 1000 postings
-controls$avg_retail_z <- scale(controls$avg_retail)
-controls$avg_food_service_z <- scale(controls$avg_food_service)
-controls$avg_manufacturing_z <- scale(controls$avg_manufacturing)
-controls$avg_hospitality_z <- scale(controls$avg_hospitality)
-controls$avg_home_health_z <- scale(controls$avg_home_health)
-controls$avg_construction_z <- scale(controls$avg_construction)
 
 
 # Calculate diversity index using Shannon Entropy, sum(-p*log(p))
