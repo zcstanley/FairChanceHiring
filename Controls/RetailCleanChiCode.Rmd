@@ -1,5 +1,5 @@
 ---
-title: "CleanCode"
+title: "RetailCleanCode"
 author: "Jocelyn Bliven"
 date: "2024-11-05"
 output: pdf_document
@@ -116,7 +116,7 @@ plot_residual_neg_vs_fairchance <- ggplot(data = data.frame(y = employment_data$
   geom_point(aes(x = x, y = y)) +
   geom_smooth(aes(x = x, y = y), method="lm", se=FALSE)+
   labs(
-    title = "Scatter Plot of Residualized Positive Policy vs. Residualized Fair Chance Job Posting Rate",
+    title = "Scatter Plot of Residualized Negative Policy vs. Residualized Fair Chance Job Posting Rate",
     y = "Residualized Fair Chance Job Posting Rate, Retail + Food Service",
     x = "Residualized Postitve Index"
   ) +

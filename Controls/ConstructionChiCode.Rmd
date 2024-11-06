@@ -1,5 +1,5 @@
 ---
-title: "CleanCode"
+title: "ConstructionCleanCode"
 author: "Jocelyn Bliven"
 date: "2024-11-05"
 output: pdf_document
@@ -22,21 +22,21 @@ indiv_pol_data <- indiv_pol_data[1:50, ]
 
 ```
 
-# Linear Models and Residual Analysis of RETAIL
+# Linear Models and Residual Analysis of CONSTRUCTION
 To control for macroeconomic, socioeconomic, and political factors, we ran several linear models and used residuals to further explore relationships.
 
 ```{r linear-models, echo=TRUE}
 # Run a linear model for fair_chance_rate vs the 5 types of control_data
-lm_fairchance_controls <- lm(employment_data$avg_retail ~ control_data$macroeconomy + control_data$socioeconomics + control_data$politics + control_data$diversity + employ_z_scores$rtrade_employment_z)
+lm_fairchance_controls <- lm(employment_data$avg_construction ~ control_data$macroeconomy + control_data$socioeconomics + control_data$politics + control_data$diversity + employ_z_scores$construct_employment_z)
 
 # Save the residuals of the model to employment_data$fair_chance_rate_residuals
-employment_data$retail_residuals <- residuals(lm_fairchance_controls)
+employment_data$construction_residuals <- residuals(lm_fairchance_controls)
 
 # Print the summary of the linear model
 summary(lm_fairchance_controls)
 
 # Run a linear model for the total positive index vs the 5 types of control_data
-lm_model_pos_index <- lm(pol_indices$tot_pos_index ~ control_data$macroeconomy + control_data$socioeconomics + control_data$politics + control_data$diversity + employ_z_scores$rtrade_employment_z)
+lm_model_pos_index <- lm(pol_indices$tot_pos_index ~ control_data$macroeconomy + control_data$socioeconomics + control_data$politics + control_data$diversity + employ_z_scores$construct_employment_z)
 
 # Save the residuals of the model to regression_data$tot_pos_index_residuals
 pol_indices$pos_index_residuals <- residuals(lm_model_pos_index)
@@ -50,12 +50,12 @@ We used residualized values to examine relationships after controlling for exter
 
 ```{r scatter-residual-pos-fairchance, echo=TRUE}
 # Scatter plot of residualized positive policy vs. residualized fair chance job posting rate
-plot_residual_pos_vs_fairchance <- ggplot(data = data.frame(y = employment_data$retail_residuals, x = pol_indices$pos_index_residuals)) +
+plot_residual_pos_vs_fairchance <- ggplot(data = data.frame(y = employment_data$construction_residuals, x = pol_indices$pos_index_residuals)) +
   geom_point(aes(x = x, y = y)) +
   geom_smooth(aes(x = x, y = y), method="lm", se=FALSE)+
   labs(
     title = "Scatter Plot of Residualized Positive Policy vs. Residualized Fair Chance Job Posting Rate",
-    y = "Residualized Fair Chance Job Posting Rate, Retail + Food Service",
+    y = "Residualized Fair Chance Job Posting Rate + Construction",
     x = "Residualized Postitve Index"
   ) +
   theme_minimal()
@@ -73,7 +73,7 @@ Finally, we perform chi-square tests to understand if having an above-average po
 ```{r chi-square-test-pos, echo=TRUE}
 # Create binary variables for "above or below average" for each measure (Positive Policy Index)
 policy_above_avg_pos <- ifelse(pol_indices$pos_index_residuals > 0, "Above Avg", "Below Avg")
-employment_above_avg <- ifelse(employment_data$retail_residuals > 0, "Above Avg", "Below Avg")
+employment_above_avg <- ifelse(employment_data$construction_residuals > 0, "Above Avg", "Below Avg")
 
 # Create a contingency table based on the two categorical variables (Positive Policy Index)
 contingency_table_pos <- table(policy_above_avg_pos, employment_above_avg)
@@ -91,13 +91,13 @@ print(chi_squared_result_pos)
 
 # Repeat All for Negative policy
 
-# Linear Models and Residual Analysis of RETAIL
+# Linear Models and Residual Analysis of CONSTRUCTION
 To control for macroeconomic, socioeconomic, and political factors, we ran several linear models and used residuals to further explore relationships.
 
 ```{r linear-models, echo=TRUE}
 
 # Run a linear model for the total positive index vs the 5 types of control_data
-lm_model_neg_index <- lm(pol_indices$neg_combo_index ~ control_data$macroeconomy + control_data$socioeconomics + control_data$politics + control_data$diversity + employ_z_scores$rtrade_employment_z)
+lm_model_neg_index <- lm(pol_indices$neg_combo_index ~ control_data$macroeconomy + control_data$socioeconomics + control_data$politics + control_data$diversity + employ_z_scores$construct_employment_z)
 
 # Save the residuals of the model to regression_data$tot_pos_index_residuals
 pol_indices$neg_index_residuals <- residuals(lm_model_neg_index)
@@ -112,12 +112,12 @@ We used residualized values to examine relationships after controlling for exter
 
 ```{r scatter-residual-pos-fairchance, echo=TRUE}
 # Scatter plot of residualized positive policy vs. residualized fair chance job posting rate
-plot_residual_neg_vs_fairchance <- ggplot(data = data.frame(y = employment_data$retail_residuals, x = pol_indices$neg_index_residuals)) +
+plot_residual_neg_vs_fairchance <- ggplot(data = data.frame(y = employment_data$construction_residuals, x = pol_indices$neg_index_residuals)) +
   geom_point(aes(x = x, y = y)) +
   geom_smooth(aes(x = x, y = y), method="lm", se=FALSE)+
   labs(
-    title = "Scatter Plot of Residualized Positive Policy vs. Residualized Fair Chance Job Posting Rate",
-    y = "Residualized Fair Chance Job Posting Rate, Retail + Food Service",
+    title = "Scatter Plot of Residualized Negative Policy vs. Residualized Fair Chance Job Posting Rate",
+    y = "Residualized Fair Chance Job Posting Rate + Construction",
     x = "Residualized Postitve Index"
   ) +
   theme_minimal()
@@ -135,7 +135,7 @@ Finally, we perform chi-square tests to understand if having an above-average po
 ```{r chi-square-test-pos, echo=TRUE}
 # Create binary variables for "above or below average" for each measure (Positive Policy Index)
 policy_above_avg_neg <- ifelse(pol_indices$neg_index_residuals > 0, "Above Avg", "Below Avg")
-employment_above_avg <- ifelse(employment_data$retail_residuals > 0, "Above Avg", "Below Avg")
+employment_above_avg <- ifelse(employment_data$construction_residuals > 0, "Above Avg", "Below Avg")
 
 # Create a contingency table based on the two categorical variables (Positive Policy Index)
 contingency_table_neg <- table(policy_above_avg_neg, employment_above_avg)
