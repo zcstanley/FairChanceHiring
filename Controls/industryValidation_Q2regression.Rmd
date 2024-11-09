@@ -1,0 +1,255 @@
+---
+title: "Q2: Industry Validation Regression Models"
+author: "Alayna Johnson"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=TRUE}
+library(ggplot2)
+
+# Set parameter to overwrite plots
+overwrite_plots = FALSE
+
+# Read in the data
+regression_data <- read.csv("regression.csv")
+
+employment_data <- read.csv("../Employment/Indeed/indeed-retail-foodservice-fairchance.csv")
+new_employment_data <- read.csv("wide_complete_industry.csv")
+
+control_data <- read.csv("control_indices.csv")
+employment_control_data <- read.csv("employment_z_scores.csv")
+pos_pol_data <- read.csv("../Policy/PositiveIndex.csv")
+pos_pol_data <- pos_pol_data[1:50, ]
+```
+
+
+# Introduction
+
+This analysis aims to explore the relationship between different positive policies, and fair chance hiring outcomes in retail, food service, manufacturing, home health, construction, and hospitality industries. We use linear regression models in this validation.
+
+## Linear Models
+
+To control for macroeconomic, socioeconomic, and political factors, we ran several linear models to explore relationships.
+
+### Original Analysis on Fair Chance in Retail and Food Service
+
+```{r linear-models, echo=TRUE}
+# Run a linear model for fair_chance_rate vs the three columns of control_data
+lm_fairchance_controls <- lm(employment_data$fair_chance_rate ~ control_data$macroeconomy + control_data$socioeconomics + control_data$politics + control_data$diversity)
+
+# Save the residuals of the model to employment_data$fair_chance_rate_residuals
+employment_data$fair_chance_rate_residuals <- residuals(lm_fairchance_controls)
+
+# Print the summary of the linear model
+summary(lm_fairchance_controls)
+
+# Run a linear model for btb_index vs the three columns of control_data
+lm_model_btb <- lm(pos_pol_data$Ban.the.Box.Index ~ control_data$macroeconomy + control_data$socioeconomics + control_data$politics + control_data$diversity)
+
+# Save the residuals of the model to regression_data$tot_pos_index_residuals
+regression_data$btb_index_residuals <- residuals(lm_model_btb)
+
+# Print the summary of the linear model
+summary(lm_model_btb)
+
+# Run a linear model for recordclearing vs the three columns of control_data
+lm_model_rec_clear <- lm(pos_pol_data$Record.Clearing.Index ~ control_data$macroeconomy + control_data$socioeconomics + control_data$politics  + control_data$diversity)
+
+# Save the residuals of the model to regression_data$neg_combo_index_residuals
+regression_data$rec_clear_index_residuals <- residuals(lm_model_rec_clear)
+
+# Print the summary of the linear model
+summary(lm_model_rec_clear)
+```
+
+### New Industry Validation Analysis
+
+**Retail Regression**
+
+```{r retail-validation}
+# Run a linear model for avg_retail vs all control_data
+lm_retail_controls <- lm(new_employment_data$avg_retail ~ control_data$macroeconomy + control_data$socioeconomics + control_data$politics + control_data$diversity + employment_control_data$rtrade_employment_z)
+
+# Save the residuals of the model to employment_data$fair_chance_rate_residuals
+retail_residuals<- residuals(lm_retail_controls)
+
+# Print the summary of the linear model
+summary(lm_retail_controls)
+
+# Run a linear model for btb_index vs the three columns of control_data
+lm_retail_btb <- lm(pos_pol_data$Ban.the.Box.Index ~ control_data$macroeconomy + control_data$socioeconomics + control_data$politics + control_data$diversity + employment_control_data$rtrade_employment_z)
+
+# Save the residuals of the model
+btb_retail_residuals <- residuals(lm_retail_btb)
+
+# Print the summary of the linear model
+summary(lm_retail_btb)
+
+# Run a linear model for recordclearing vs the three columns of control_data
+lm_retail_rec_clear <- lm(pos_pol_data$Record.Clearing.Index ~ control_data$macroeconomy + control_data$socioeconomics + control_data$politics  + control_data$diversity + employment_control_data$rtrade_employment_z)
+
+# Save the residuals of the model to regression_data$neg_combo_index_residuals
+rec_clear_retial_residuals <- residuals(lm_model_rec_clear)
+
+# Print the summary of the linear model
+summary(lm_retail_rec_clear)
+```
+**Food Service Regression**
+
+```{r food-service-validation}
+# Run a linear model for avg_food_service vs all control_data
+lm_food_service_controls <- lm(new_employment_data$avg_food_service ~ control_data$macroeconomy + control_data$socioeconomics + control_data$politics + control_data$diversity + employment_control_data$arts_employment_z)
+
+# Save the residuals of the model to employment_data$fair_chance_rate_residuals
+food_service_residuals <- residuals(lm_food_service_controls)
+
+# Print the summary of the linear model
+summary(lm_food_service_controls)
+
+# Run a linear model for btb_index vs the three columns of control_data
+lm_food_service_btb <- lm(pos_pol_data$Ban.the.Box.Index ~ control_data$macroeconomy + control_data$socioeconomics + control_data$politics + control_data$diversity + employment_control_data$arts_employment_z)
+
+# Save the residuals of the model
+btb_food_service_residuals <- residuals(lm_food_service_btb)
+
+# Print the summary of the linear model
+summary(lm_food_service_btb)
+
+# Run a linear model for recordclearing vs the three columns of control_data
+lm_food_service_rec_clear <- lm(pos_pol_data$Record.Clearing.Index ~ control_data$macroeconomy + control_data$socioeconomics + control_data$politics + control_data$diversity + employment_control_data$arts_employment_z)
+
+# Save the residuals of the model to regression_data$neg_combo_index_residuals
+rec_clear_food_service_residuals <- residuals(lm_food_service_rec_clear)
+
+# Print the summary of the linear model
+summary(lm_food_service_rec_clear)
+
+```
+**Manufacturing Regression**
+
+```{r manufacturing-validation}
+# Run a linear model for avg_manufacturing vs all control_data
+lm_manufacturing_controls <- lm(new_employment_data$avg_manufacturing ~ control_data$macroeconomy + control_data$socioeconomics + control_data$politics + control_data$diversity + employment_control_data$manu_employment_z)
+
+# Save the residuals of the model to employment_data$fair_chance_rate_residuals
+manufacturing_residuals <- residuals(lm_manufacturing_controls)
+
+# Print the summary of the linear model
+summary(lm_manufacturing_controls)
+
+# Run a linear model for btb_index vs the three columns of control_data
+lm_manufacturing_btb <- lm(pos_pol_data$Ban.the.Box.Index ~ control_data$macroeconomy + control_data$socioeconomics + control_data$politics + control_data$diversity + employment_control_data$manu_employment_z)
+
+# Save the residuals of the model
+btb_manufacturing_residuals <- residuals(lm_manufacturing_btb)
+
+# Print the summary of the linear model
+summary(lm_manufacturing_btb)
+
+# Run a linear model for recordclearing vs the three columns of control_data
+lm_manufacturing_rec_clear <- lm(pos_pol_data$Record.Clearing.Index ~ control_data$macroeconomy + control_data$socioeconomics + control_data$politics + control_data$diversity + employment_control_data$manu_employment_z)
+
+# Save the residuals of the model to regression_data$neg_combo_index_residuals
+rec_clear_manufacturing_residuals <- residuals(lm_manufacturing_rec_clear)
+
+# Print the summary of the linear model
+summary(lm_manufacturing_rec_clear)
+
+```
+**Home Health Regression**
+
+```{r home-health-validation}
+# Run a linear model for avg_home_health vs all control_data
+lm_home_health_controls <- lm(new_employment_data$avg_home_health ~ control_data$macroeconomy + control_data$socioeconomics + control_data$politics + control_data$diversity + employment_control_data$edu_employment_z)
+
+# Save the residuals of the model to employment_data$fair_chance_rate_residuals
+home_health_residuals <- residuals(lm_home_health_controls)
+
+# Print the summary of the linear model
+summary(lm_home_health_controls)
+
+# Run a linear model for btb_index vs the three columns of control_data
+lm_home_health_btb <- lm(pos_pol_data$Ban.the.Box.Index ~ control_data$macroeconomy + control_data$socioeconomics + control_data$politics + control_data$diversity + employment_control_data$edu_employment_z)
+
+# Save the residuals of the model
+btb_home_health_residuals <- residuals(lm_home_health_btb)
+
+# Print the summary of the linear model
+summary(lm_home_health_btb)
+
+# Run a linear model for recordclearing vs the three columns of control_data
+lm_home_health_rec_clear <- lm(pos_pol_data$Record.Clearing.Index ~ control_data$macroeconomy + control_data$socioeconomics + control_data$politics + control_data$diversity + employment_control_data$edu_employment_z)
+
+# Save the residuals of the model to regression_data$neg_combo_index_residuals
+rec_clear_home_health_residuals <- residuals(lm_home_health_rec_clear)
+
+# Print the summary of the linear model
+summary(lm_home_health_rec_clear)
+
+```
+**Construction Regression**
+
+```{r construction-validation}
+# Run a linear model for avg_construction vs all control_data
+lm_construction_controls <- lm(new_employment_data$avg_construction ~ control_data$macroeconomy + control_data$socioeconomics + control_data$politics + control_data$diversity + employment_control_data$construct_employment_z)
+
+# Save the residuals of the model to employment_data$fair_chance_rate_residuals
+construction_residuals <- residuals(lm_construction_controls)
+
+# Print the summary of the linear model
+summary(lm_construction_controls)
+
+# Run a linear model for btb_index vs the three columns of control_data
+lm_construction_btb <- lm(pos_pol_data$Ban.the.Box.Index ~ control_data$macroeconomy + control_data$socioeconomics + control_data$politics + control_data$diversity + employment_control_data$construct_employment_z)
+
+# Save the residuals of the model
+btb_construction_residuals <- residuals(lm_construction_btb)
+
+# Print the summary of the linear model
+summary(lm_construction_btb)
+
+# Run a linear model for recordclearing vs the three columns of control_data
+lm_construction_rec_clear <- lm(pos_pol_data$Record.Clearing.Index ~ control_data$macroeconomy + control_data$socioeconomics + control_data$politics + control_data$diversity + employment_control_data$construct_employment_z)
+
+# Save the residuals of the model to regression_data$neg_combo_index_residuals
+rec_clear_construction_residuals <- residuals(lm_construction_rec_clear)
+
+# Print the summary of the linear model
+summary(lm_construction_rec_clear)
+
+```
+**Hospitality Regression**
+
+```{r hospitality-validation}
+# Run a linear model for avg_hospitality vs all control_data
+lm_hospitality_controls <- lm(new_employment_data$avg_hospitality ~ control_data$macroeconomy + control_data$socioeconomics + control_data$politics + control_data$diversity + employment_control_data$arts_employment_z)
+
+# Save the residuals of the model to employment_data$fair_chance_rate_residuals
+hospitality_residuals <- residuals(lm_hospitality_controls)
+
+# Print the summary of the linear model
+summary(lm_hospitality_controls)
+
+# Run a linear model for btb_index vs the three columns of control_data
+lm_hospitality_btb <- lm(pos_pol_data$Ban.the.Box.Index ~ control_data$macroeconomy + control_data$socioeconomics + control_data$politics + control_data$diversity + employment_control_data$arts_employment_z)
+
+# Save the residuals of the model
+btb_hospitality_residuals <- residuals(lm_hospitality_btb)
+
+# Print the summary of the linear model
+summary(lm_hospitality_btb)
+
+# Run a linear model for recordclearing vs the three columns of control_data
+lm_hospitality_rec_clear <- lm(pos_pol_data$Record.Clearing.Index ~ control_data$macroeconomy + control_data$socioeconomics + control_data$politics + control_data$diversity + employment_control_data$arts_employment_z)
+
+# Save the residuals of the model to regression_data$neg_combo_index_residuals
+rec_clear_hospitality_residuals <- residuals(lm_hospitality_rec_clear)
+
+# Print the summary of the linear model
+summary(lm_hospitality_rec_clear)
+
+```
+
+
+
