@@ -1,0 +1,221 @@
+---
+title: "Plotting Policy Indices and Fair Chance Job Posting Rate"
+author: "Zofia C. Stanley"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+
+
+```{r setup, include=TRUE}
+library(ggplot2)
+library(dplyr)
+library(maps)
+library(usmap)
+
+# Set parameter to overwrite plots
+overwrite_plots = TRUE
+
+# Read in the data
+positive_index <- read.csv("../Policy/PositiveIndex.csv", nrows = 50)
+negative_index <- read.csv("../Policy/NegativeIndex.csv")
+employment_data <- read.csv("../Employment/Indeed/indeed-retail-foodservice-fairchance.csv")
+validation_employment_data <- read.csv("../Employment/Indeed/indeed-complete-industry.csv")
+```
+
+```{r clean-data, echo=TRUE}
+positive_index <- positive_index %>%
+  rename(
+    state = case_when("State" %in% names(.) ~ "State", TRUE ~ "state"),
+    Positive.Policy.Index = Total.Average.Index,
+    Occupational.Licensing.Reform.Index = Licensing.and.Credentialing.Index,
+    Business.Liability.Protections.Index = Liability.Index
+  )
+
+negative_index <- negative_index %>%
+  rename(
+    state = case_when("State" %in% names(.) ~ "State", TRUE ~ "state"),
+    Negative.Policy.Count = Consequence.Count,
+    Average.Negative.Policy.Strength = Average.Law.Index,
+    Negative.Policy.Index = Combined.Index
+  ) 
+
+employment_data <- employment_data[c("state", "fair_chance_rate")] %>%
+  rename(state = case_when("State" %in% names(.) ~ "State", TRUE ~ "state")) %>%
+  rename(Original.Fair.Chance.Rate = fair_chance_rate)
+
+validation_employment_data <- validation_employment_data %>%
+  group_by(state) %>%
+  summarize(
+    total_jobs = sum(totalJobs, na.rm = TRUE),
+    total_fair_chance_jobs = sum(totalJobs_fairChance, na.rm = TRUE)
+  ) %>%
+  mutate(Validation.Fair.Chance.Rate = (total_fair_chance_jobs / total_jobs) * 1000) %>%
+  rename(state = case_when("State" %in% names(.) ~ "State", TRUE ~ "state")) %>%
+  select(state, Validation.Fair.Chance.Rate)
+
+# Sequentially merge all cleaned data frames by "state"
+plot_data <- positive_index %>%
+  full_join(negative_index, by = "state") %>%
+  full_join(employment_data, by = "state") %>%
+  full_join(validation_employment_data, by = "state")
+
+# Remove all objects except "full_data"
+rm(list = setdiff(ls(), c("plot_data", "overwrite_plots")))
+```
+
+``` {r mapping-function, echo=TRUE}
+create_discrete_usmap <- function(column_name, lower_limit = 0, upper_limit = 1) {
+  
+  # Define breaks dynamically based on limits
+  breaks <- seq(lower_limit, upper_limit, length.out = 6)  # 5 intervals + 1 upper bound
+  
+  # Adjust labels based on the upper limit
+  labels <- if (max(breaks) < 10) {
+    sprintf("%.2f–%.2f", head(breaks, -1), tail(breaks, -1))  # Two digits past the decimal
+    } else {
+      sprintf("%.0f–%.0f", head(breaks, -1), tail(breaks, -1))  # No digits past the decimal
+    }
+  
+  # Add bins to the data for the current column
+  plot_data <- plot_data %>%
+    mutate(
+      discrete_bins = cut(
+        .data[[column_name]],
+        breaks = breaks, 
+        include.lowest = TRUE,                 # Include the lower bound in the first bin
+        labels = labels
+      )
+    )
+  
+  # Create the map with discrete colors
+  plot_usmap(data = plot_data, values = "discrete_bins", regions = "states") +
+    scale_fill_brewer(
+      palette = "Blues",  # Discrete color palette
+      name = "Index",     # Consistent legend name
+      drop = FALSE        # Include all bins in the legend, even if no states fall into a bin
+    ) +
+    labs(
+      title = gsub("\\.", " ", column_name)  # Replace dots with spaces for a clean title
+    ) +
+    theme(
+      panel.background = element_blank(),
+      plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
+      plot.subtitle = element_text(hjust = 0.5, size = 12),
+      legend.position = "right",
+      plot.margin = margin(0, 0, 0, 0)  # Remove extra margin to standardize map size
+    )
+}
+
+```
+
+# Plot Positive Policy Indices
+
+``` {r plot-pos-pol, echo=TRUE}
+# Define the indices to map
+index_columns <- c(
+  "Ban.the.Box.Index",
+  "Occupational.Licensing.Reform.Index",
+  "Record.Clearing.Index",
+  "Certificate.of.Rehabilitation.Index",
+  "Business.Liability.Protections.Index",
+  "Positive.Policy.Index"
+)
+
+# Generate and print maps for all indices
+maps <- lapply(index_columns, create_discrete_usmap)
+
+# Print each map
+for (i in 1:length(maps)) {
+  print(maps[[i]])
+}
+
+for (i in 1:length(index_columns)) {
+  ggsave(
+    filename = paste0(index_columns[i], "_discrete.png"),
+    plot = maps[[i]],
+    width = 10,
+    height = 6
+  )
+}
+
+
+```
+
+# Plot Negative Policy Indices
+
+``` {r plot-neg-pol, echo=TRUE}
+# Define the indices to map and their bounds
+index_columns <- c(
+  "Negative.Policy.Count",
+  "Average.Negative.Policy.Strength",
+  "Negative.Policy.Index"
+)
+
+# Define bounds for each index
+bounds <- list(
+  "Negative.Policy.Count" = c(200, 1200),
+  "Average.Negative.Policy.Strength" = c(0.64, 0.8),
+  "Negative.Policy.Index" = c(100, 850)
+)
+
+# Generate maps using the specified bounds
+maps <- lapply(index_columns, function(column_name) {
+  lower_limit <- bounds[[column_name]][1]
+  upper_limit <- bounds[[column_name]][2]
+  create_discrete_usmap(column_name, lower_limit = lower_limit, upper_limit = upper_limit)
+})
+
+# Print each map
+for (i in seq_along(maps)) {
+  print(maps[[i]])
+}
+
+# Save each map as a PNG file
+for (i in seq_along(index_columns)) {
+  ggsave(
+    filename = paste0(index_columns[i], "_discrete.png"),
+    plot = maps[[i]],
+    width = 10,
+    height = 6
+  )
+}
+```
+
+# Plot Fair Chance Job Posting Rates
+
+``` {r plot-neg-pol, echo=TRUE}
+# Define the indices to map and their bounds
+index_columns <- c(
+  "Original.Fair.Chance.Rate",
+  "Validation.Fair.Chance.Rate"
+)
+
+# Define bounds for each index
+bounds <- list(
+  "Original.Fair.Chance.Rate" = c(10, 60),
+  "Validation.Fair.Chance.Rate" = c(10, 60)
+)
+
+# Generate maps using the specified bounds
+maps <- lapply(index_columns, function(column_name) {
+  lower_limit <- bounds[[column_name]][1]
+  upper_limit <- bounds[[column_name]][2]
+  create_discrete_usmap(column_name, lower_limit = lower_limit, upper_limit = upper_limit)
+})
+
+# Print each map
+for (i in seq_along(maps)) {
+  print(maps[[i]])
+}
+
+# Save each map as a PNG file
+for (i in seq_along(index_columns)) {
+  ggsave(
+    filename = paste0(index_columns[i], "_discrete.png"),
+    plot = maps[[i]],
+    width = 10,
+    height = 6
+  )
+}
+```
