@@ -327,6 +327,123 @@ print(closest_neg)
 
 ```
 
+```{r pos-pol-interpretation}
+
+# Calculate the median Positive Policy Index
+median_pos_pol_index <- median(full_data$pos_pol_index, na.rm = TRUE)
+
+# Find the state(s) closest to the median Positive Policy Index
+closest_to_median <- full_data %>%
+  mutate(diff_from_median = abs(pos_pol_index - median_pos_pol_index)) %>%
+  filter(diff_from_median == min(diff_from_median, na.rm = TRUE)) %>%
+  select(state, pos_pol_index)
+
+# Calculate the 10th and 90th percentiles of the Positive Policy Index
+percentile_10 <- quantile(full_data$pos_pol_index, 0.10, na.rm = TRUE)
+percentile_90 <- quantile(full_data$pos_pol_index, 0.90, na.rm = TRUE)
+
+# Find the states closest to the 10th and 90th percentiles
+closest_to_10th <- full_data %>%
+  mutate(diff_from_10th = abs(pos_pol_index - percentile_10)) %>%
+  filter(diff_from_10th == min(diff_from_10th, na.rm = TRUE)) %>%
+  select(state, pos_pol_index)
+
+closest_to_90th <- full_data %>%
+  mutate(diff_from_90th = abs(pos_pol_index - percentile_90)) %>%
+  filter(diff_from_90th == min(diff_from_90th, na.rm = TRUE)) %>%
+  select(state, pos_pol_index)
+
+# Extract the slope from the linear model
+slope <- coef(lm_original_fair_pos)["pos_pol_index"]
+
+# Calculate the difference in Fair Chance Job Posting Rate for the 10th to 90th percentile
+rate_change <- (percentile_90 - percentile_10) * slope # Use the extracted slope
+
+# Print results
+cat("Median Positive Policy Index:", median_pos_pol_index, "\n")
+cat("State(s) closest to the median Positive Policy Index:\n")
+print(closest_to_median)
+
+cat("\n10th Percentile of Positive Policy Index:", percentile_10, "\n")
+cat("State(s) closest to the 10th Percentile:\n")
+print(closest_to_10th)
+
+cat("\n90th Percentile of Positive Policy Index:", percentile_90, "\n")
+cat("State(s) closest to the 90th Percentile:\n")
+print(closest_to_90th)
+
+cat("\nEstimated decrease in Fair Chance Job Posting Rate from 10th to 90th Percentile:", rate_change, "per 1,000 jobs\n")
+
+
+```
+```{r neg-pol-interpretation}
+
+# Calculate the median Positive Policy Index
+median_neg_pol_index <- median(full_data$neg_pol_index, na.rm = TRUE)
+
+# Find the state(s) closest to the median Positive Policy Index
+closest_to_median <- full_data %>%
+  mutate(diff_from_median = abs(neg_pol_index - median_neg_pol_index)) %>%
+  filter(diff_from_median == min(diff_from_median, na.rm = TRUE)) %>%
+  select(state, neg_pol_index)
+
+# Calculate the 10th and 90th percentiles of the Positive Policy Index
+percentile_10 <- quantile(full_data$neg_pol_index, 0.10, na.rm = TRUE)
+percentile_90 <- quantile(full_data$neg_pol_index, 0.90, na.rm = TRUE)
+
+# Find the states closest to the 10th and 90th percentiles
+closest_to_10th <- full_data %>%
+  mutate(diff_from_10th = abs(neg_pol_index - percentile_10)) %>%
+  filter(diff_from_10th == min(diff_from_10th, na.rm = TRUE)) %>%
+  select(state, neg_pol_index)
+
+closest_to_90th <- full_data %>%
+  mutate(diff_from_90th = abs(neg_pol_index - percentile_90)) %>%
+  filter(diff_from_90th == min(diff_from_90th, na.rm = TRUE)) %>%
+  select(state, neg_pol_index)
+
+# Extract the slope from the linear model
+slope <- coef(lm_original_fair_neg)["neg_pol_index"]
+
+# Calculate the difference in Fair Chance Job Posting Rate for the 10th to 90th percentile
+rate_change <- (percentile_90 - percentile_10) * slope # Use the extracted slope
+
+# Print results
+cat("Median Negative Policy Index:", median_pos_pol_index, "\n")
+cat("State(s) closest to the median Negative Policy Index:\n")
+print(closest_to_median)
+
+cat("\n10th Percentile of Negative Policy Index:", percentile_10, "\n")
+cat("State(s) closest to the 10th Percentile:\n")
+print(closest_to_10th)
+
+cat("\n90th Percentile of Negative Policy Index:", percentile_90, "\n")
+cat("State(s) closest to the 90th Percentile:\n")
+print(closest_to_90th)
+
+cat("\nEstimated decrease in Fair Chance Job Posting Rate from 10th to 90th Percentile:", rate_change, "per 1,000 jobs\n")
+
+
+```
+
+```{r compute-relative-change}
+# Define the raw increase in job posting rate
+raw_increase <- 12.31
+
+# Calculate the average baseline fair chance job posting rate
+baseline_rate <- mean(full_data$original_fair_chance_rate, na.rm = TRUE)
+
+# Calculate the relative increase as a percentage
+relative_increase <- (raw_increase / baseline_rate) * 100
+
+# Print results
+cat("Raw increase in fair chance job postings per 1,000 jobs:", raw_increase, "\n")
+cat("Baseline fair chance job posting rate per 1,000 jobs:", baseline_rate, "\n")
+cat("Relative increase in fair chance job posting rate:", relative_increase, "%\n")
+
+```
+
+
 # Scatter Plots: Fair Chance Job Posting Rate vs Policy Indices
 We next look at how fair chance job posting rates relate to both positive and negative policy indices.
 
@@ -459,6 +576,30 @@ print(chi_squared_result_neg)
 ```
 
 **Interpretation:** The chi-square test of independence for the negative combo index yielded a p-value of 0.2401, which is much greater than the conventional significance level of 0.05. This means that we fail to reject the null hypothesis, suggesting that there is no statistically significant association between having a negative policy index above average and having a better-than-average employment outcome. In other words, there is no evidence to indicate that states with an above-average negative policy index are more likely to have above-average fair chance job posting rates.
+
+``` {r job-posting-summary-stats}
+# Compute summary statistics for original and validation fair chance rates
+summary_stats <- summary(full_data[c("original_fair_chance_rate", "validation_fair_chance_rate")])
+
+# Compute correlation between original and validation fair chance rates
+# Perform correlational analysis with significance testing
+correlation_analysis <- cor.test(
+  full_data$original_fair_chance_rate,
+  full_data$validation_fair_chance_rate,
+  method = "pearson", # Pearson correlation
+)
+
+# Print results
+cat("Summary Statistics:\n")
+print(summary_stats)
+
+cat("\nCorrelation Analysis:\n")
+cat("Correlation Coefficient (r):", correlation_analysis$estimate, "\n")
+cat("t-Statistic:", correlation_analysis$statistic, "\n")
+cat("Degrees of Freedom:", correlation_analysis$parameter, "\n")
+cat("p-Value:", correlation_analysis$p.value, "\n")
+cat("95% Confidence Interval:", correlation_analysis$conf.int, "\n")
+```
 
 # Conclusion
 This report provides an exploratory analysis of the relationship between fair chance hiring policies and employment outcomes. We used visualizations, linear regression models, and chi-square tests to assess these relationships, which can provide valuable insights for policy evaluation and improvement.
