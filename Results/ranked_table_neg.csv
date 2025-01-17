@@ -1,0 +1,51 @@
+"Rank","State","Combined_Index","Consequence_Count_Rank","Consequence_Count","Average_Law_Index_Rank"
+1,"Vermont",151,1,201,18
+2,"Hawaii",189,2,250,14
+3,"Wyoming",210,4,294,38
+4,"Montana",221,3,290,12
+5,"Maine",223,5,307,31
+6,"South Dakota",227,6,313,34
+7,"Idaho",240,8,331,32
+8,"North Dakota",243,9,344,41
+9,"Rhode Island",247,7,324,9
+10,"Minnesota",269,11,362,24
+11,"Wisconsin",276,10,359,5
+12,"Connecticut",278,16,406,47
+13,"Utah",280,15,395,40
+14,"Iowa",281,17,414,49
+15,"Alaska",283,12,376,17
+16,"Delaware",284,14,389,29
+17,"Nebraska",297,13,388,8
+18,"Kansas",315,18,435,35
+19,"Colorado",317,22,467,48
+20,"Missouri",325,21,460,42
+21,"Massachusetts",342,24,483,39
+22,"Indiana",345,20,457,16
+23,"New Mexico",349,23,470,25
+24,"South Carolina",353,19,454,2
+25,"Kentucky",373,25,486,6
+26,"Virginia",394,27,539,28
+27,"Mississippi",396,26,526,19
+28,"North Carolina",410,37,591,46
+29,"Washington",413,36,590,44
+30,"Pennsylvania",418,28,544,4
+31,"Oregon",420,41,643,50
+32,"Georgia",421,33,582,36
+33,"Alabama",421,29,550,7
+34,"Michigan",425,30,558,11
+35,"West Virginia",425,31,566,20
+36,"Arizona",425,34,587,33
+37,"New Hampshire",443,32,581,10
+38,"Nevada",446,38,596,22
+39,"Maryland",450,39,617,30
+40,"Arkansas",452,34,587,3
+41,"Tennessee",457,40,632,37
+42,"New York",542,44,769,43
+43,"New Jersey",544,42,737,26
+44,"Oklahoma",571,43,752,13
+45,"Florida",588,45,778,15
+46,"Ohio",618,46,784,1
+47,"Illinois",651,47,872,23
+48,"Louisiana",676,48,920,27
+49,"Texas",717,49,1030,45
+50,"California",839,50,1118,21
