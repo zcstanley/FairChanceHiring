@@ -1,0 +1,226 @@
+---
+title: "Association between policy and fair chance job posting rates"
+author: "Zofia C. Stanley"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+# Introduction
+This analysis aims to explore the relationship between positive policies, collateral consequences, and fair chance hiring outcomes in retail and food service industries. We use scatter plots, linear regression models, and chi-square tests to understand these relationships.
+
+```{r setup, include=TRUE}
+library(ggplot2)
+library(tidyverse)
+library(purrr)
+
+# Read in the data
+policy_data <- read.csv("../Controls/regression.csv")
+policy_data <- policy_data[c("state", "tot_pos_index", "neg_combo_index")]
+employment_data <- read.csv("../Employment/Indeed/indeed-retail-foodservice-fairchance.csv")
+new_employment_data <- read.csv("../Controls/wide_complete_industry.csv")
+control_data <- read.csv("../Controls/control_indices.csv")
+employment_control_data <- read.csv("../Controls/employment_z_scores.csv")
+```
+
+
+```{r linear-model-function, echo=TRUE}
+
+run_linear_models <- function(policy_data, employment_col, control_data, employment_control_col) {
+  # List of datasets
+  datasets <- list(policy_data = policy_data, employment_col = employment_col,
+                   control_data = control_data, employment_control_col = employment_control_col)
+  
+  # Standardize, sort, and remove the "state" column in one step
+  cleaned_datasets <- map(datasets, ~ .x %>%
+                            rename_with(~ "state", any_of(c("state", "State"))) %>%
+                            arrange(state) %>%
+                            select(-state))
+  
+  # Extract cleaned datasets from list
+  policy_data <- cleaned_datasets$policy_data
+  employment_col <- cleaned_datasets$employment_col[[1]]
+  control_data <- cleaned_datasets$control_data
+  employment_control_col <- cleaned_datasets$employment_control_col[[1]]
+  
+  # Get policy column names (now that "state" is removed)
+  policy_names <- names(policy_data)[1:2]
+  
+  # Initialize lists for residuals and models
+  residuals <- list()
+  models <- list()
+  
+  # Run models for each policy index and print summaries
+  for (policy_name in policy_names) {
+    policy_model <- lm(policy_data[[policy_name]] ~ ., data = cbind(control_data, employment_control_col))
+    residuals[[policy_name]] <- resid(policy_model)
+    models[[policy_name]] <- policy_model
+  }
+  
+  # Model for employment data
+  employment_model <- lm(employment_col ~ ., data = cbind(control_data, employment_control_col))
+  residuals[["employment"]] <- resid(employment_model)
+  models[["employment"]] <- employment_model
+  
+  return(list(models = models, residuals = residuals))
+}
+
+
+```
+
+```{r analyze-residuals-function, echo=TRUE}
+analyze_residuals <- function(residuals, plot = FALSE, pdf_path = "residual_plots.pdf") {
+  model_summary <- list()
+  
+  # Get all pairwise combinations of residuals
+  residual_pairs <- combn(names(residuals), 2, simplify = FALSE)
+  
+  # Open PDF device if plotting is enabled
+  if (plot) {
+    pdf(pdf_path)
+  }
+  
+  for (pair in residual_pairs) {
+    # Fit a linear model for each pair of residuals
+    model <- lm(residuals[[pair[2]]] ~ residuals[[pair[1]]])
+    model_summary[[paste(pair, collapse = "_vs_")]] <- summary(model)
+    
+    # Plot and save to PDF if 'plot' is TRUE
+    if (plot) {
+      plot_data <- data.frame(x = residuals[[pair[1]]], y = residuals[[pair[2]]])
+      p <- ggplot(plot_data, aes(x = x, y = y)) +
+        geom_point() +
+        geom_smooth(method = "lm", se = FALSE) +
+        labs(title = paste("Scatter plot of", pair[2], "vs", pair[1]),
+             x = pair[1], y = pair[2]) +
+        theme_minimal()
+      
+      print(p)  # Print plot to PDF
+    }
+  }
+  
+  # Close PDF device after all plots
+  if (plot) {
+    dev.off()
+  }
+  
+  return(model_summary)
+}
+```
+
+```{r perform-chi-squared-function}
+perform_chi_squared_tests <- function(residuals) {
+  chi_squared_results <- list()
+  
+  # Assuming the first two residuals are policy indices and the third is employment
+  policy_residuals <- names(residuals)[1:2]  # Names of the policy residuals
+  employment_residual <- "employment"         # Name of the employment residual
+  
+  for (policy in policy_residuals) {
+    # Create binary variables for above/below average
+    policy_binary <- residuals[[policy]] > mean(residuals[[policy]], na.rm = TRUE)
+    employment_binary <- residuals[[employment_residual]] > mean(residuals[[employment_residual]], na.rm = TRUE)
+    
+    # Create contingency table
+    contingency_table <- table(policy_binary, employment_binary)
+    
+    # Run chi-squared test and save result
+    chi_squared_results[[policy]] <- chisq.test(contingency_table)
+  }
+  
+  return(chi_squared_results)
+}
+
+```
+
+```{r run-full-analysis-function}
+
+run_full_analysis <- function(policy_data, employment_data, new_employment_data, control_data, employment_control_data) {
+  # Define the mapping between columns in new_employment_data and employment_control_data
+  column_mapping <- list(
+    "avg_retail" = "rtrade_employment_z",
+    "avg_food_service" = "arts_employment_z",
+    "avg_construction" = "construct_employment_z",
+    "avg_home_health" = "edu_employment_z",
+    "avg_manufacturing" = "manu_employment_z",
+    "avg_hospitality" = "arts_employment_z"
+  )
+  
+  # First Analysis (with plotting)
+  first_employment_col <- employment_data[c("state", "fair_chance_rate")]
+  first_employment_control_col <- employment_control_data[c("State", "rtrade_employment_z")]
+  
+  # Run linear models
+  first_analysis <- run_linear_models(policy_data, first_employment_col, control_data, first_employment_control_col)
+  
+  # Print summaries for each model in first_analysis
+  cat("\n--- Model Summaries for Original Analysis (Retail+Food Service) ---\n")
+  for (model_name in names(first_analysis$models)) {
+    cat(paste("\nSummary for model:", model_name, "\n"))
+    # Capture and print each line of the summary
+    model_summary_text <- capture.output(summary(first_analysis$models[[model_name]]))
+    cat(model_summary_text, sep = "\n")
+  }
+  
+  # Analyze residuals with plotting
+  cat("\n--- Analysis of Residuals (Original Analysis, Retail+Food Service) ---\n")
+  first_residual_summary <- analyze_residuals(first_analysis$residuals, plot = TRUE, pdf_path = "residual_plots_august_retail_foodservice.pdf")
+  print(first_residual_summary)
+  
+  # Perform chi-squared tests
+  cat("\n--- Chi-Squared Tests (Original Analysis, Retail+Food Service) ---\n")
+  first_chi_squared_results <- perform_chi_squared_tests(first_analysis$residuals)
+  print(first_chi_squared_results)
+  
+  # Subsequent Analyses (without plotting) based on the column mapping
+  results <- list()
+  for (column_name in names(column_mapping)) {
+    # Check if columns exist in both data frames
+    if (!column_name %in% names(new_employment_data)) {
+      stop(paste("Column", column_name, "not found in new_employment_data"))
+    }
+    if (!column_mapping[[column_name]] %in% names(employment_control_data)) {
+      stop(paste("Column", column_mapping[[column_name]], "not found in employment_control_data"))
+    }
+    
+    # Select the employment and control columns based on the mapping
+    employment_col <- new_employment_data[c("state", column_name)]
+    employment_control_col <- employment_control_data[c("State", column_mapping[[column_name]])]
+    
+    # Run linear models
+    analysis <- run_linear_models(policy_data, employment_col, control_data, employment_control_col)
+    
+    # Print summaries for each model in analysis
+    cat(paste("\n--- Model Summaries for Analysis:", column_name, "---\n"))
+    for (model_name in names(analysis$models)) {
+      cat(paste("\nSummary for model:", model_name, "\n"))
+      model_summary_text <- capture.output(summary(analysis$models[[model_name]]))
+      cat(model_summary_text, sep = "\n")
+    }
+    
+    # Analyze residuals without plotting
+    cat(paste("\n--- Analysis of Residuals (", column_name, ") ---\n"))
+    residual_summary <- analyze_residuals(analysis$residuals, plot = FALSE)
+    print(residual_summary)
+    
+    # Perform chi-squared tests
+    cat(paste("\n--- Chi-Squared Tests (", column_name, ") ---\n"))
+    chi_squared_results <- perform_chi_squared_tests(analysis$residuals)
+    print(chi_squared_results)
+    
+    # Store results
+    results[[column_name]] <- list(residual_summary = residual_summary,
+                                   chi_squared_results = chi_squared_results)
+  }
+  
+  return(results)
+}
+
+
+```
+
+```{r run-full-analysis, echo=TRUE}
+
+# Run the full analysis and display output
+full_analysis_results <- run_full_analysis(policy_data, employment_data, new_employment_data, control_data, employment_control_data)
+
+```

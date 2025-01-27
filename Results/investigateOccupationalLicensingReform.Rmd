@@ -1,0 +1,158 @@
+---
+title: "Investigate Occupational Licensing Reform"
+author: "Zofia C. Stanley"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+**Question:** Do the results meaningfully change if we just look at occupational licensing reform instead of the combination of all 5 positive policy types?
+
+```{r setup, include=TRUE}
+library(ggplot2)
+library(dplyr)
+
+# Set parameter to overwrite plots
+overwrite_plots = TRUE
+
+# Read in the data
+positive_index <- read.csv("../Policy/PositiveIndex.csv", nrows = 50)
+negative_index <- read.csv("../Policy/NegativeIndex.csv")
+employment_data <- read.csv("../Employment/Indeed/indeed-retail-foodservice-fairchance.csv")
+validation_employment_data <- read.csv("../Employment/Indeed/indeed-complete-industry.csv")
+control_data <- read.csv("../Controls/control_indices.csv")
+employment_control_data <- read.csv("../Controls/control-vars-employment.csv")
+```
+
+```{r clean-data, echo=TRUE}
+# Create policy_data by merging positive_index and negative_index
+policy_data <- positive_index %>%
+  select(State, pos_pol_index = Total.Average.Index, license_pol_index = Licensing.and.Credentialing.Index) %>%
+  left_join(negative_index %>%
+              select(State, neg_pol_index = Combined.Index),
+            by = "State") %>%
+  rename(state = State)
+
+employment_data <- employment_data[c("state", "fair_chance_rate")] %>%
+  rename(state = case_when("State" %in% names(.) ~ "State", TRUE ~ "state")) %>%
+  rename(original_fair_chance_rate = fair_chance_rate)
+
+validation_employment_data <- validation_employment_data %>%
+  group_by(state) %>%
+  summarize(
+    total_jobs = sum(totalJobs, na.rm = TRUE),
+    total_fair_chance_jobs = sum(totalJobs_fairChance, na.rm = TRUE)
+  ) %>%
+  mutate(validation_fair_chance_rate = (total_fair_chance_jobs / total_jobs) * 1000) %>%
+  rename(state = case_when("State" %in% names(.) ~ "State", TRUE ~ "state")) %>%
+  select(state, validation_fair_chance_rate)
+
+control_data <- control_data %>%
+  rename(state = case_when("State" %in% names(.) ~ "State", TRUE ~ "state")) %>%
+  rename_with(
+    .cols = -state, # Exclude the "state" column
+    .fn = ~ paste0(.x, "_control") # Append "_control" to the column names
+  )
+
+# Add columns for original and validation
+employment_control_data <- employment_control_data %>%
+  mutate(
+    original_employment_control = rtrade_employment + arts_employment,
+    validation_employment_control = rowSums(select(., construct_employment:arts_employment), na.rm = TRUE)
+  ) %>%
+  rename(state = case_when("State" %in% names(.) ~ "State", TRUE ~ "state")) %>%
+  select(state, original_employment_control, validation_employment_control)
+
+# Sequentially merge all cleaned data frames by "state"
+full_data <- policy_data %>%
+  full_join(employment_data, by = "state") %>%
+  full_join(validation_employment_data, by = "state") %>%
+  full_join(control_data, by = "state") %>%
+  full_join(employment_control_data, by = "state")
+```
+
+```{r corr-pos-neg, echo=TRUE}
+# Perform a correlation analysis
+correlation_result <- cor.test(
+  full_data$neg_pol_index,
+  full_data$license_pol_index,
+  method = "pearson"
+)
+
+# Print the correlation result
+print(correlation_result)
+```
+
+``` {r lm-fair-chance-vs-policy, echo=TRUE}
+
+# Fit linear models for original_fair_chance_rate
+lm_original_fair_pos <- lm(original_fair_chance_rate ~ pos_pol_index, data = full_data)
+lm_original_fair_license <- lm(original_fair_chance_rate ~ license_pol_index, data = full_data)
+lm_original_fair_neg <- lm(original_fair_chance_rate ~ neg_pol_index, data = full_data)
+
+# Summarize results for original_fair_chance_rate
+cat("Model: original_fair_chance_rate ~ pos_pol_index\n")
+summary(lm_original_fair_pos)
+
+cat("Model: original_fair_chance_rate ~ license_pol_index\n")
+summary(lm_original_fair_license)
+
+cat("\nModel: original_fair_chance_rate ~ neg_pol_index\n")
+summary(lm_original_fair_neg)
+```
+```{r full-linear-model, echo=TRUE}
+# Linear model for original_fair_chance_rate
+lm_original <- lm(
+  original_fair_chance_rate ~ pos_pol_index + neg_pol_index +
+    macroeconomy_control + socioeconomics_control +
+    politics_control + diversity_control +
+    original_employment_control,
+  data = full_data
+)
+
+# Summary of the model for original_fair_chance_rate
+cat("Model: original_fair_chance_rate, all pos pol\n")
+summary(lm_original)
+
+
+# Linear model for original_fair_chance_rate
+lm_original <- lm(
+  original_fair_chance_rate ~ license_pol_index + neg_pol_index +
+    macroeconomy_control + socioeconomics_control +
+    politics_control + diversity_control +
+    original_employment_control,
+  data = full_data
+)
+
+# Summary of the model for original_fair_chance_rate
+cat("Model: original_fair_chance_rate, license\n")
+summary(lm_original)
+
+
+# Linear model for validation_fair_chance_rate
+lm_validation <- lm(
+  validation_fair_chance_rate ~ pos_pol_index + neg_pol_index +
+    macroeconomy_control + socioeconomics_control +
+    politics_control + diversity_control +
+    validation_employment_control,
+  data = full_data
+)
+
+# Summary of the model for validation_fair_chance_rate
+cat("\nModel: validation_fair_chance_rate, all pos pol\n")
+summary(lm_validation)
+
+# Linear model for validation_fair_chance_rate
+lm_validation <- lm(
+  validation_fair_chance_rate ~ license_pol_index + neg_pol_index +
+    macroeconomy_control + socioeconomics_control +
+    politics_control + diversity_control +
+    validation_employment_control,
+  data = full_data
+)
+
+# Summary of the model for validation_fair_chance_rate
+cat("\nModel: validation_fair_chance_rate, license\n")
+summary(lm_validation)
+
+```
+
+**Interpretation:** Results do not meaningfully change if we restrict ourselves to looking just at occupational licensing reform, rather than the combination of all 5 positive policy indices. 

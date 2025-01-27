@@ -7,30 +7,136 @@ output: pdf_document
 
 ```{r setup, include=TRUE}
 library(ggplot2)
+library(dplyr)
 
 # Set parameter to overwrite plots
-overwrite_plots = FALSE
+overwrite_plots = TRUE
 
 # Read in the data
-regression_data <- read.csv("../Controls/regression.csv")
+policy_data <- read.csv("../Controls/regression.csv")
 employment_data <- read.csv("../Employment/Indeed/indeed-retail-foodservice-fairchance.csv")
+validation_employment_data <- read.csv("../Employment/Indeed/indeed-complete-industry.csv")
 control_data <- read.csv("../Controls/control_indices.csv")
+employment_control_data <- read.csv("../Controls/control-vars-employment.csv")
+```
+
+```{r clean-data, echo=TRUE}
+policy_data <- policy_data[c("state", "tot_pos_index", "neg_combo_index")] %>%
+  rename(state = case_when("State" %in% names(.) ~ "State", TRUE ~ "state")) %>%
+  rename(pos_pol_index = tot_pos_index, neg_pol_index = neg_combo_index)
+
+employment_data <- employment_data[c("state", "fair_chance_rate")] %>%
+  rename(state = case_when("State" %in% names(.) ~ "State", TRUE ~ "state")) %>%
+  rename(original_fair_chance_rate = fair_chance_rate)
+
+validation_employment_data <- validation_employment_data %>%
+  group_by(state) %>%
+  summarize(
+    total_jobs = sum(totalJobs, na.rm = TRUE),
+    total_fair_chance_jobs = sum(totalJobs_fairChance, na.rm = TRUE)
+  ) %>%
+  mutate(validation_fair_chance_rate = (total_fair_chance_jobs / total_jobs) * 1000) %>%
+  rename(state = case_when("State" %in% names(.) ~ "State", TRUE ~ "state")) %>%
+  select(state, validation_fair_chance_rate)
+
+control_data <- control_data %>%
+  rename(state = case_when("State" %in% names(.) ~ "State", TRUE ~ "state")) %>%
+  rename_with(
+    .cols = -state, # Exclude the "state" column
+    .fn = ~ paste0(.x, "_control") # Append "_control" to the column names
+  )
+
+# Add columns for original and validation
+employment_control_data <- employment_control_data %>%
+  mutate(
+    original_employment_control = rtrade_employment + arts_employment,
+    validation_employment_control = rowSums(select(., construct_employment:arts_employment), na.rm = TRUE)
+  ) %>%
+  rename(state = case_when("State" %in% names(.) ~ "State", TRUE ~ "state")) %>%
+  select(state, original_employment_control, validation_employment_control)
+
+# Sequentially merge all cleaned data frames by "state"
+full_data <- policy_data %>%
+  full_join(employment_data, by = "state") %>%
+  full_join(validation_employment_data, by = "state") %>%
+  full_join(control_data, by = "state") %>%
+  full_join(employment_control_data, by = "state")
+
+# Remove all objects except "full_data"
+rm(list = setdiff(ls(), c("full_data", "overwrite_plots")))
 ```
 
 # Introduction
 This analysis aims to explore the relationship between positive policies, collateral consequences, and fair chance hiring outcomes in retail and food service industries. We use scatter plots, linear regression models, and chi-square tests to understand these relationships.
+
+# Compute Residuals: 
+Throughout this analysis, we will use residualized quantities to understand the relationship between variables, after controlling for confounding factors. We calculate all residuals up front here. 
+
+```{r compute-residuals, echo=TRUE}
+# Fit the linear models and extract residuals for each variable
+
+# Model for neg_pol_index with original controls
+lm_original_neg <- lm(neg_pol_index ~ macroeconomy_control + socioeconomics_control +
+               politics_control + diversity_control + original_employment_control,
+             data = full_data)
+residuals_original_neg <- resid(lm_original_neg)
+
+# Model for pos_pol_index with original controls
+lm_original_pos <- lm(pos_pol_index ~ macroeconomy_control + socioeconomics_control +
+               politics_control + diversity_control + original_employment_control,
+             data = full_data)
+residuals_original_pos <- resid(lm_original_pos)
+
+# Model for original_fair_chance_rate
+lm_original_fair <- lm(original_fair_chance_rate ~ macroeconomy_control + socioeconomics_control +
+                         politics_control + diversity_control + original_employment_control,
+                       data = full_data)
+residuals_original_fair <- resid(lm_original_fair)
+
+# Model for neg_pol_index with validation controls
+lm_validation_neg <- lm(neg_pol_index ~ macroeconomy_control + socioeconomics_control +
+               politics_control + diversity_control + validation_employment_control,
+             data = full_data)
+residuals_validation_neg <- resid(lm_validation_neg)
+
+# Model for pos_pol_index with validation controls
+lm_validation_pos <- lm(pos_pol_index ~ macroeconomy_control + socioeconomics_control +
+               politics_control + diversity_control + validation_employment_control,
+             data = full_data)
+residuals_validation_pos <- resid(lm_validation_pos)
+
+# Model for validation_fair_chance_rate
+lm_validation_fair <- lm(validation_fair_chance_rate ~ macroeconomy_control + socioeconomics_control +
+                           politics_control + diversity_control + validation_employment_control,
+                         data = full_data)
+residuals_validation_fair <- resid(lm_validation_fair)
+
+# Create the residuals data frame
+residuals <- data.frame(
+  state = full_data$state,
+  original_neg_pol_index = residuals_original_neg,
+  original_pos_pol_index = residuals_original_pos,
+  original_fair_chance_rate = residuals_original_fair,
+  validation_neg_pol_index = residuals_validation_neg,
+  validation_pos_pol_index = residuals_validation_pos,
+  validation_fair_chance_rate = residuals_validation_fair
+)
+
+# Remove all objects except "full_data" and "residuals"
+rm(list = setdiff(ls(), c("full_data", "residuals", "overwrite_plots")))
+```
 
 # Scatter Plot: Positive Policies vs Collateral Consequences
 We begin by visualizing the relationship between positive policies and collateral consequences.
 
 ```{r scatter-pos-neg, echo=TRUE}
 # Create a scatter plot of positive policy vs negative policy
-plot_pos_vs_neg <- ggplot(regression_data, aes(x = neg_combo_index, y = tot_pos_index)) +
+plot_pos_vs_neg <- ggplot(full_data, aes(x = neg_pol_index, y = pos_pol_index)) +
   geom_point() +
-  geom_smooth(method = "lm", se = FALSE) +
+  geom_smooth(method = "lm", formula = y ~ 0 + x, se = FALSE) +
   labs(
-    title = "Scatter Plot of Positive Policies vs Collateral Consequences",
-    x = "Weighted Number of Collateral Consequences",
+    title = "Positive vs Negative Policy Indices",
+    x = "Negative Policy Index",
     y = "Positive Policy Index"
   ) +
   xlim(0, 900) +
@@ -48,141 +154,384 @@ print(plot_pos_vs_neg)
 
 **Interpretation**: The scatter plot shows the relationship between the weighted number of collateral consequences and the positive policy index. Visually, we see a strong positive association between the weighted number of collateral consequences and positive policy index. 
 
+```{r corr-pos-neg, echo=TRUE}
+# Perform a correlation analysis
+correlation_result <- cor.test(
+  full_data$neg_pol_index,
+  full_data$pos_pol_index,
+  method = "pearson"
+)
+
+# Print the correlation result
+print(correlation_result)
+```
+**Interpretation**: There is a statistically significant moderate positive relationship between the Negative Policy Index and the Positive Policy Index (r = 0.384, p = 0.0059). This suggests that as the Negative Policy Index increases, the Positive Policy Index tends to increase as well, albeit moderately.
+
+The confidence interval indicates that the strength of the correlation is likely between 0.118 and 0.598, suggesting some variability in the true relationship but consistently positive.
+
+``` {r define-correlation-function, echo=TRUE}
+custom_correlation_test <- function(x, y, df_reduction) {
+  # Remove rows with missing values in x or y
+  complete_cases <- complete.cases(x, y)
+  x <- x[complete_cases]
+  y <- y[complete_cases]
+  
+  # Number of observations
+  n <- length(x)
+  
+  # Compute Pearson correlation coefficient
+  r <- cor(x, y, method = "pearson")
+  
+  # Adjusted degrees of freedom
+  df <- n - 2 - df_reduction
+  
+  # Compute the t-statistic
+  t_stat <- r * sqrt(df / (1 - r^2))
+  
+  # Compute the p-value for the two-tailed test
+  p_value <- 2 * pt(-abs(t_stat), df)
+  
+  # Compute 95% confidence intervals for r
+  alpha <- 0.05
+  z <- qt(1 - alpha / 2, df)
+  ci_lower <- tanh(atanh(r) - z * sqrt(1 / (df - 1)))
+  ci_upper <- tanh(atanh(r) + z * sqrt(1 / (df - 1)))
+  
+  # Return results as a list
+  return(list(
+    correlation = r,
+    degrees_of_freedom = df,
+    t_statistic = t_stat,
+    p_value = p_value,
+    confidence_interval = c(ci_lower, ci_upper)
+  ))
+}
+
+```
+
+``` {r corr-pos-neg-resid, echo=TRUE}
+
+# Number of predictors used in the models
+df_reduction <- 5
+
+# Call the custom correlation test
+result <- custom_correlation_test(
+  residuals$original_neg_pol_index,
+  residuals$original_pos_pol_index,
+  df_reduction
+)
+
+# Print the results
+cat("Custom Correlation Analysis of Residuals:\n")
+cat("Correlation Coefficient (r):", result$correlation, "\n")
+cat("Adjusted Degrees of Freedom (df):", result$degrees_of_freedom, "\n")
+cat("t-Statistic:", result$t_statistic, "\n")
+cat("p-value:", result$p_value, "\n")
+cat("95% Confidence Interval: [", result$confidence_interval[1], ",", result$confidence_interval[2], "]\n")
+
+```
+```{r corr-pos-neg-check, echo=TRUE}
+# Perform a correlation analysis
+correlation_result <- cor.test(
+  residuals$original_neg_pol_index,
+  residuals$original_pos_pol_index,
+  method = "pearson"
+)
+
+# Print the correlation result
+print(correlation_result)
+```
+# Fit Linear Models: Fair Chance Job Posting Rate vs Policy Indices
+
+``` {r lm-fair-chance-vs-policy, echo=TRUE}
+
+# Fit linear models for original_fair_chance_rate
+lm_original_fair_pos <- lm(original_fair_chance_rate ~ pos_pol_index, data = full_data)
+lm_original_fair_neg <- lm(original_fair_chance_rate ~ neg_pol_index, data = full_data)
+
+# Fit linear models for validation_fair_chance_rate
+lm_validation_fair_pos <- lm(validation_fair_chance_rate ~ pos_pol_index, data = full_data)
+lm_validation_fair_neg <- lm(validation_fair_chance_rate ~ neg_pol_index, data = full_data)
+
+# Summarize results for original_fair_chance_rate
+cat("Model: original_fair_chance_rate ~ pos_pol_index\n")
+summary(lm_original_fair_pos)
+
+cat("\nModel: original_fair_chance_rate ~ neg_pol_index\n")
+summary(lm_original_fair_neg)
+
+# Summarize results for validation_fair_chance_rate
+cat("\nModel: validation_fair_chance_rate ~ pos_pol_index\n")
+summary(lm_validation_fair_pos)
+
+cat("\nModel: validation_fair_chance_rate ~ neg_pol_index\n")
+summary(lm_validation_fair_neg)
+
+```
+
+``` {r lm-resid-fair-chance-vs-policy}
+
+# Fit linear models for residuals$original_fair_chance_rate
+lm_residuals_original_fair_pos <- lm(original_fair_chance_rate ~ original_pos_pol_index, data = residuals)
+lm_residuals_original_fair_neg <- lm(original_fair_chance_rate ~ original_neg_pol_index, data = residuals)
+
+# Fit linear models for residuals$validation_fair_chance_rate
+lm_residuals_validation_fair_pos <- lm(validation_fair_chance_rate ~ original_pos_pol_index, data = residuals)
+lm_residuals_validation_fair_neg <- lm(validation_fair_chance_rate ~ original_neg_pol_index, data = residuals)
+
+# Summarize results for residuals$original_fair_chance_rate
+cat("Model: residuals$original_fair_chance_rate ~ residuals$original_pos_pol_index\n")
+summary(lm_residuals_original_fair_pos)
+
+cat("\nModel: residuals$original_fair_chance_rate ~ residuals$original_neg_pol_index\n")
+summary(lm_residuals_original_fair_neg)
+
+# Summarize results for residuals$validation_fair_chance_rate
+cat("\nModel: residuals$validation_fair_chance_rate ~ residuals$original_pos_pol_index\n")
+summary(lm_residuals_validation_fair_pos)
+
+cat("\nModel: residuals$validation_fair_chance_rate ~ residuals$original_neg_pol_index\n")
+summary(lm_residuals_validation_fair_neg)
+
+
+```
+``` {r median-pol-indices, echo=TRUE}
+
+# Calculate the median Positive Policy Index
+median_pos_pol_index <- median(full_data$pos_pol_index, na.rm = TRUE)
+
+# Find the state(s) closest to the median Positive Policy Index
+closest_pos <- full_data %>%
+  mutate(diff_from_median_pos = abs(pos_pol_index - median_pos_pol_index)) %>%
+  filter(diff_from_median_pos == min(diff_from_median_pos, na.rm = TRUE)) %>%
+  select(state, pos_pol_index)
+
+# Calculate the median Negative Policy Index
+median_neg_pol_index <- median(full_data$neg_pol_index, na.rm = TRUE)
+
+# Find the state(s) closest to the median Negative Policy Index
+closest_neg <- full_data %>%
+  mutate(diff_from_median_neg = abs(neg_pol_index - median_neg_pol_index)) %>%
+  filter(diff_from_median_neg == min(diff_from_median_neg, na.rm = TRUE)) %>%
+  select(state, neg_pol_index)
+
+# Print results
+cat("Median Positive Policy Index:", median_pos_pol_index, "\n")
+cat("State(s) closest to the median Positive Policy Index:\n")
+print(closest_pos)
+
+cat("\nMedian Negative Policy Index:", median_neg_pol_index, "\n")
+cat("State(s) closest to the median Negative Policy Index:\n")
+print(closest_neg)
+
+
+```
+
+```{r pos-pol-interpretation}
+
+# Calculate the median Positive Policy Index
+median_pos_pol_index <- median(full_data$pos_pol_index, na.rm = TRUE)
+
+# Find the state(s) closest to the median Positive Policy Index
+closest_to_median <- full_data %>%
+  mutate(diff_from_median = abs(pos_pol_index - median_pos_pol_index)) %>%
+  filter(diff_from_median == min(diff_from_median, na.rm = TRUE)) %>%
+  select(state, pos_pol_index)
+
+# Calculate the 10th and 90th percentiles of the Positive Policy Index
+percentile_10 <- quantile(full_data$pos_pol_index, 0.10, na.rm = TRUE)
+percentile_90 <- quantile(full_data$pos_pol_index, 0.90, na.rm = TRUE)
+
+# Find the states closest to the 10th and 90th percentiles
+closest_to_10th <- full_data %>%
+  mutate(diff_from_10th = abs(pos_pol_index - percentile_10)) %>%
+  filter(diff_from_10th == min(diff_from_10th, na.rm = TRUE)) %>%
+  select(state, pos_pol_index)
+
+closest_to_90th <- full_data %>%
+  mutate(diff_from_90th = abs(pos_pol_index - percentile_90)) %>%
+  filter(diff_from_90th == min(diff_from_90th, na.rm = TRUE)) %>%
+  select(state, pos_pol_index)
+
+# Extract the slope from the linear model
+slope <- coef(lm_original_fair_pos)["pos_pol_index"]
+
+# Calculate the difference in Fair Chance Job Posting Rate for the 10th to 90th percentile
+rate_change <- (percentile_90 - percentile_10) * slope # Use the extracted slope
+
+# Print results
+cat("Median Positive Policy Index:", median_pos_pol_index, "\n")
+cat("State(s) closest to the median Positive Policy Index:\n")
+print(closest_to_median)
+
+cat("\n10th Percentile of Positive Policy Index:", percentile_10, "\n")
+cat("State(s) closest to the 10th Percentile:\n")
+print(closest_to_10th)
+
+cat("\n90th Percentile of Positive Policy Index:", percentile_90, "\n")
+cat("State(s) closest to the 90th Percentile:\n")
+print(closest_to_90th)
+
+cat("\nEstimated decrease in Fair Chance Job Posting Rate from 10th to 90th Percentile:", rate_change, "per 1,000 jobs\n")
+
+
+```
+```{r neg-pol-interpretation}
+
+# Calculate the median Positive Policy Index
+median_neg_pol_index <- median(full_data$neg_pol_index, na.rm = TRUE)
+
+# Find the state(s) closest to the median Positive Policy Index
+closest_to_median <- full_data %>%
+  mutate(diff_from_median = abs(neg_pol_index - median_neg_pol_index)) %>%
+  filter(diff_from_median == min(diff_from_median, na.rm = TRUE)) %>%
+  select(state, neg_pol_index)
+
+# Calculate the 10th and 90th percentiles of the Positive Policy Index
+percentile_10 <- quantile(full_data$neg_pol_index, 0.10, na.rm = TRUE)
+percentile_90 <- quantile(full_data$neg_pol_index, 0.90, na.rm = TRUE)
+
+# Find the states closest to the 10th and 90th percentiles
+closest_to_10th <- full_data %>%
+  mutate(diff_from_10th = abs(neg_pol_index - percentile_10)) %>%
+  filter(diff_from_10th == min(diff_from_10th, na.rm = TRUE)) %>%
+  select(state, neg_pol_index)
+
+closest_to_90th <- full_data %>%
+  mutate(diff_from_90th = abs(neg_pol_index - percentile_90)) %>%
+  filter(diff_from_90th == min(diff_from_90th, na.rm = TRUE)) %>%
+  select(state, neg_pol_index)
+
+# Extract the slope from the linear model
+slope <- coef(lm_original_fair_neg)["neg_pol_index"]
+
+# Calculate the difference in Fair Chance Job Posting Rate for the 10th to 90th percentile
+rate_change <- (percentile_90 - percentile_10) * slope # Use the extracted slope
+
+# Print results
+cat("Median Negative Policy Index:", median_pos_pol_index, "\n")
+cat("State(s) closest to the median Negative Policy Index:\n")
+print(closest_to_median)
+
+cat("\n10th Percentile of Negative Policy Index:", percentile_10, "\n")
+cat("State(s) closest to the 10th Percentile:\n")
+print(closest_to_10th)
+
+cat("\n90th Percentile of Negative Policy Index:", percentile_90, "\n")
+cat("State(s) closest to the 90th Percentile:\n")
+print(closest_to_90th)
+
+cat("\nEstimated decrease in Fair Chance Job Posting Rate from 10th to 90th Percentile:", rate_change, "per 1,000 jobs\n")
+
+
+```
+
+```{r compute-relative-change}
+# Define the raw increase in job posting rate
+raw_increase <- 12.31
+
+# Calculate the average baseline fair chance job posting rate
+baseline_rate <- mean(full_data$original_fair_chance_rate, na.rm = TRUE)
+
+# Calculate the relative increase as a percentage
+relative_increase <- (raw_increase / baseline_rate) * 100
+
+# Print results
+cat("Raw increase in fair chance job postings per 1,000 jobs:", raw_increase, "\n")
+cat("Baseline fair chance job posting rate per 1,000 jobs:", baseline_rate, "\n")
+cat("Relative increase in fair chance job posting rate:", relative_increase, "%\n")
+
+```
+
+
 # Scatter Plots: Fair Chance Job Posting Rate vs Policy Indices
 We next look at how fair chance job posting rates relate to both positive and negative policy indices.
 
 ```{r scatter-pos-fairchance, echo=TRUE}
-# Create a scatter plot of positive policy index vs fair chance job posting rate (retail + food service)
-plot_pos_vs_fairchance_rate <- ggplot(mapping=aes(y = employment_data$fair_chance_rate, x = regression_data$tot_pos_index)) +
+# Create a scatter plot of positive policy index vs fair chance job posting rate
+plot_pos_vs_fairchance_rate <- ggplot(full_data, aes(x = pos_pol_index, y = original_fair_chance_rate)) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE) +
   labs(
-    title = "Scatter Plot of Fair Chance Job Posting Rate vs Positive Policies",
+    title = "Fair Chance Job Posting Rate vs Positive Policy Index",
     x = "Positive Policy Index",
-    y = "Fair Chance Job Posting Rate in Retail + Food Service"
+    y = "Fair Chance Job Posting Rate"
   ) +
+  xlim(0, 1) +
+  ylim(0, 70) +
   theme_minimal()
 
 if (overwrite_plots) {
-  pdf("scatter_pos_fairchance_industry.pdf")
+  # Save plot as PDF
+  pdf("scatter_pos_fairchance.pdf")
   print(plot_pos_vs_fairchance_rate)
   dev.off()
+  
+  # Save plot as PNG
+  ggsave("scatter_pos_fairchance.png", plot = plot_pos_vs_fairchance_rate, width = 8, height = 6)
+
 }
 print(plot_pos_vs_fairchance_rate)
+
 ```
 
 ```{r scatter-neg-fairchance, echo=TRUE}
-# Create a scatter plot of negative policy index vs fair chance job posting rate in retail and food service
-plot_neg_vs_fairchance_rate <- ggplot(mapping = aes(y = employment_data$fair_chance_rate, x = regression_data$neg_combo_index)) +
+# Create a scatter plot of negative policy index vs fair chance job posting rate
+plot_neg_vs_fairchance_rate <- ggplot(full_data, aes(x = neg_pol_index, y = original_fair_chance_rate)) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE) +
   labs(
-    title = "Scatter Plot of Fair Chance Job Posting Rate vs Collateral Consequences",
-    x = "Weighted Number of Collateral Consequences",
-    y = "Fair Chance Job Posting Rate in Retail + Food Service"
+    title = "Fair Chance Job Posting Rate vs Negative Policy Index",
+    x = "Negative Policy Index",
+    y = "Fair Chance Job Posting Rate"
   ) +
+  xlim(0, 900) +
+  ylim(0, 70) +
   theme_minimal()
 
 if (overwrite_plots) {
-  pdf("scatter_neg_fairchance_industry.pdf")
+  # Save plot as PDF
+  pdf("scatter_neg_fairchance.pdf")
   print(plot_neg_vs_fairchance_rate)
   dev.off()
+  
+  # Save plot as PNG
+    ggsave("scatter_neg_fairchance.png", plot = plot_neg_vs_fairchance_rate, width = 8, height = 6)
+
 }
 print(plot_neg_vs_fairchance_rate)
 ```
 
-# Linear Models and Residual Analysis
-To control for macroeconomic, socioeconomic, and political factors, we ran several linear models and used residuals to further explore relationships.
-
-```{r linear-models, echo=TRUE}
-# Run a linear model for fair_chance_rate vs the three columns of control_data
-lm_fairchance_controls <- lm(employment_data$fair_chance_rate ~ control_data$macroeconomy + control_data$socioeconomics + control_data$politics)
-
-# Save the residuals of the model to employment_data$fair_chance_rate_residuals
-employment_data$fair_chance_rate_residuals <- residuals(lm_fairchance_controls)
-
-# Print the summary of the linear model
-summary(lm_fairchance_controls)
-
-# Run a linear model for tot_pos_index vs the three columns of control_data
-lm_model_tot_pos <- lm(regression_data$tot_pos_index ~ control_data$macroeconomy + control_data$socioeconomics + control_data$politics)
-
-# Save the residuals of the model to regression_data$tot_pos_index_residuals
-regression_data$tot_pos_index_residuals <- residuals(lm_model_tot_pos)
-
-# Print the summary of the linear model
-summary(lm_model_tot_pos)
-
-# Run a linear model for neg_combo_index vs the three columns of control_data
-lm_model_neg_combo <- lm(regression_data$neg_combo_index ~ control_data$macroeconomy + control_data$socioeconomics + control_data$politics)
-
-# Save the residuals of the model to regression_data$neg_combo_index_residuals
-regression_data$neg_combo_index_residuals <- residuals(lm_model_neg_combo)
-
-# Print the summary of the linear model
-summary(lm_model_neg_combo)
-```
-
-# Residualized Analysis
-We used residualized values to examine relationships after controlling for external factors.
-
-```{r scatter-residual-pos-fairchance, echo=TRUE}
-# Scatter plot of residualized positive policy vs. residualized fair chance job posting rate
-plot_residual_pos_vs_fairchance <- ggplot(data = data.frame(y = employment_data$fair_chance_rate_residuals, x = regression_data$tot_pos_index_residuals)) +
-  geom_point(aes(x = x, y = y)) +
-  geom_smooth(aes(x = x, y = y), method="lm", se=FALSE)+
-  labs(
-    title = "Scatter Plot of Residualized Positive Policy vs. Residualized Fair Chance Job Posting Rate",
-    y = "Residualized Fair Chance Job Posting Rate, Retail + Food Service",
-    x = "Residualized Positive Policy Index"
-  ) +
-  theme_minimal()
-if (overwrite_plots) {
-  pdf("scatter_residual_pos_fairchance.pdf")
-  print(plot_residual_pos_vs_fairchance)
-  dev.off()
-}
-print(plot_residual_pos_vs_fairchance)
-```
-
-```{r scatter-residual-neg-fairchance, echo=TRUE}
-# Scatter plot of residualized negative policy vs. residualized fair chance job posting rate
-plot_residual_neg_vs_fairchance <- ggplot(data = data.frame(y = employment_data$fair_chance_rate_residuals, x = regression_data$neg_combo_index_residuals)) +
-  geom_point(aes(x = x, y = y)) +
-  geom_smooth(aes(x = x, y = y), method="lm", se=FALSE)+
-  labs(
-    title = "Scatter Plot of Residualized Collateral Consequences vs. Residualized Fair Chance Job Posting Rate",
-    y = "Residualized Fair Chance Job Posting Rate, Retail + Food Service",
-    x = "Residualized Weighted Number of Collateral Consequences"
-  ) +
-  theme_minimal()
-if (overwrite_plots) {
-  pdf("scatter_residual_neg_fairchance.pdf")
-  print(plot_residual_neg_vs_fairchance)
-  dev.off()
-}
-print(plot_residual_neg_vs_fairchance)
-```
 
 
-```{r additional-linear-models, echo=TRUE}
-# Run a linear model for fair_chance_rate vs tot_pos_index, neg_combo_index, and control_data
-lm_fair_chance_rate_vs_all_factors <- lm(employment_data$fair_chance_rate ~ regression_data$tot_pos_index + regression_data$neg_combo_index + control_data$macroeconomy + control_data$socioeconomics + control_data$politics)
+```{r full-linear-model, echo=TRUE}
+# Linear model for original_fair_chance_rate
+lm_original <- lm(
+  original_fair_chance_rate ~ pos_pol_index + neg_pol_index +
+    macroeconomy_control + socioeconomics_control +
+    politics_control + diversity_control +
+    original_employment_control,
+  data = full_data
+)
 
-# Print the summary of the linear model
-summary(lm_fair_chance_rate_vs_all_factors)
+# Summary of the model for original_fair_chance_rate
+cat("Model: original_fair_chance_rate\n")
+summary(lm_original)
 
-# Run a linear model for residualized fair_chance_rate vs residualized tot_pos_index and neg_combo_index
-lm_residual_fair_chance_rate_vs_residual_policies <- lm(employment_data$fair_chance_rate_residuals ~ regression_data$tot_pos_index_residuals + regression_data$neg_combo_index_residuals)
+# Linear model for validation_fair_chance_rate
+lm_validation <- lm(
+  validation_fair_chance_rate ~ pos_pol_index + neg_pol_index +
+    macroeconomy_control + socioeconomics_control +
+    politics_control + diversity_control +
+    validation_employment_control,
+  data = full_data
+)
 
-# Print the summary of the linear model
-summary(lm_residual_fair_chance_rate_vs_residual_policies)
+# Summary of the model for validation_fair_chance_rate
+cat("\nModel: validation_fair_chance_rate\n")
+summary(lm_validation)
 
-# Run a linear model for residualized tot_pos_index vs residualized neg_combo_index
-lm_residual_positive_policy_vs_residual_negative_combo <- lm(regression_data$tot_pos_index_residuals ~ regression_data$neg_combo_index_residuals)
 
-# Print the summary of the linear model
-summary(lm_residual_positive_policy_vs_residual_negative_combo)
 ```
 
 
@@ -191,8 +540,8 @@ Finally, we perform chi-square tests to understand if having an above-average po
 
 ```{r chi-square-test-pos, echo=TRUE}
 # Create binary variables for "above or below average" for each measure (Positive Policy Index)
-policy_above_avg_pos <- ifelse(regression_data$tot_pos_index_residuals > 0, "Above Avg", "Below Avg")
-employment_above_avg <- ifelse(employment_data$fair_chance_rate_residuals > 0, "Above Avg", "Below Avg")
+policy_above_avg_pos <- ifelse(residuals$original_pos_pol_index > 0, "Above Avg", "Below Avg")
+employment_above_avg <- ifelse(residuals$original_fair_chance_rate > 0, "Above Avg", "Below Avg")
 
 # Create a contingency table based on the two categorical variables (Positive Policy Index)
 contingency_table_pos <- table(policy_above_avg_pos, employment_above_avg)
@@ -206,27 +555,51 @@ chi_squared_result_pos <- chisq.test(contingency_table_pos)
 # Print the test result (Positive Policy Index)
 print(chi_squared_result_pos)
 ```
-**Interpretation:** The chi-square test of independence for the positive policy index resulted in a p-value of 0.6693, which is much greater than the conventional significance level of 0.05. This means that we fail to reject the null hypothesis, suggesting that there is no statistically significant association between having a positive policy index above average and having a better-than-average employment outcome. In other words, there is no evidence to indicate that states with an above-average positive policy index are more likely to have above-average fair chance job posting rates.
+**Interpretation:** The chi-square test of independence for the positive policy index resulted in a p-value of 0.7394, which is much greater than the conventional significance level of 0.05. This means that we fail to reject the null hypothesis, suggesting that there is no statistically significant association between having a positive policy index above average and having a better-than-average employment outcome. In other words, there is no evidence to indicate that states with an above-average positive policy index are more likely to have above-average fair chance job posting rates.
 
 ```{r chi-square-test-neg, echo=TRUE}
-# Create binary variables for "above or below average" for each measure (Positive Policy Index)
-policy_above_avg_neg <- ifelse(regression_data$neg_combo_index_residuals > 0, "Above Avg", "Below Avg")
-employment_above_avg <- ifelse(employment_data$fair_chance_rate_residuals > 0, "Above Avg", "Below Avg")
+# Create binary variables for "above or below average" for each measure (Negative Policy Index)
+policy_above_avg_neg <- ifelse(residuals$original_neg_pol_index > 0, "Above Avg", "Below Avg")
+employment_above_avg <- ifelse(residuals$original_fair_chance_rate > 0, "Above Avg", "Below Avg")
 
-# Create a contingency table based on the two categorical variables (Positive Policy Index)
+# Create a contingency table based on the two categorical variables (Negative Policy Index)
 contingency_table_neg <- table(policy_above_avg_neg, employment_above_avg)
 
-# Print the contingency table (Positive Policy Index)
+# Print the contingency table (Negative Policy Index)
 print(contingency_table_neg)
 
-# Run the chi-square test of independence (Positive Policy Index)
+# Run the chi-square test of independence (Negative Policy Index)
 chi_squared_result_neg <- chisq.test(contingency_table_neg)
 
-# Print the test result (Positive Policy Index)
+# Print the test result (Negative Policy Index)
 print(chi_squared_result_neg)
 ```
 
-**Interpretation:** The chi-square test of independence for the negative combo index yielded a p-value of 0.03086, which is less than the significance level of 0.05. Therefore, we reject the null hypothesis, indicating that there is a statistically significant association between the negative combo policy index being above average and the employment outcome. Specifically, there seems to be an association that suggests states with an above-average negative combo index are more likely to have a below-average employment outcome.
+**Interpretation:** The chi-square test of independence for the negative combo index yielded a p-value of 0.2401, which is much greater than the conventional significance level of 0.05. This means that we fail to reject the null hypothesis, suggesting that there is no statistically significant association between having a negative policy index above average and having a better-than-average employment outcome. In other words, there is no evidence to indicate that states with an above-average negative policy index are more likely to have above-average fair chance job posting rates.
+
+``` {r job-posting-summary-stats}
+# Compute summary statistics for original and validation fair chance rates
+summary_stats <- summary(full_data[c("original_fair_chance_rate", "validation_fair_chance_rate")])
+
+# Compute correlation between original and validation fair chance rates
+# Perform correlational analysis with significance testing
+correlation_analysis <- cor.test(
+  full_data$original_fair_chance_rate,
+  full_data$validation_fair_chance_rate,
+  method = "pearson", # Pearson correlation
+)
+
+# Print results
+cat("Summary Statistics:\n")
+print(summary_stats)
+
+cat("\nCorrelation Analysis:\n")
+cat("Correlation Coefficient (r):", correlation_analysis$estimate, "\n")
+cat("t-Statistic:", correlation_analysis$statistic, "\n")
+cat("Degrees of Freedom:", correlation_analysis$parameter, "\n")
+cat("p-Value:", correlation_analysis$p.value, "\n")
+cat("95% Confidence Interval:", correlation_analysis$conf.int, "\n")
+```
 
 # Conclusion
 This report provides an exploratory analysis of the relationship between fair chance hiring policies and employment outcomes. We used visualizations, linear regression models, and chi-square tests to assess these relationships, which can provide valuable insights for policy evaluation and improvement.
