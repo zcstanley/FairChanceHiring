@@ -1,0 +1,195 @@
+---
+title: "Q1 Research Results"
+author: "Jocelyn Bliven"
+date: "2024-11-07"
+output: pdf_document
+---
+
+``````{r setup, include=TRUE}
+
+library(ggplot2)
+
+# Set parameter to overwrite plots
+overwrite_plots = FALSE
+
+# Read in data
+pol_indices <- read.csv("regression.csv")
+orig_employ_data <- read.csv("indeed-retail-foodservice-fairchance.csv")
+new_employ_data <- read.csv("wide_complete_industry.csv")
+
+
+```
+
+## Original Plots
+
+Linear models of positive policy index and fair chance job posting rate, negative policy index and fair chance job posting rate, and positive policy index and negative policy index
+
+```{r linear-models, echo=TRUE}
+# Run a linear model for fair_chance_rate vs the 5 types of control_data
+lm_pos_vs_employ <- lm(orig_employ_data$fair_chance_rate ~ pol_indices$tot_pos_index)
+
+# Print the summary of the linear model
+summary(lm_pos_vs_employ)
+```
+
+Visualization
+```{r scatter-pos-fairchance, echo=TRUE}
+# Scatter plot of  positive policy vs.  fair chance job posting rate
+plot_residual_pos_vs_fairchance <- ggplot(data = data.frame(y = orig_employ_data$fair_chance_rate, x = pol_indices$tot_pos_index)) +
+  geom_point(aes(x = x, y = y)) +
+  geom_smooth(aes(x = x, y = y), method="lm", se=FALSE)+
+  labs(
+    title = "Scatter Plot of Positive Policy vs. Fair Chance Job Posting Rate",
+    y = "Original Fair Chance Job Posting Rate",
+    x = "Postitve Index"
+  ) +
+  theme_minimal()
+if (overwrite_plots) {
+  pdf("plot_residual_pos_vs_fairchance.pdf")
+  print(plot_residual_pos_vs_fairchance)
+  dev.off()
+}
+print(plot_residual_pos_vs_fairchance)
+```
+
+Negative Policy vs Fair Chance Hiring Rate
+
+```{r linear-models, echo=TRUE}
+# Run a linear model for fair_chance_rate vs the 5 types of control_data
+lm_neg_vs_employ <- lm(orig_employ_data$fair_chance_rate ~ pol_indices$neg_combo_index)
+
+# Print the summary of the linear model
+summary(lm_neg_vs_employ)
+```
+
+```{r scatter-pos-fairchance, echo=TRUE}
+# Scatter plot of negative policy vs.  fair chance job posting rate
+plot_residual_neg_vs_fairchance <- ggplot(data = data.frame(y = orig_employ_data$fair_chance_rate, x = pol_indices$neg_combo_index)) +
+  geom_point(aes(x = x, y = y)) +
+  geom_smooth(aes(x = x, y = y), method="lm", se=FALSE)+
+  labs(
+    title = "Scatter Plot of Negative Policy vs. Fair Chance Job Posting Rate",
+    y = "Original Fair Chance Job Posting Rate",
+    x = "Negative Index"
+  ) +
+  theme_minimal()
+if (overwrite_plots) {
+  pdf("plot_residual_neg_vs_fairchance.pdf")
+  print(plot_residual_neg_vs_fairchance)
+  dev.off()
+}
+print(plot_residual_neg_vs_fairchance)
+```
+
+Positive vs Negative Index
+
+```{r linear-models, echo=TRUE}
+# Run a linear model for fair_chance_rate vs the 5 types of control_data
+lm_neg_vs_pos <- lm(pol_indices$tot_pos_index ~ pol_indices$neg_combo_index)
+
+# Print the summary of the linear model
+summary(lm_neg_vs_pos)
+```
+
+
+Visualizaiton
+```{r scatter-pos-fairchance, echo=TRUE}
+# Scatter plot of negative policy vs.  fair chance job posting rate
+plot_residual_neg_vs_pos <- ggplot(data = data.frame(y = pol_indices$tot_pos_index, x = pol_indices$neg_combo_index)) +
+  geom_point(aes(x = x, y = y)) +
+  geom_smooth(aes(x = x, y = y), method="lm", se=FALSE)+
+  labs(
+    title = "Scatter Plot of Negative Policy vs. Positive Policy",
+    y = "Positive Index",
+    x = "Negative Index"
+  ) +
+  theme_minimal()
+if (overwrite_plots) {
+  pdf("plot_residual_neg_vs_pos.pdf")
+  print(plot_residual_neg_vs_pos)
+  dev.off()
+}
+print(plot_residual_neg_vs_pos)
+```
+
+## New Industry Plots
+
+Positive 
+
+```{r linear-models, echo=TRUE}
+# Run a linear model for fair_chance_rate vs the 5 types of control_data
+lm_pos_vs_retail <- lm(new_employ_data$avg_retail ~ pol_indices$tot_pos_index)
+
+# Print the summary of the linear model
+summary(lm_pos_vs_retail)
+
+# Run a linear model for fair_chance_rate vs the 5 types of control_data
+lm_pos_vs_food_service <- lm(new_employ_data$avg_food_service ~ pol_indices$tot_pos_index)
+
+# Print the summary of the linear model
+summary(lm_pos_vs_food_service)
+
+# Run a linear model for fair_chance_rate vs the 5 types of control_data
+lm_pos_vs_avg_construction <- lm(new_employ_data$avg_construction ~ pol_indices$tot_pos_index)
+
+# Print the summary of the linear model
+summary(lm_pos_vs_avg_construction)
+
+# Run a linear model for fair_chance_rate vs the 5 types of control_data
+lm_pos_vs_home_health <- lm(new_employ_data$avg_home_health ~ pol_indices$tot_pos_index)
+
+# Print the summary of the linear model
+summary(lm_pos_vs_home_health)
+
+# Run a linear model for fair_chance_rate vs the 5 types of control_data
+lm_pos_vs_manufacturing <- lm(new_employ_data$avg_manufacturing ~ pol_indices$tot_pos_index)
+
+# Print the summary of the linear model
+summary(lm_pos_vs_manufacturing)
+
+# Run a linear model for fair_chance_rate vs the 5 types of control_data
+lm_pos_vs_hospitality <- lm(new_employ_data$avg_hospitality ~ pol_indices$tot_pos_index)
+
+# Print the summary of the linear model
+summary(lm_pos_vs_hospitality)
+```
+
+Negative
+
+```{r linear-models, echo=TRUE}
+# Run a linear model for fair_chance_rate vs the 5 types of control_data
+lm_neg_vs_retail <- lm(new_employ_data$avg_retail ~ pol_indices$neg_combo_index)
+
+# Print the summary of the linear model
+summary(lm_neg_vs_retail)
+
+# Run a linear model for fair_chance_rate vs the 5 types of control_data
+lm_neg_vs_food_service <- lm(new_employ_data$avg_food_service ~ pol_indices$neg_combo_index)
+
+# Print the summary of the linear model
+summary(lm_neg_vs_food_service)
+
+# Run a linear model for fair_chance_rate vs the 5 types of control_data
+lm_neg_vs_avg_construction <- lm(new_employ_data$avg_construction ~ pol_indices$neg_combo_index)
+
+# Print the summary of the linear model
+summary(lm_neg_vs_avg_construction)
+
+# Run a linear model for fair_chance_rate vs the 5 types of control_data
+lm_neg_vs_home_health <- lm(new_employ_data$avg_home_health ~ pol_indices$neg_combo_index)
+
+# Print the summary of the linear model
+summary(lm_neg_vs_home_health)
+
+# Run a linear model for fair_chance_rate vs the 5 types of control_data
+lm_neg_vs_manufacturing <- lm(new_employ_data$avg_manufacturing ~ pol_indices$neg_combo_index)
+
+# Print the summary of the linear model
+summary(lm_neg_vs_manufacturing)
+
+# Run a linear model for fair_chance_rate vs the 5 types of control_data
+lm_neg_vs_hospitality <- lm(new_employ_data$avg_hospitality ~ pol_indices$neg_combo_index)
+
+# Print the summary of the linear model
+summary(lm_neg_vs_hospitality)
+```
