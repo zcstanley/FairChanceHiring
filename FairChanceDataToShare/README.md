@@ -49,7 +49,7 @@ These datasets provide a view of fair-chance employment opportunities as they ap
 ## Metadata
 
 Further details on the data acquisition and processing procedures for the **policy indices** are available in the **`FairChancePolicyIndexMetadata.csv`** file.
-Parallel documentation for the *Indeed employment data* is provided in the **`FairChanceEmploymentMetricsMetadata.csv`** file.
+Parallel documentation for the **Indeed employment data** is provided in the **`FairChanceEmploymentMetricsMetadata.csv`** file.
 
 ## Acknowledgements
 
